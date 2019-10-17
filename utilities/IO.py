@@ -2,24 +2,50 @@ import socket
 import threading
 import pickle
 
+from utilities.Graph import Graph
+from utilities.Node import Node
+
+
 class IO:
-    def __init__(self,machine_address,server_port, machine_id):
+
+    def __init__(self,machine_address,server_port, node_id,GUI=None):
         # Nodo como servidor-----
         self.machine_address = machine_address
         self.server_port = server_port
-        self.machine_id = machine_id
+        self.machine_id = node_id
         self.socket_as_server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self.socket_as_server.bind(("localhost",self.machine_address))
         self.socket_as_server.listen(10)
         self.connected = False
+        self.GUI = GUI
         self.processes()
         self.tabla = []
+        self.graph = Graph()
+        if GUI != None:
+            self.my_graph()
         #Encabezado para cada tipo de mensaje
         self.HEADERS = ["<MPR?>--------------",
                         "<MPR=>--------------",
                         "<MSG=>--------------",
                         "<ID?>---------------",
                         "<ID=>---------------"]
+
+    def my_graph(self):
+        self.graph.add_node(Node(id="N1"))
+        self.graph.add_node(Node(id="N2"))
+        self.graph.add_node(Node(id="N3"))
+        self.graph.add_node(Node(id="N4"))
+        self.graph.add_node(Node(id="N5"))
+        nodes = self.graph.get_node_list()
+        nodes[0].add_neighbor("N2")
+        nodes[1].add_neighbor("N3")
+        nodes[2].add_neighbor("N4")
+        nodes[3].add_neighbor("N1")
+        #for node in nodes:
+        print(self.graph.get_edges_list())
+        print(nodes[0].get_id())
+
+        self.GUI.create_graph(nodes,"")
 
     def get_id(self):
         return self.machine_id
@@ -40,10 +66,8 @@ class IO:
         for client in self.clients:
             #Pedir la MPR a los nodos hijo
             self.send(client,self.fit_data(0,""))
-        #print(self.tabla)
 
     def processes(self):
-
         self.clients=[]
         threads = list()
         t1 = threading.Thread(target=self.connections_as_server)
@@ -55,19 +79,21 @@ class IO:
 
     def connections_as_server(self):
         while True:
+            #Aceptar una conexion y asignarle un hilo
             client_socket, address = self.socket_as_server.accept()
             self.clients.append(client_socket)
             t1 = threading.Thread(target=self.receive,args=(client_socket,))
             t1.start()
             print(len(self.clients))
             print(f"Connection from: {address}")
+            #Pedir a la nueva conexion su identificacion
             self.request_id(client_socket)
 
     def receive(self, socket_c):
         while True:
             data = socket_c.recv(1024)
-            #print(data)
             if data != '':
+                #Separar el header de los datos
                 header = data[0:20]
                 data = data[20:]
                 self.protocols(header,data,socket_c)
@@ -81,12 +107,8 @@ class IO:
     def protocols(self, header,data,socket):
         header = header.decode('utf-8')
         data = pickle.loads(data)
-        #print("received")
-        #print(header)
-        #print(data)
         if header == self.HEADERS[0]:
             self.send_MPR(socket)
-            #print(f"my port: {self.socket_as_server}")
         elif header == self.HEADERS[1]:
             self.tabla.append(data)
             print(data)

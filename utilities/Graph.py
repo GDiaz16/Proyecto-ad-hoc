@@ -11,3 +11,13 @@ class Graph:
 
     def path_A_B(self):
         pass
+
+    def get_node_list(self):
+        return self.node_list
+
+    def get_edges_list(self):
+        neighbors_list =[]
+        for node in self.node_list:
+            for neighbor in node.get_neighbors_list():
+                neighbors_list.append([node.get_id(),neighbor])
+        return neighbors_list
