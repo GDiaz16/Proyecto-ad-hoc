@@ -8,7 +8,7 @@ from utilities.Node import Node
 
 class IO:
 
-    def __init__(self,machine_address,server_port, node_id,GUI=None):
+    def __init__(self,machine_address,server_port, node_id):
         self.machine_address = machine_address
         self.server_port = server_port
         self.machine_id = node_id
@@ -19,53 +19,18 @@ class IO:
 
         self.clients=[]
         self.connected = False
-        self.GUI = GUI
         self.processes()
         self.tabla = []
         self.graph = Graph()
 
-        #Crear entorno grafico solo si se instancia
-        if GUI != None:
-            self.my_graph()
         #Encabezado para cada tipo de mensaje
         self.HEADERS = ["<MPR?>--------------",
                         "<MPR=>--------------",
                         "<MSG=>--------------",
                         "<ID?>---------------",
                         "<ID=>---------------",
-                        "<CONNECT-TO=>-------"]
-
-    def my_graph(self):
-
-
-        self.graph.add_node(Node(id="MASTER", machine_address=10000))
-        self.graph.add_node(Node(id="N2", machine_address=10001))
-        self.graph.add_node(Node(id="N3", machine_address=10002))
-        self.graph.add_node(Node(id="N4", machine_address=10003))
-        self.graph.add_node(Node(id="N5", machine_address=10004))
-        self.graph.add_node(Node(id="N6", machine_address=10005))
-
-        for node in self.graph.get_node_list():
-            t = threading.Thread(target=self.connect_node, args=(node.get_machine_address(),))
-            t.start()
-
-        self.graph.insert_edge([1, "N1", "N2"])
-        self.graph.insert_edge([2, "N3", "N2"])
-        self.graph.insert_edge([3, "N4", "N1"])
-        self.graph.insert_edge([4, "N4", "N5"])
-        self.graph.insert_edge([5, "N3", "N1"])
-
-        nodes = self.graph.get_node_list()
-        nodes[0].add_neighbor("N2")
-        nodes[1].add_neighbor("N3")
-        nodes[2].add_neighbor("N4")
-        nodes[3].add_neighbor("N1")
-        #for node in nodes:
-        list = []
-        for edge in self.graph.get_edges_list():
-            list.append(edge[1:])
-
-        self.GUI.create_graph(nodes,list)
+                        "<CONNECT-TO=>-------",
+                        "<DISCONNECT-OF=>----"]
 
     def get_id(self):
         return self.machine_id
@@ -77,12 +42,13 @@ class IO:
         connected = False
         while not connected:
             try:
-                self.socket_as_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                self.socket_as_client.connect(("localhost",port ))
-                t2 = threading.Thread(target=self.receive, args=(self.socket_as_client,))
+                socket_as_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                socket_as_client.connect(("localhost",port ))
+                t2 = threading.Thread(target=self.receive, args=(socket_as_client,))
                 t2.start()
-                self.clients.append([self.socket_as_client,""])
-                self.request_id(self.socket_as_client)
+                self.clients.append([socket_as_client,""])
+                self.request_id(socket_as_client)
+                print(f"Connected to {socket_as_client}")
                 connected = True
             except:
                 pass
@@ -96,15 +62,14 @@ class IO:
             t1.start()
             print(len(self.clients))
             print(f"Connection from: {address}")
+            self.clients.append([client_socket, ""])
             #Pedir a la nueva conexion su identificacion
             self.request_id(client_socket)
 
-    def disconnect(self,socket):
-        socket.close()
-
-    def connect_to(self,address, node_address):
-
-        self.send(self.connect_node(socket),self.fit_data(5, node_address))
+    def disconnect_node(self,node_id):
+        for client in self.clients:
+            if client[1]==node_id:
+                client[0].close()
 
     def update_MPR(self):
         for client in self.clients:
@@ -114,10 +79,10 @@ class IO:
     def processes(self):
         threads = list()
         t1 = threading.Thread(target=self.connections_as_server)
-        t2 = threading.Thread(target=self.connect_node)
+        #t2 = threading.Thread(target=self.connect_node)
         t3 = threading.Thread(target=self.command)
         t1.start()
-        t2.start()
+        #t2.start()
         t3.start()
 
     def receive(self, socket_c):
@@ -129,20 +94,19 @@ class IO:
                     header = data[0:20]
                     data = data[20:]
                     self.protocols(header,data,socket_c)
-            except ConnectionResetError:
-                if socket_c == self.socket_as_client:
-                    print("Se ha cortado la comunicacion con el servidor")
-                    self.connected = False
-                    t = threading.Thread(target=self.connect_node)
-                    t.start()
-                    return
-                else:
-                    print(f"Se ha cortado la comunicacion con el cliente:{socket_c}")
-                    for client in self.clients:
-                        if client[0]==socket_c:
-                            self.clients.remove(client)
-                            break
-                    return
+            except (ConnectionResetError,  ConnectionAbortedError):
+                for client in self.clients:
+                    if client[0] == socket_c:
+                        print(f"Se ha cortado la comunicacion con {client[1]}")
+                        self.clients.remove(client)
+                        for node in self.graph.get_node_list():
+                            if node.get_id() == client[1]:
+                                t = threading.Thread(target=self.connect_node,
+                                                     args=(node.get_id(), node.get_machine_address(),))
+                                t.start()
+                                break
+                        break
+                return
 
     def send(self,socket,message):
         try:
@@ -166,6 +130,8 @@ class IO:
             self.assign_id(socket,data)
         elif header == self.HEADERS[5]:
             self.connect_node(data)
+        elif header == self.HEADERS[6]:
+            self.disconnect_node(data)
 
     def assign_id(self,socket,id):
         for client in self.clients:

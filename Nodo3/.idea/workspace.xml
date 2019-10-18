@@ -80,6 +80,7 @@
         <option value="$PROJECT_DIR$/ALU.py" />
         <option value="$PROJECT_DIR$/CU.py" />
         <option value="$PROJECT_DIR$/IO.py" />
+        <option value="$PROJECT_DIR$/../utilities/IO.py" />
       </list>
     </option>
   </component>
@@ -218,7 +219,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.85271317" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6356589" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -273,6 +274,13 @@
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../utilities/IO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>

@@ -1,3 +1,6 @@
+import sys
+sys.path.append("E:/Universidad/Materias/Lenguajes de Programación/Proyecto")
+
 from math import sqrt
 from tkinter import *
 
@@ -5,6 +8,10 @@ from utilities.Graph import Graph
 from utilities.IO import IO
 import threading
 import numpy as np
+
+from utilities.IO_MASTER import IO_MASTER
+
+
 class GUI:
 
     def __init__(self):
@@ -20,7 +27,7 @@ class GUI:
         self.graph = Graph()
         self.count = 1
         self.c.bind("<B1-Motion>", self.move)
-        self.IO = IO(machine_address=10001, server_port=10000, node_id="N1",GUI=self)
+        self.IO = IO_MASTER(machine_address=10000, server_port=10000, node_id="N1",GUI=self)
         self.window.mainloop()
 
 
@@ -58,20 +65,21 @@ class GUI:
 
     def draw_connection(self,nodo1,nodo2):
         #Verificar que la conexion no exista aun
-        for conn in self.graph.get_edges_list():
-            if nodo1 == conn[1] and nodo2 == conn[2]:
-               return
 
+        for conn in self.graph.get_edges_list():
+            if nodo1.get_id() == conn[1] and nodo2.get_id() == conn[2]:
+               return
+        self.connect_machines(nodo1, nodo2)
         nodo1_graphic = 0
         nodo2_graphic = 0
         #Obtener el numero grafico del nodo 1
         for node in self.node_list_objects:
-            if node.get_id() == nodo1:
+            if node.get_id() == nodo1.get_id():
                 nodo1_graphic = node.get_graphic_position_circle()
                 break
         #Obtener el numero grafico del nodo 2
         for node in self.node_list_objects:
-            if node.get_id() == nodo2:
+            if node.get_id() == nodo2.get_id():
                 nodo2_graphic = node.get_graphic_position_circle()
                 break
         #Centrar las puntas de la recta en los centros de los circulos
@@ -81,12 +89,11 @@ class GUI:
         y2 = self.c.coords(nodo2_graphic)[1] + self.ratio
 
         connection_graphic =self.c.create_line(x1,y1,x2,y2,width=4,fill="blue")
-        list = [connection_graphic,nodo1,nodo2]
-        self.graph.insert_edge(list)
+        self.graph.insert_edge(connection_graphic,nodo1.get_id(),nodo2.get_id())
 
     def connect_machines(self,node1,node2):
         #Decirle al nodo 1 que se conecte directamente al nodo 2
-        self.IO.connect_to(node1.get_machine_address(),node2.get_machine_address())
+        self.IO.connect_to(node1.get_id(),node2.get_machine_address())
 
 
     def delete_connection(self,connection):
@@ -134,6 +141,7 @@ class GUI:
             y2 = self.c.coords(connection[0])[3]
             if sqrt((x2-x1)**2+(y2-y1)**2)>180.0:
                 self.delete_connection(connection)
+                self.IO.disconnect(connection[1],connection[2])
 
     def search(self):
         #Conecta terminales cercanos
@@ -144,7 +152,6 @@ class GUI:
                 x2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[0]+self.ratio
                 y2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[1]+self.ratio
                 if sqrt((x2-x1)**2+(y2-y1)**2)<120.0:
-                    self.draw_connection(self.node_list_objects[i].get_id(),self.node_list_objects[j].get_id())
-                    self.connect_machines(self.node_list_objects[i],self.node_list_objects[j])
+                    self.draw_connection(self.node_list_objects[i],self.node_list_objects[j])
 GUI = GUI()
 

@@ -24,7 +24,8 @@ class Graph:
                 neighbors_list.append([node.get_id(),neighbor])
         return neighbors_list
 
-    def insert_edge(self,edge):
+    def insert_edge(self,connection_graphic,node1,node2):
+        edge=[connection_graphic,node1,node2]
         self.edges_list.append(edge)
 
     def delete_edge(self,edge):
