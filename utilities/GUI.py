@@ -1,5 +1,7 @@
 from math import sqrt
 from tkinter import *
+
+from utilities.Graph import Graph
 from utilities.IO import IO
 import threading
 import numpy as np
@@ -14,15 +16,15 @@ class GUI:
         self.node_list=[]
         self.connection_list=[]
         self.node_list_objects = []
-        self.connection_list_objects =[]
         self.names_list=[]
+        self.graph = Graph()
         self.count = 1
         self.c.bind("<B1-Motion>", self.move)
         self.IO = IO(machine_address=10001, server_port=10000, node_id="N1",GUI=self)
         self.window.mainloop()
 
 
-    def create_graph(self,node_list, node_edges):
+    def create_graph(self,node_list, edges_list):
         count = 0
         cols = 2
         #Dibujar los nodos de la lista
@@ -37,6 +39,8 @@ class GUI:
             self.create_node(self.sep * j, self.sep * i, node_list[count].get_id(),node_list[count])
             count += 1
 
+        for node in edges_list:
+            self.draw_connection(node[0],node[1])
 
     def create_node(self,x,y,name,node_o):
         node_graphic = self.c.create_oval(x, y, x + self.ratio * 2, y + self.ratio * 2, fill="blue")
@@ -52,9 +56,9 @@ class GUI:
         self.c.delete(node.get_graphic_position_circle())
         self.c.delete(node.get_graphic_position_title())
 
-    def create_connection(self,nodo1,nodo2):
+    def draw_connection(self,nodo1,nodo2):
         #Verificar que la conexion no exista aun
-        for conn in self.connection_list:
+        for conn in self.graph.get_edges_list():
             if nodo1 == conn[1] and nodo2 == conn[2]:
                return
 
@@ -76,16 +80,18 @@ class GUI:
         x2 = self.c.coords(nodo2_graphic)[0] + self.ratio
         y2 = self.c.coords(nodo2_graphic)[1] + self.ratio
 
-
         connection_graphic =self.c.create_line(x1,y1,x2,y2,width=4,fill="blue")
         list = [connection_graphic,nodo1,nodo2]
-        self.connection_list.append(list)
+        self.graph.insert_edge(list)
 
+    def connect_machines(self,node1,node2):
+        #Decirle al nodo 1 que se conecte directamente al nodo 2
+        self.IO.connect_to(node1.get_machine_address(),node2.get_machine_address())
 
 
     def delete_connection(self,connection):
         self.c.delete(connection[0])
-        self.connection_list.remove(connection)
+        self.graph.delete_edge(connection)
 
     def move(self,event):
         i=0
@@ -97,7 +103,7 @@ class GUI:
                 self.c.coords(node.get_graphic_position_title(),event.x-self.ratio+self.ratio,event.y-self.ratio-10)
 
                 #Actualizar las aristas del grafo
-                for connection in self.connection_list:
+                for connection in self.graph.get_edges_list():
                     if connection[1]==node.get_id():
                         x1 = self.c.coords(node.get_graphic_position_circle())[0] + self.ratio
                         y1 = self.c.coords(node.get_graphic_position_circle())[1] + self.ratio
@@ -121,7 +127,7 @@ class GUI:
 
     def quality(self):
         #Elimina conexiones debiles
-        for connection in self.connection_list:
+        for connection in self.graph.get_edges_list():
             x1 = self.c.coords(connection[0])[0]
             y1 = self.c.coords(connection[0])[1]
             x2 = self.c.coords(connection[0])[2]
@@ -138,6 +144,7 @@ class GUI:
                 x2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[0]+self.ratio
                 y2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[1]+self.ratio
                 if sqrt((x2-x1)**2+(y2-y1)**2)<120.0:
-                    self.create_connection(self.node_list_objects[i].get_id(),self.node_list_objects[j].get_id())
+                    self.draw_connection(self.node_list_objects[i].get_id(),self.node_list_objects[j].get_id())
+                    self.connect_machines(self.node_list_objects[i],self.node_list_objects[j])
 GUI = GUI()
 

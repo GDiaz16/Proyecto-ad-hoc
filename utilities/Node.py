@@ -1,6 +1,7 @@
 class Node:
-    def __init__(self,id,value=""):
+    def __init__(self,id,machine_address,value=""):
         self.id=id
+        self.machine_address = machine_address
         self.value=value
         self.neighbors =[]
         self.graphic_position_circle=None
@@ -8,6 +9,9 @@ class Node:
 
     def get_id(self):
         return self.id
+
+    def get_machine_address(self):
+        return self.machine_address
 
     def add_neighbor(self,neighbor):
         self.neighbors.append(neighbor)
