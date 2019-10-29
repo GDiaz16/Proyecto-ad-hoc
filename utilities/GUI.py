@@ -24,16 +24,19 @@ class GUI:
         self.connection_list=[]
         self.node_list_objects = []
         self.names_list=[]
-        self.graph = Graph()
+        self.graph = None
         self.count = 1
         self.c.bind("<B1-Motion>", self.move)
         self.IO = IO_MASTER(machine_address=10000, server_port=10000, node_id="N1",GUI=self)
         self.window.mainloop()
 
 
-    def create_graph(self,node_list, edges_list):
+    def create_graph(self, graph):
         count = 0
         cols = 2
+        node_list = graph.get_node_list()
+        edges_list = graph.get_edges_list()
+        self.graph = graph
         #Dibujar los nodos de la lista
         k = int(len(node_list)/cols)
         for i in range(1, k+1):
@@ -89,6 +92,8 @@ class GUI:
         y2 = self.c.coords(nodo2_graphic)[1] + self.ratio
 
         connection_graphic =self.c.create_line(x1,y1,x2,y2,width=4,fill="blue")
+
+        #Insertar una arista en el grafo
         self.graph.insert_edge(connection_graphic,nodo1.get_id(),nodo2.get_id())
 
     def connect_machines(self,node1,node2):

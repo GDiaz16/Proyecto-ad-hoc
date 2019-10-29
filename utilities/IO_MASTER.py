@@ -8,7 +8,7 @@ from utilities.Node import Node
 
 class IO_MASTER:
 
-    def __init__(self,machine_address,server_port, node_id,GUI=None):
+    def __init__(self,machine_address,server_port, node_id,GUI):
         self.machine_address = machine_address
         self.server_port = server_port
         self.machine_id = node_id
@@ -31,11 +31,11 @@ class IO_MASTER:
                         "<ID?>---------------",
                         "<ID=>---------------",
                         "<CONNECT-TO=>-------",
-                        "<DISCONNECT-OF=>----"]
+                        "<DISCONNECT-OF=>----",
+                        "<U-GRAFO=>----------"]
 
-        #Crear entorno grafico solo si se instancia
-        if GUI != None:
-            self.my_graph()
+        #Crear entorno grafico
+        self.my_graph()
 
 
     def my_graph(self):
@@ -50,18 +50,12 @@ class IO_MASTER:
             t = threading.Thread(target=self.connect_node, args=(node.get_id(),node.get_machine_address(),))
             t.start()
 
-        list = []
-        nodes = self.graph.get_node_list()
-
-        for edge in self.graph.get_edges_list():
-            list.append(edge)
-        print(list)
-        self.GUI.create_graph(nodes,list)
+        self.GUI.create_graph(self.graph)
 
     def get_id(self):
         return self.machine_id
 
-    def connect_node(self, node_id, port):
+    def connect_node(self, node_id, port=None):
         if port == None:
             port = self.server_port
         # Nodo como cliente------
@@ -145,12 +139,16 @@ class IO_MASTER:
         elif header == self.HEADERS[5]:
             self.connect_node(data)
 
+
     def assign_id(self,socket,id):
         for client in self.clients:
             if client[0] == socket:
                 client[1]=id
                 break
 
+    def send_graph(self):
+        for i in range(len(self.clients)):
+            self.send(self.clients[i][0], self.fit_data(7, self.graph))
 
     def request_id(self,socket):
         self.send(socket,self.fit_data(3,""))
@@ -177,6 +175,9 @@ class IO_MASTER:
 
             elif com == "update":
                 self.update_MPR()
+
+            elif com == "send-graph":
+                self.send_graph()
 
 
 
