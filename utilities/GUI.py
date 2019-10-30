@@ -19,7 +19,8 @@ class GUI:
         self.c = Canvas(self.window,width=800,height=600)
         self.c.pack()
         self.ratio=25
-        self.sep = 100
+        self.sep_cols = 200
+        self.sep_rows = 150
         self.node_list=[]
         self.connection_list=[]
         self.node_list_objects = []
@@ -27,7 +28,7 @@ class GUI:
         self.graph = None
         self.count = 1
         self.c.bind("<B1-Motion>", self.move)
-        self.IO = IO_MASTER(machine_address=10000, server_port=10000, node_id="N1",GUI=self)
+        self.IO = IO_MASTER(machine_address=10000, server_port=10000, node_id="MASTER",GUI=self)
         self.window.mainloop()
 
 
@@ -41,12 +42,12 @@ class GUI:
         k = int(len(node_list)/cols)
         for i in range(1, k+1):
             for j in range(1, cols +1):
-                self.create_node(self.sep * j, self.sep * i, node_list[count].get_id(),node_list[count])
+                self.create_node(self.sep_cols * j, self.sep_rows * i, node_list[count].get_id(),node_list[count])
                 count += 1
         #Dibujar los nodos faltantes de la lista
         i=k +1
         for j in range(1,len(node_list)%cols+1):
-            self.create_node(self.sep * j, self.sep * i, node_list[count].get_id(),node_list[count])
+            self.create_node(self.sep_cols * j, self.sep_rows * i, node_list[count].get_id(),node_list[count])
             count += 1
 
         for node in edges_list:
@@ -72,7 +73,11 @@ class GUI:
         for conn in self.graph.get_edges_list():
             if nodo1.get_id() == conn[1] and nodo2.get_id() == conn[2]:
                return
+            elif nodo1.get_id() == conn[2] and nodo2.get_id() == conn[1]:
+                return
+
         self.connect_machines(nodo1, nodo2)
+
         nodo1_graphic = 0
         nodo2_graphic = 0
         #Obtener el numero grafico del nodo 1
@@ -144,7 +149,7 @@ class GUI:
             y1 = self.c.coords(connection[0])[1]
             x2 = self.c.coords(connection[0])[2]
             y2 = self.c.coords(connection[0])[3]
-            if sqrt((x2-x1)**2+(y2-y1)**2)>180.0:
+            if sqrt((x2-x1)**2+(y2-y1)**2)>150.0:
                 self.delete_connection(connection)
                 self.IO.disconnect(connection[1],connection[2])
 
@@ -156,7 +161,8 @@ class GUI:
                 y1 = self.c.coords(self.node_list_objects[i].get_graphic_position_circle())[1]+self.ratio
                 x2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[0]+self.ratio
                 y2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[1]+self.ratio
-                if sqrt((x2-x1)**2+(y2-y1)**2)<120.0:
+                if sqrt((x2-x1)**2+(y2-y1)**2)<150.0:
                     self.draw_connection(self.node_list_objects[i],self.node_list_objects[j])
+
 GUI = GUI()
 

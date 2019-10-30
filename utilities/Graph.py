@@ -19,6 +19,9 @@ class Graph:
                 return self.find_target(node, node2_id)
 
     def find_target(self, node1, node2_id):
+        for node in self.node_list:
+            node.set_visited(False)
+            node.add_path([])
         #Comenzar con el nodo de origen
         frontier = [node1]
         node1.add_path([node1.get_id()])
@@ -40,7 +43,7 @@ class Graph:
                         frontier2.append(neighbor)
                         #Devolver el camino cuando se halle el nodo objetivo
                     if neighbor.get_id()== node2_id:
-                        print(neighbor.get_current_path())
+                        #print(f"Path {neighbor.get_current_path()}")
                         return neighbor.get_current_path()
             #Actualizar la frontera con los hijos o nodos vecinos de la frontera anterior
             frontier = frontier2

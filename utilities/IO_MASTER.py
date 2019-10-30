@@ -10,7 +10,7 @@ class IO_MASTER:
 
     def __init__(self,machine_address,server_port, node_id,GUI):
         self.machine_address = machine_address
-        self.server_port = server_port
+        #self.server_port = server_port
         self.machine_id = node_id
         # Nodo como servidor-----
         self.socket_as_server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -57,7 +57,8 @@ class IO_MASTER:
 
     def connect_node(self, node_id, port=None):
         if port == None:
-            port = self.server_port
+            print("No port provided!")
+            return
         # Nodo como cliente------
         connected = False
         while not connected:
@@ -66,6 +67,7 @@ class IO_MASTER:
                 socket_as_client.connect(("localhost",port ))
                 t2 = threading.Thread(target=self.receive, args=(socket_as_client,))
                 t2.start()
+                #self.send_graph()
                 self.clients.append([socket_as_client,node_id])
                 print(len(self.clients))
                 print(f"Connected to: {node_id}")
@@ -77,11 +79,15 @@ class IO_MASTER:
         for client in self.clients:
             if client[1] == node_id_A:
                 self.send(client[0],self.fit_data(6, node_id_B))
+                self.send_graph()
 
     def connect_to(self,node_id_A, node_address_B):
+        #Buscar el nodo A y enviarle la orden de que se conecte al nodo B
         for client in self.clients:
             if client[1] == node_id_A:
                 self.send(client[0],self.fit_data(5, node_address_B))
+                self.send_graph()
+                break
 
     def update_MPR(self):
         for client in self.clients:
