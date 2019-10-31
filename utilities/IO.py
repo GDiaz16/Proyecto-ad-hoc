@@ -9,10 +9,10 @@ from utilities.Pack import Pack
 
 class IO:
 
-    def __init__(self,machine_address, node_id):
+    def __init__(self,machine_address, node_id,screen=None):
         self.machine_address = machine_address
-        #self.server_port = server_port
         self.machine_id = node_id
+        self.screen = screen
         # Nodo como servidor-----
         self.socket_as_server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self.socket_as_server.bind(("localhost",self.machine_address))
@@ -34,7 +34,8 @@ class IO:
                         "<CONNECT-TO=>-------",
                         "<DISCONNECT-OF=>----",
                         "<U-GRAFO=>----------",
-                        "<REP=>--------------"]
+                        "<REP=>--------------",
+                        "<IMAGE=>------------"]
 
     #!Bloqueante--Redefinir!
     def connect_node(self, port = None):
@@ -50,13 +51,11 @@ class IO:
                 socket_as_client.connect(("localhost",port ))
                 t2 = threading.Thread(target=self.receive, args=(socket_as_client,))
                 t2.start()
-
                 x = x+1
                 #Agregar la nueva conexion sin id
                 self.clients.append([socket_as_client,"Null"])
                 #Pedir el id al socket que acaba de conectarse
                 self.request_id(socket_as_client)
-                #print(f"Connected to {socket_as_client}")
                 print(f"Client: {len(self.clients)}")
                 print(f"x: {x}")
                 break
@@ -74,8 +73,6 @@ class IO:
             self.clients.append([client_socket,""])
             print(f"Server: {len(self.clients)}")
             print(f"y: {x}")
-            #print(f"Connection from: {address}")
-
             #Pedir a la nueva conexion su identificacion
             self.request_id(client_socket)
 
@@ -103,7 +100,17 @@ class IO:
     def receive(self, socket_c):
         while True:
             try:
-                data = socket_c.recv(1024)
+                data = b''
+                socket_c.setblocking(True)
+                try:
+                    #recibir datos mientras sigan llegando al buffer
+                    while True:
+                        packet = socket_c.recv(1024)
+                        data = data+packet
+                        socket_c.setblocking(False)
+                except:
+                    pass
+
                 if data != '':
                     #Separar el header de los datos
                     header = data[0:20]
@@ -129,7 +136,7 @@ class IO:
             socket.send(message)
 
     #Instrucciones a realizar dependiendo del tipo de mensaje
-    def protocols(self, header,data,socket):
+    def protocols(self, header,data,socket=socket.socket()):
         header = header.decode('utf-8')
         data = pickle.loads(data)
         if header == self.HEADERS[0]:
@@ -152,6 +159,8 @@ class IO:
             print("grafo recibido")
         elif header == self.HEADERS[8]:
             self.replicate(data)
+        elif header == self.HEADERS[9]:
+            self.screen.Show_Image(data)
 
     #Asignarle un identificador a un socket
     def assign_id(self,socket,id):
@@ -191,20 +200,15 @@ class IO:
     def replicate(self, data):
         path = data.get_path()
         current_node = path.pop()
+        #si el camino es mayor o igual a 1 seguimos buscando
         if len(path) >= 1:
             next_node = path[len(path)-1]
         else:
             next_node = None
         data.set_path(path)
-        #print("------------------------------------")
-        #print(f"Path {path}")
-        #print(f"current {current_node}")
-        #print(f"next {next_node}")
-        #print("------------------------------------")
-
-        #si llegamos al destino mostramos los datos
+        #si llegamos al destino ejecutamos la instruccion del header
         if len(path)==0 and current_node == self.machine_id:
-            print(data.get_data())
+            self.protocols(data.get_header(),data.get_data())
         #si no es el destino mostramos el error
         elif len(path)==0 and next_node != self.machine_id:
             print("Error de direccionamiento")
@@ -215,14 +219,11 @@ class IO:
                     self.send(client[0], self.fit_data(8, data))
                     #print("retransmiting...")
 
-    def reach_point(self, target, message):
+    def reach_point(self, target, message, instruction):
         path = self.graph.path_A_B(self.machine_id,target)
-        #quitar el primer nodo, que es en el que se comienza la busqueda
+        #dar la vuelta a la lista
         path.reverse()
-        #path.pop()
-        #print(path)
-        pack = Pack(path,self.HEADERS[8],message)
-        #print("reach...")
+        pack = Pack(path, instruction, message)
         self.replicate(pack)
 
 
@@ -242,7 +243,11 @@ class IO:
             elif com == "send":
                 target = input("target>>")
                 message = input("message>>")
-                self.reach_point(target,message)
+
+                msg = self.fit_data(2, message)
+                header = msg[0:20]
+                data = msg[20:]
+                self.reach_point(target,data,header)
 
             elif com == "conns":
                 print(len(self.clients))
@@ -253,7 +258,19 @@ class IO:
                 names = ["N1","N2","N3","N4","N5","N6"]
                 for i in range(20):
                     for name in names:
-                        self.reach_point(name, f"hello {i} from {self.machine_id}")
+                        self.reach_point(name, f"hello {i} from {self.machine_id}",self.HEADERS[2])
+
+            elif com == "mosaico":
+                names = ["N1","N2","N3","N4","N5","N6"]
+                parts = self.screen.Split_Image("")
+                i=0
+                for name in names:
+                    #arreglar los datos para que se envien codificados
+                    msg = self.fit_data(9,parts[i])
+                    header = msg[0:20]
+                    data = msg[20:]
+                    self.reach_point(name, data,header)
+                    i=i+1
 
 
 
