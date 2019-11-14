@@ -25,18 +25,21 @@ class GUI:
         self.connection_list=[]
         self.node_list_objects = []
         self.names_list=[]
-        self.graph = None
+        self.graph = Graph()
         self.count = 1
         self.c.bind("<B1-Motion>", self.move)
         self.IO = IO_MASTER(machine_address=10000, server_port=10000, node_id="MASTER",GUI=self)
+        self.create_graph(self.graph)
         self.window.mainloop()
 
+    def set_graph(self,graph):
+        self.graph = graph
 
     def create_graph(self, graph):
         count = 0
         cols = 2
         node_list = graph.get_node_list()
-        edges_list = graph.get_edges_list()
+        edges_list = graph.get_connections_by_nodes()
         self.graph = graph
         #Dibujar los nodos de la lista
         k = int(len(node_list)/cols)
@@ -63,20 +66,20 @@ class GUI:
         self.node_list.append(node_graphic)
         self.names_list.append(name_graphic)
 
-    def delete_node(self,node):
-        self.c.delete(node.get_graphic_position_circle())
-        self.c.delete(node.get_graphic_position_title())
+    # def delete_node(self,node):
+    #     self.c.delete(node.get_graphic_position_circle())
+    #     self.c.delete(node.get_graphic_position_title())
 
     def draw_connection(self,nodo1,nodo2):
         #Verificar que la conexion no exista aun
 
-        for conn in self.graph.get_edges_list():
-            if nodo1.get_id() == conn[1] and nodo2.get_id() == conn[2]:
-               return
-            elif nodo1.get_id() == conn[2] and nodo2.get_id() == conn[1]:
-                return
-
-        self.connect_machines(nodo1, nodo2)
+        # for conn in self.graph.get_edges_list():
+        #     if nodo1.get_id() == conn[1] and nodo2.get_id() == conn[2]:
+        #        return
+        #     elif nodo1.get_id() == conn[2] and nodo2.get_id() == conn[1]:
+        #         return
+        #
+        # self.connect_machines(nodo1, nodo2)
 
         nodo1_graphic = 0
         nodo2_graphic = 0
@@ -106,9 +109,9 @@ class GUI:
         self.IO.connect_to(node1.get_id(),node2.get_machine_address())
 
 
-    def delete_connection(self,connection):
-        self.c.delete(connection[0])
-        self.graph.delete_edge(connection)
+    # def delete_connection(self,connection):
+    #     self.c.delete(connection[0])
+    #     self.graph.delete_edge(connection)
 
     def move(self,event):
         i=0
@@ -135,34 +138,34 @@ class GUI:
                         y1 = self.c.coords(connection[0])[1]
                         self.c.coords(connection[0],x1,y1,x2,y2)
                 #Buscar y eliminar aristas
-                self.quality()
-                self.search()
+                #self.quality()
+                #self.search()
                 break
             i=i+1
 
 
 
-    def quality(self):
-        #Elimina conexiones debiles
-        for connection in self.graph.get_edges_list():
-            x1 = self.c.coords(connection[0])[0]
-            y1 = self.c.coords(connection[0])[1]
-            x2 = self.c.coords(connection[0])[2]
-            y2 = self.c.coords(connection[0])[3]
-            if sqrt((x2-x1)**2+(y2-y1)**2)>150.0:
-                self.delete_connection(connection)
-                self.IO.disconnect(connection[1],connection[2])
-
-    def search(self):
-        #Conecta terminales cercanos
-        for i in range(len(self.node_list_objects)):
-            for j in range(i + 1, len(self.node_list_objects)):
-                x1 = self.c.coords(self.node_list_objects[i].get_graphic_position_circle())[0]+self.ratio
-                y1 = self.c.coords(self.node_list_objects[i].get_graphic_position_circle())[1]+self.ratio
-                x2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[0]+self.ratio
-                y2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[1]+self.ratio
-                if sqrt((x2-x1)**2+(y2-y1)**2)<150.0:
-                    self.draw_connection(self.node_list_objects[i],self.node_list_objects[j])
+    # def quality(self):
+    #     #Elimina conexiones debiles
+    #     for connection in self.graph.get_edges_list():
+    #         x1 = self.c.coords(connection[0])[0]
+    #         y1 = self.c.coords(connection[0])[1]
+    #         x2 = self.c.coords(connection[0])[2]
+    #         y2 = self.c.coords(connection[0])[3]
+    #         if sqrt((x2-x1)**2+(y2-y1)**2)>150.0:
+    #             self.delete_connection(connection)
+    #             self.IO.disconnect(connection[1],connection[2])
+    #
+    # def search(self):
+    #     #Conecta terminales cercanos
+    #     for i in range(len(self.node_list_objects)):
+    #         for j in range(i + 1, len(self.node_list_objects)):
+    #             x1 = self.c.coords(self.node_list_objects[i].get_graphic_position_circle())[0]+self.ratio
+    #             y1 = self.c.coords(self.node_list_objects[i].get_graphic_position_circle())[1]+self.ratio
+    #             x2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[0]+self.ratio
+    #             y2 = self.c.coords(self.node_list_objects[j].get_graphic_position_circle())[1]+self.ratio
+    #             if sqrt((x2-x1)**2+(y2-y1)**2)<150.0:
+    #                 self.draw_connection(self.node_list_objects[i],self.node_list_objects[j])
 
 GUI = GUI()
 

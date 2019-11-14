@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self,id,machine_address,value=""):
+    def __init__(self,id="",machine_address="",value=""):
         self.id=id
         self.machine_address = machine_address
         self.value=value

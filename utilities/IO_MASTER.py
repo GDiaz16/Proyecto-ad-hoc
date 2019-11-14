@@ -46,11 +46,19 @@ class IO_MASTER:
         self.graph.add_node(Node(id="N4", machine_address=10004))
         self.graph.add_node(Node(id="N5", machine_address=10005))
         self.graph.add_node(Node(id="N6", machine_address=10006))
+        nodes = self.graph.get_node_list()
+        self.graph.add_connection_by_nodes(nodes[0], nodes[1])
+        self.graph.add_connection_by_nodes(nodes[0], nodes[2])
+        self.graph.add_connection_by_nodes(nodes[0], nodes[3])
+        self.graph.add_connection_by_nodes(nodes[2], nodes[4])
+        self.graph.add_connection_by_nodes(nodes[2], nodes[5])
+        self.graph.add_connection_by_nodes(nodes[5], nodes[3])
+        self.graph.add_connection_by_nodes(nodes[4], nodes[3])
         for node in self.graph.get_node_list():
             t = threading.Thread(target=self.connect_node, args=(node.get_id(),node.get_machine_address(),))
             t.start()
 
-        self.GUI.create_graph(self.graph)
+        self.GUI.set_graph(self.graph)
 
     def get_id(self):
         return self.machine_id
@@ -71,15 +79,16 @@ class IO_MASTER:
                 self.clients.append([socket_as_client,node_id])
                 print(len(self.clients))
                 print(f"Connected to: {node_id}")
+                self.send_graph()
                 connected = True
             except:
                 pass
 
-    def disconnect(self,node_id_A, node_id_B):
-        for client in self.clients:
-            if client[1] == node_id_A:
-                self.send(client[0],self.fit_data(6, node_id_B))
-                self.send_graph()
+    # def disconnect(self,node_id_A, node_id_B):
+    #     for client in self.clients:
+    #         if client[1] == node_id_A:
+    #             self.send(client[0],self.fit_data(6, node_id_B))
+    #             self.send_graph()
 
     def connect_to(self,node_id_A, node_address_B):
         #Buscar el nodo A y enviarle la orden de que se conecte al nodo B
@@ -87,12 +96,7 @@ class IO_MASTER:
             if client[1] == node_id_A:
                 self.send(client[0],self.fit_data(5, node_address_B))
                 self.send_graph()
-                break
-
-    def update_MPR(self):
-        for client in self.clients:
-            #Pedir la MPR a los nodos hijo
-            self.send(client[0],self.fit_data(0,""))
+                return
 
     def processes(self):
         t = threading.Thread(target=self.command)
@@ -132,7 +136,7 @@ class IO_MASTER:
         header = header.decode('utf-8')
         data = pickle.loads(data)
         if header == self.HEADERS[0]:
-            self.send_MPR(socket)
+            pass#self.send_MPR(socket)
         elif header == self.HEADERS[1]:
             self.tabla.append(data)
             print(data)
@@ -162,11 +166,6 @@ class IO_MASTER:
     def send_id(self,socket):
         self.send(socket,self.fit_data(4,self.machine_id))
 
-    def send_MPR(self,socket):
-        #Enviar tabla MPR
-        msg = self.fit_data(1,self.tabla)
-        self.send(socket, msg)
-
     def fit_data(self, header, data):
         msg = self.HEADERS[header].encode('utf-8')+pickle.dumps(data)
         return msg
@@ -179,11 +178,13 @@ class IO_MASTER:
                 for i in range(len(self.clients)):
                     self.send(self.clients[i][0],self.fit_data(2,com))
 
-            elif com == "update":
-                self.update_MPR()
-
             elif com == "send-graph":
                 self.send_graph()
+
+            elif com == "conns":
+                print(len(self.clients))
+                for client in self.clients:
+                    print(client[1])
 
 
 

@@ -3,6 +3,7 @@ class Graph:
     def __init__(self):
         self.node_list=[]
         self.edges_list=[]
+        self.connections_by_node=[]
 
     def add_node(self, node):
         self.node_list.append(node)
@@ -79,8 +80,12 @@ class Graph:
     def get_edges_list(self):
         return self.edges_list
 
-    def add_connection(self, node1_id, node2_id,):
-        pass#.connections
+    def add_connection_by_nodes(self, node1, node2):
+        conn=[node1,node2]
+        self.connections_by_node.append(conn)
+
+    def get_connections_by_nodes(self):
+        return self.connections_by_node
 
     def print_nodes(self):
         for node in self.node_list:
