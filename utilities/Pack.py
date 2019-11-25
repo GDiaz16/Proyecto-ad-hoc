@@ -1,8 +1,10 @@
 class Pack:
-    def __init__(self, path,header, data):
+    def __init__(self, path,header, data, check):
         self.path = path
         self.header = header
         self.data = data
+        self.origin = path[len(path)-1]
+        self.check = check
 
     def get_path(self):
         return self.path
@@ -15,3 +17,6 @@ class Pack:
 
     def get_data(self):
         return self.data
+
+    def get_origin(self):
+        return self.origin
