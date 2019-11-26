@@ -1,29 +1,40 @@
+# import sys
+# sys.path.append("E:/Universidad/Materias/Lenguajes de Programación/Proyecto")
+
+from Trash.Machine.Resource_Admin import Distributed_System
 from PIL import Image
 from PIL.ImageTk import PhotoImage
-from Test.Utilities.GraphicObject import GraphicObject
+from Trash.Machine.IO import IO
+from Trash.Machine.ALU import ALU
+from Trash.Machine.CU import CU
+from Trash.Machine.RAM import RAM
+from Trash.utilities.GraphicObject import GraphicObject
 import tkinter as tk
 import numpy as np
 
 class Screen:
-    def __init__(self, master, device, geometry = ""):
-        self.device = device
-        self.device.screen = self
-        self.master = master
-        self.frame = tk.Frame(self.master)
-        self.frame.pack()
-        self.master.title(f"Screen of {self.device.name}")
-        self.master.geometry(geometry)
-        self.c = tk.Canvas(self.master, width=400, height=300)
+    def __init__(self, machine_address="",node_id="",geometry=""):
+        self.window = tk.Tk()
+        self.window.geometry(geometry)
+        self.c = tk.Canvas(self.window, width=400, height=300)
         self.c.pack()
-        self.c.bind("<B1-Motion>", self.move)
 
         self.ratio=25
         self.graphic_objects_list = []
 
-
         self.draw_something(20,20,"red","oval")
         self.draw_something(40,40,"green","rectangle")
 
+        self.RAM = RAM()
+        self.ALU = ALU()
+        self.CU = CU(RAM,ALU)
+        self.Distributed_System = Distributed_System(self.RAM, self.CU, self.ALU, node_id)
+        self.IO = IO(machine_address = machine_address, node_id = node_id, screen = self, DS = self.Distributed_System)
+
+
+        self.c.bind("<B1-Motion>", self.move)
+        self.window.title(f"Screen of {node_id}")
+        self.window.mainloop()
 
     def Split_Image(self,image):
         img = Image.open('pikachu.jpg')
@@ -66,6 +77,7 @@ class Screen:
             self.graphic_objects_list.append(go)
 
     def draw_stream(self,graphics):
+
         for g in graphics:
             x1 = 20
             y1 = 20
@@ -80,7 +92,7 @@ class Screen:
             if abs(gox-event.x)<self.ratio and abs(goy-event.y)<self.ratio:
                 self.c.coords(go.get_canvas_position(),event.x-self.ratio,event.y-self.ratio,event.x+self.ratio,event.y+self.ratio)
                 go.set_coords(self.c.coords(go.get_canvas_position()))
-                self.device.stream(self.graphic_objects_list,2)
+                self.IO.stream(self.graphic_objects_list)
                 break
             i=i+1
 

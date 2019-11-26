@@ -1,10 +1,8 @@
 from Test.Device import Device
 from Test.Connection import Connection
-from Test.Graph import Graph
-from Test.Node import Node
-
+from Test.Utilities.Graph import Graph
+from Test.Utilities.Node import Node
 import threading
-
 
 class Network:
 
@@ -21,6 +19,10 @@ class Network:
                     "D4":self.device4, "D5":self.device5, "D6":self.device6}
         self.processes()
         self.my_graph()
+        self.start()
+
+    def start(self):
+        self.devs["D1"].command(com="ram")
 
     def my_graph(self):
         c1 = Connection(self.device1,self.device2)
@@ -51,6 +53,7 @@ class Network:
         t1.start()
 
     def commands(self):
+        comms = ["ram","memory","execute"]
         while True:
             dev = input("Device>")
             com = input("Command>")
@@ -58,10 +61,9 @@ class Network:
             if com == "send":
                 target = input("Target>>")
                 message = input("Message>>")
-
                 self.devs[dev].command(com = com, target = target, message = message)
 
-
-#net = Network()
+            elif comms.__contains__(com):
+                self.devs[dev].command(com = com)
 
 

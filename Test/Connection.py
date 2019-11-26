@@ -1,4 +1,4 @@
-from Test.Node import Node
+from Test.Utilities.Node import Node
 
 
 class Connection:

@@ -4,7 +4,7 @@ from Test.Screen import Screen
 
 import tkinter as tk
 
-from Test.Graph import Graph
+from Test.Utilities.Graph import Graph
 
 
 class GUI:
@@ -25,22 +25,18 @@ class GUI:
         self.ratio=25
         self.sep_cols = 200
         self.sep_rows = 150
-        #self.node_list=[]
-        #self.connection_list=[]
-        #self.node_list_objects = []
-        #self.names_list=[]
         self.count = 1
         self.graph = Graph()
         self.NET = Network(self.graph)
+        self.devs = self.NET.devs
         self.create_graph()
-        #self.master.mainloop()
 
 
     def new_window(self):
         geometries = ["400x300+0+0","400x300+410+0","400x300+820+0","400x300+0+350","400x300+410+350","400x300+820+350"]
         for i in range(6):
             self.newWindow = tk.Toplevel(self.master)
-            self.app = Screen(self.newWindow, f"D{i+1}", geometries[i])
+            self.app = Screen(self.newWindow, self.devs[f"D{i+1}"], geometries[i])
 
     def set_graph(self,graph):
         self.graph = graph
@@ -50,7 +46,6 @@ class GUI:
         cols = 2
         node_list = self.graph.node_list
         connections = self.graph.connections
-        #self.graph = graph
 
         #Dibujar los nodos de la lista
         k = int(len(node_list)/cols)
@@ -72,25 +67,9 @@ class GUI:
         name_graphic = self.c.create_text(x + self.ratio, y - 10, text=f"Nodo {node_o.get_id()}")
         node_o.set_graphic_position_title(name_graphic)
         node_o.set_graphic_position_circle(node_graphic)
-        #self.node_list_objects.append(node_o)
-        #self.node_list.append(node_graphic)
-        #self.names_list.append(name_graphic)
 
-    # def delete_node(self,node):
-    #     self.c.delete(node.get_graphic_position_circle())
-    #     self.c.delete(node.get_graphic_position_title())
 
     def draw_connection(self,nodo1,nodo2):
-        #Verificar que la conexion no exista aun
-
-        # for conn in self.graph.get_edges_list():
-        #     if nodo1.get_id() == conn[1] and nodo2.get_id() == conn[2]:
-        #        return
-        #     elif nodo1.get_id() == conn[2] and nodo2.get_id() == conn[1]:
-        #         return
-        #
-        # self.connect_machines(nodo1, nodo2)
-
         nodo1_graphic = 0
         nodo2_graphic = 0
         #Obtener el numero grafico del nodo 1
@@ -116,20 +95,9 @@ class GUI:
             if conn.node1 == nodo1 and conn.node2 == nodo2:
                 conn.connection_graphic = connection_graphic
                 break
-        #self.graph.insert_edge(connection_graphic,nodo1.get_id(),nodo2.get_id())
-
-    # def connect_machines(self,node1,node2):
-    #     #Decirle al nodo 1 que se conecte directamente al nodo 2
-    #     self.IO.connect_to(node1.get_id(),node2.get_machine_address())
-
-
-    # def delete_connection(self,connection):
-    #     self.c.delete(connection[0])
-    #     self.graph.delete_edge(connection)
 
     def move(self,event):
         i=0
-        #print(len(self.graph.node_list))
         for node in self.graph.node_list:
             nodex,nodey =self.c.coords(node.graphic_position_circle)[0]+self.ratio, self.c.coords(node.graphic_position_circle)[1]+self.ratio
             #Mover los nodos con el movimiento del raton
@@ -157,8 +125,6 @@ class GUI:
                 #self.search()
                 break
             i=i+1
-
-
 
     # def quality(self):
     #     #Elimina conexiones debiles
