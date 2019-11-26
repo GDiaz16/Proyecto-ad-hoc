@@ -37,6 +37,7 @@ class Distributed_System:
         n = address % 6 + 1
         target = "D" + str(n)
         pos = math.ceil(address / 6)
+        #rx como entero
         register = {"pos": pos, "data": rx}
         pack = Pack(self.device.headers[5], register, target)
         self.device.reach_point(pack)
@@ -61,7 +62,7 @@ class Distributed_System:
 
     #Guardar datos en el dispositivo
     def save_local(self, register):
-        self.CU.SAVE(register["data"], self.pos_ini + register["pos"])
+        self.CU.SAVE([register["data"]], self.pos_ini + register["pos"])
 
     #Leer datos en el dispositivo
     def load_local(self, address):
@@ -79,6 +80,9 @@ class Distributed_System:
         r = -1
         while flag:
             r = random.randrange(1,7)
+            #Evitamos escoger el mismo disppositivo en el que estamos
+            if "D" + str(r) == self.device.name:
+                self.threads[r - 1] = True
             flag = self.threads[r-1]
         #Si todos estan ocupados reiniciamos la cuenta
         if r == -1:

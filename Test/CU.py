@@ -51,7 +51,7 @@ class CU:
             self.GOTO(label)
 
     def SAVE(self,rx, address):
-        self.ram.memory[address]=rx[0]
+        self.ram.memory[address] = rx[0]
 
     def END(self,sp = 0, address = 0):
         return "end"

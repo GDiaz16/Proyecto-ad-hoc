@@ -82,6 +82,9 @@ class Device:
             self.reach_point(pack1)
         elif header == self.headers[7]:
             self.stack[check] = pack
+        elif header == self.headers[8]:
+            self.Distributed_System.execute(data)
+
 
     def command(self, **kwargs):
         if kwargs["com"] == "send":
@@ -97,18 +100,39 @@ class Device:
 
         elif kwargs["com"] == "execute":
             buffer = [
-                ["MOV", "ax", 0],
+                ["SLICE",1,13,"L1"],
+
+                ["MOV", 0, 0],
                 ["GOTO", "L2", ''],
                 ["LABEL", "L3", ''],
                 ["MOV", "bx", 1],
                 ["ADD", "ax", "bx"],
+                ["MOV", 0, "ax"],
                 ["LABEL", "L2", ''],
-                ["MOV", "bx", 9],
+                ["MOV", 1, 9],
+                ["LOAD", "ax", 0],
                 ["PRINT", "ax", ''],
+                ["LOAD", "bx", 1],
                 ["LEQ", "ax", "bx","L3"],
-                ["END", 0, 0]
+                ["END", '', ''],
+
+                ["LABEL", "L1", ''],
+                ["MOV", 2, 0],
+                ["GOTO", "L4", ''],
+                ["LABEL", "L5", ''],
+                ["MOV", "bx", 1],
+                ["ADD", "ax", "bx"],
+                ["MOV", 2, "ax"],
+                ["LABEL", "L4", ''],
+                ["MOV", 3, 9],
+                ["LOAD", "ax", 2],
+                ["PRINT", "ax", ''],
+                ["LOAD", "bx", 3],
+                ["LEQ", "ax", "bx", "L5"],
+
+                ["END", '', '']
             ]
-            self.Distributed_System.CU_distributed.execute(buffer)
+            self.Distributed_System.execute(buffer)
 
     # Replicar un mensaje hasta que llegue a su destinatario
     def replicate(self, pack):

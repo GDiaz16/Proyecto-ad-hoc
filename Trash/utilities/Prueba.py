@@ -1,6 +1,12 @@
-import random
+import threading
+def p():
+    for i in range(1000):
+        print(f"A {i}--------")
 
-stack = {"a":1,"b":2}
-del stack["a"]
-for i in range(20):
-    print(i)
+def q():
+    for i in range(1000):
+        print(f"B {i}")
+t1 = threading.Thread(target = p)
+t2 = threading.Thread(target = q)
+t1.start()
+t2.start()
