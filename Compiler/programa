@@ -1,0 +1,16 @@
+fun sumar(a1,a2,a3){
+    a1 = a2 + 4;
+    a2 = a3 + a1;
+    if (a1 == a2){
+        if(a1 < 0){
+            disp(a1);
+        }else{
+            disp(a2);
+        }
+    }elif(a1 > 20){
+        disp(20)
+    }else{
+        disp("Nada")
+    }
+    return a2 + a1;
+}

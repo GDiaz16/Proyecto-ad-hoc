@@ -192,3 +192,4 @@ class CU_distributed:
             print(f"Error de ejecucion en {self.DS.device.name}")
 
 # CU().execution()
+

@@ -9,64 +9,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45386904">
+    <splitter split-orientation="horizontal" split-proportion="0.6510417">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Test/Utilities/Node.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-229">
-                  <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Test/Network.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-117">
-                  <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#0#30#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Test/RAM.py">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/Distributed_System.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="73" column="56" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="56" />
-                  <folding>
-                    <element signature="e#0#13#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Test/Device.py">
+            <entry file="file://$PROJECT_DIR$/Compiler/brownie_grammar.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="59">
-                  <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#0#16#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="64">
+                  <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Test/ALU.py">
+            <entry file="file://$PROJECT_DIR$/Compiler/programa">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="112">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                <state>
+                  <caret selection-end-line="15" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -74,8 +33,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Trash/utilities/Prueba.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="112">
-                  <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+                <state relative-caret-position="16">
+                  <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -83,11 +42,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Test/CU.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="784">
+                <state relative-caret-position="848">
                   <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
                 </state>
               </provider>
@@ -102,11 +61,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-659">
-                  <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
+                <state relative-caret-position="3104">
+                  <caret line="194" selection-start-line="194" selection-end-line="194" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Test/Device.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="48">
+                  <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#16#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -171,10 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utilities/GUI.py" />
-        <option value="$PROJECT_DIR$/Nodo2/Screen2.py" />
-        <option value="$PROJECT_DIR$/Nodo3/Screen3.py" />
-        <option value="$PROJECT_DIR$/Nodo6/Screen6.py" />
         <option value="$PROJECT_DIR$/Nodo5/Screen5.py" />
         <option value="$PROJECT_DIR$/utilities/Node.py" />
         <option value="$PROJECT_DIR$/utilities/GraphicObject.py" />
@@ -218,10 +185,14 @@
         <option value="$PROJECT_DIR$/Test/Network.py" />
         <option value="$PROJECT_DIR$/Test/Utilities/Pack.py" />
         <option value="$PROJECT_DIR$/Test/CU.py" />
-        <option value="$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py" />
-        <option value="$PROJECT_DIR$/Trash/utilities/Prueba.py" />
         <option value="$PROJECT_DIR$/Test/Resource_Admin/Distributed_System.py" />
         <option value="$PROJECT_DIR$/Test/Device.py" />
+        <option value="$PROJECT_DIR$/Compiler/grammar.g4" />
+        <option value="$PROJECT_DIR$/Test/ALU.py" />
+        <option value="$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py" />
+        <option value="$PROJECT_DIR$/Compiler/programa" />
+        <option value="$PROJECT_DIR$/Trash/utilities/Prueba.py" />
+        <option value="$PROJECT_DIR$/Compiler/brownie_grammar.g4" />
       </list>
     </option>
   </component>
@@ -247,36 +218,17 @@
             <path>
               <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
+              <item name="Compiler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-              <item name="Resource_Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-              <item name="Utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="gen" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
               <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
               <item name="Trash" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Trash" type="462c0819:PsiDirectoryNode" />
-              <item name="Machine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Trash" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,24 +237,28 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/auto-gen" value="false" />
+    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/gen-listener" value="true" />
+    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/gen-visitor" value="false" />
+    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/language" value="Python3" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Compiler/brownie_grammar.g4" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Prueba" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\RUN" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Nodo4" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\utilities\Machine" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test\Utilities" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Trash" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Machine" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test" />
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Prueba" />
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\RUN" />
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Nodo4" />
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\utilities\Machine" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -425,8 +381,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.SCREEN_MASTER" />
         <item itemvalue="Python.Prueba (1)" />
+        <item itemvalue="Python.SCREEN_MASTER" />
         <item itemvalue="Python.Prueba" />
         <item itemvalue="Python.SCREEN_MASTER (1)" />
         <item itemvalue="Python.Prueba (2)" />
@@ -458,20 +414,22 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" weight="0.15848215" />
+      <window_info content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" weight="0.234375" />
       <window_info id="Structure" order="1" sideWeight="0.5022124" side_tool="true" weight="0.14508928" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.3296131" />
+      <window_info anchor="bottom" id="Tool Output" weight="0.32872504" />
+      <window_info active="true" anchor="bottom" id="ANTLR Preview" sideWeight="0.49925596" visible="true" weight="0.47619048" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49772382" visible="true" weight="0.6543779" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49772382" weight="0.32872504" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924126" weight="0.32718894" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49924126" weight="0.32718894" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924126" weight="0.32258064" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5022762" side_tool="true" weight="0.30996886" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" weight="0.47465438" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32866043" />
       <window_info anchor="bottom" id="DB Execution Console" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -480,21 +438,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Nodo1/CU.py" />
-    <entry file="file://$PROJECT_DIR$/Nodo1/RAM.py" />
-    <entry file="file://$PROJECT_DIR$/Nodo1/IO1.py" />
-    <entry file="file://$PROJECT_DIR$/Trash/utilities/_init_.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nodo4/IO4.py" />
-    <entry file="file://$PROJECT_DIR$/Nodo5/IO5.py" />
-    <entry file="file://$PROJECT_DIR$/Trash/utilities/RUN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Trash/Machine/ALU.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -512,44 +455,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="67" lean-forward="true" selection-start-line="2" selection-start-column="67" selection-end-line="2" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen6.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen1.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/RUN/Screen2.py" />
+    <entry file="file://$PROJECT_DIR$/RUN/Screen3.py" />
+    <entry file="file://$PROJECT_DIR$/RUN/Screen4.py" />
+    <entry file="file://$PROJECT_DIR$/RUN/Screen6.py" />
+    <entry file="file://$PROJECT_DIR$/RUN/Screen5.py" />
+    <entry file="file://$PROJECT_DIR$/RUN/Screen1.py" />
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -661,9 +572,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/__init__.py" />
     <entry file="file://$PROJECT_DIR$/Test/Connection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -684,13 +593,6 @@
     <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/RAM_distributed.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Utilities/Prueba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/Screen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
@@ -701,9 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/RAM.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Trash/Machine/RAM.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -711,23 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Utilities/Node.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -741,44 +623,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Utilities/Pack.py">
+    <entry file="file://$PROJECT_DIR$/Test/Utilities/Node.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        <state relative-caret-position="16">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/ALU.py">
+    <entry file="file://$PROJECT_DIR$/Test/Network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/CU.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-659">
-          <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trash/utilities/Prueba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state relative-caret-position="272">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/Distributed_System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="1040">
           <caret line="73" column="56" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="56" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -786,13 +650,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test/Utilities/Pack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammar.tokens">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammar.interp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/ALU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarParser.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarLexer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/Utilities/Prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3104">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/CU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Test/Device.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="132" column="29" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+        <state relative-caret-position="48">
+          <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarListener.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/RAM.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trash/utilities/Prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/programa">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/brownie_grammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
         </state>
       </provider>
     </entry>
