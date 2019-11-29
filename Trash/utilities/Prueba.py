@@ -1,3 +1,3 @@
-def a1():
-    001
-return a
+import os
+
+print "Hola mundo"

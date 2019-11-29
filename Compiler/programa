@@ -1,16 +1,26 @@
-fun sumar(a1,a2,a3){
-    a1 = a2 + 4;
-    a2 = a3 + a1;
-    if (a1 == a2){
-        if(a1 < 0){
-            disp(a1);
-        }else{
-            disp(a2);
-        }
-    }elif(a1 > 20){
-        disp(20)
-    }else{
-        disp("Nada")
+process P1 : ?r1 : @p <"x": 20, "y" : "jeje">{
+    disp();
+
+}
+
+process P2 : ?r2 : @p1<> {
+    for a in lista: {
+        disp(a);
     }
-    return a2 + a1;
+}
+
+process P3 : ?r3 : @p2 <> {
+    a = 3;
+}
+
+fun f1(a,b,c){
+    print(a);
+}
+
+fun run_p(a){
+    loop f1 (a,b,c) : ?t1;
+    exec f1 (a,b,c);
+    start A1;
+    stop A1;
+    message @p1 : <"x": 10, "y" : "Hola"> ;
 }
