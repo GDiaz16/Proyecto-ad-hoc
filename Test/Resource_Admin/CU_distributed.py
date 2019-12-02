@@ -154,10 +154,10 @@ class CU_distributed:
         self.buffer = self.translate(buffer_org)
         buffer = self.buffer
         end = True
-        # Ejecucion del programa
+        # Ejecucion del programa.br
         try:
             while end != "end":
-                # Si el programa tiene sentencias de control, salta a la posicion que indica la etiqueta en la tercera posicion
+                # Si el programa.br tiene sentencias de control, salta a la posicion que indica la etiqueta en la tercera posicion
                 if buffer[self.sp[0]][0] == self.LESS or \
                         buffer[self.sp[0]][0] == self.LEQ or \
                         buffer[self.sp[0]][0] == self.GREATER or \

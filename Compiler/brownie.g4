@@ -1,5 +1,5 @@
-grammar brownie_grammar;
-//options{language = Python3;}
+grammar brownie;
+options{language = Python3;}
 
 //----------------------REGLAS LEXICAS -------------------------------------------->
 //Palabras reservadas
@@ -9,6 +9,7 @@ ELSE : 'else';
 
 SWITCH : 'switch';
 CASE : 'case';
+DEFAULT :'default';
 
 WHILE : 'while';
 FOR : 'for';
@@ -30,6 +31,11 @@ START : 'start';
 STOP : 'stop';
 MESSAGE : 'message';
 
+//Salto de linea
+//JUMPSPACE: '\n';
+
+COMMENT : '#'.*?'\n'  -> skip;
+COMMENT_AREA : '/*'.*?'*/' -> skip;
 
 //Tipos de datos
 NUMBER : [-]?[0-9]+ | [-]?[0-9]+('.'[0-9]+)  ;
@@ -81,10 +87,11 @@ WHITESPACE : [ \t\n] -> skip;
 
 //-------------------------------GRAMATICA------------------------------------->
 start : structure+  EOF;
+//comm : COMMENT;
 
 structure : function | sentence  | call_sentence | process;
 //Cualquier instruccion
-sentence : definition | conditional | call_sentence | cycle | concurrency;
+sentence : definition | conditional | call_sentence | cycle | concurrency | switch_ | break_ ;
 
 //Definicion de funciones
 function : FUNCTION VARIABLE OP_PARENTHESIS parameter? CL_PARENTHESIS fun_body;
@@ -98,11 +105,14 @@ parameter_call : VARIABLE | NUMBER | STRING | call | parameter_call ',' paramete
 //Definicion y asignacion de variables
 definition : assign SEMICOLON ;
 assign :  VARIABLE ASSIGN exp | VARIABLE INCREMENT | VARIABLE DECREMENT ;
+
 //Expresion matematica
-exp : ar_value ar_operator exp | ar_value | list_elements;
-ar_value : NUMBER | VARIABLE | call ;
+exp : exp ar_operator term | term ;
+term : term prior_operator ar_value | ar_value;
+ar_value : NUMBER | VARIABLE | call | OP_PARENTHESIS exp CL_PARENTHESIS;
 //Operadores aritmeticos
-ar_operator : PLUS | MINUS | MUL | DIV | POW | MOD;
+ar_operator : PLUS | MINUS ;
+prior_operator :  MUL | DIV | POW | MOD;
 
 //Estructura condicional
 conditional : IF  condition COLON  body otherwise*;
@@ -138,6 +148,18 @@ dictionary : LESS dict_element? GREATER;
 dict_element : STRING COLON dict_value | dict_element ',' dict_element;
 dict_value : VARIABLE | NUMBER | STRING | call;
 
+//Switch
+switch_ : SWITCH VARIABLE COLON switch_body;
+switch_body : OP_BRACE case_* default_? CL_BRACE;
+case_ : CASE case_value COLON sentence* ;
+default_: DEFAULT COLON sentence* ;
+case_value: NUMBER | STRING;
+break_ : BREAK SEMICOLON;
+
+////Comentarios
+//comment : comment_line | comment_text;
+//comment_line : COMMENT_LINE .*? JUMPSPACE -> skip;
+//comment_text : COMM_OPEN .*? COMM_CLOSE;
 
 //Array de objetos
 element : NUMBER | STRING | element ',' element;

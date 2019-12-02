@@ -9,32 +9,49 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58035713">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Compiler/programa">
+            <entry file="file://$PROJECT_DIR$/gen/brownieVisitor.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Compiler/tests.br">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+                <state relative-caret-position="162">
+                  <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Compiler/Visitor.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="112">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Compiler/brownie_grammar.g4">
+            <entry file="file://$PROJECT_DIR$/Compiler/Prueba.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1697">
-                  <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+                <state relative-caret-position="32">
+                  <caret line="2" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Trash/utilities/Prueba.py">
+            <entry file="file://$PROJECT_DIR$/Compiler/compiler.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="32">
-                  <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+                <state relative-caret-position="160">
+                  <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -44,10 +61,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Compiler/programa">
+            <entry file="file://$PROJECT_DIR$/Compiler/brownie.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="205">
-                  <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+                <state relative-caret-position="144">
+                  <caret line="86" selection-start-line="86" selection-end-line="86" />
                 </state>
               </provider>
             </entry>
@@ -112,12 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Nodo5/Screen5.py" />
-        <option value="$PROJECT_DIR$/utilities/Node.py" />
-        <option value="$PROJECT_DIR$/utilities/GraphicObject.py" />
-        <option value="$PROJECT_DIR$/utilities/Graph.py" />
-        <option value="$PROJECT_DIR$/utilities/MASTER.py" />
-        <option value="$PROJECT_DIR$/utilities/IO_MASTER.py" />
         <option value="$PROJECT_DIR$/utilities/IO.py" />
         <option value="$PROJECT_DIR$/Resource_Admin/Admin.py" />
         <option value="$PROJECT_DIR$/Resource_Admin/RAM_distributed.py" />
@@ -160,13 +171,19 @@
         <option value="$PROJECT_DIR$/Compiler/grammar.g4" />
         <option value="$PROJECT_DIR$/Test/ALU.py" />
         <option value="$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py" />
-        <option value="$PROJECT_DIR$/Trash/utilities/Prueba.py" />
         <option value="$PROJECT_DIR$/Compiler/programa" />
         <option value="$PROJECT_DIR$/Compiler/brownie_grammar.g4" />
+        <option value="$PROJECT_DIR$/Compiler/brownie.g4" />
+        <option value="$PROJECT_DIR$/Compiler/programa.br" />
+        <option value="$PROJECT_DIR$/Compiler/Compiler.py" />
+        <option value="$PROJECT_DIR$/Compiler/Test.py" />
+        <option value="$PROJECT_DIR$/Trash/utilities/Prueba.py" />
+        <option value="$PROJECT_DIR$/Compiler/Visitor.py" />
+        <option value="$PROJECT_DIR$/Compiler/compiler.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="775" />
@@ -197,28 +214,32 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="$PROJECT_DIR$/Compiler/brownie.g4::/auto-gen" value="false" />
+    <property name="$PROJECT_DIR$/Compiler/brownie.g4::/gen-listener" value="true" />
+    <property name="$PROJECT_DIR$/Compiler/brownie.g4::/gen-visitor" value="true" />
+    <property name="$PROJECT_DIR$/Compiler/brownie.g4::/language" value="Python3" />
     <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/auto-gen" value="false" />
     <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/gen-listener" value="true" />
-    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/gen-visitor" value="false" />
+    <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/Compiler/brownie_grammar.g4::/language" value="Python3" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Compiler/brownie_grammar.g4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Compiler" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Compiler" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test\Utilities" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Trash" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Machine" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Compiler" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Prueba" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\RUN" />
       <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Nodo4" />
-      <recent name="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\utilities\Machine" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -233,7 +254,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Prueba (1)">
+  <component name="RunManager" selected="Python.Compiler">
+    <configuration name="Compiler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Proyecto" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Compiler" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Compiler\compiler.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Prueba (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Proyecto" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -246,28 +288,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Trash/utilities/Prueba.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Prueba (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Proyecto" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Test\Utilities\Prueba.py" />
+      <option name="SCRIPT_NAME" value="E:\Universidad\Materias\Lenguajes de Programación\Proyecto\Compiler\Prueba.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -341,11 +362,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Compiler" />
         <item itemvalue="Python.Prueba (1)" />
         <item itemvalue="Python.SCREEN_MASTER" />
         <item itemvalue="Python.Prueba" />
         <item itemvalue="Python.SCREEN_MASTER (1)" />
-        <item itemvalue="Python.Prueba (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -372,15 +393,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" weight="0.09375" />
+      <window_info active="true" content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" visible="true" weight="0.1845238" />
       <window_info id="Structure" order="1" sideWeight="0.5022124" side_tool="true" weight="0.14508928" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.3296131" />
       <window_info anchor="bottom" id="Tool Output" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="ANTLR Preview" sideWeight="0.49925596" visible="true" weight="0.6006144" />
+      <window_info anchor="bottom" id="ANTLR Preview" sideWeight="0.49925596" weight="0.4408602" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49772382" weight="0.32872504" />
@@ -398,12 +418,12 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" weight="0.234375" />
+      <window_info active="true" content_ui="combo" x="59" y="107" width="213" height="462" id="Project" order="0" sideWeight="0.49778762" visible="true" weight="0.1845238" />
       <window_info id="Structure" order="1" sideWeight="0.5022124" side_tool="true" weight="0.14508928" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.3296131" />
       <window_info anchor="bottom" id="Tool Output" order="0" weight="0.32872504" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="1" sideWeight="0.49925596" weight="0.4393241" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="1" sideWeight="0.49925596" weight="0.4408602" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32872504" />
       <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49772382" visible="true" weight="0.32872504" />
@@ -422,27 +442,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Trash/Machine/ALU.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trash/Machine/Resource_Admin/RAM_distributed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trash/Machine/Resource_Admin/CU_distributed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RUN/Screen2.py" />
-    <entry file="file://$PROJECT_DIR$/RUN/Screen3.py" />
-    <entry file="file://$PROJECT_DIR$/RUN/Screen4.py" />
-    <entry file="file://$PROJECT_DIR$/RUN/Screen6.py" />
     <entry file="file://$PROJECT_DIR$/RUN/Screen5.py" />
     <entry file="file://$PROJECT_DIR$/RUN/Screen1.py" />
     <entry file="file://$PROJECT_DIR$/.gitattributes">
@@ -630,11 +629,6 @@
     <entry file="file://$PROJECT_DIR$/Test/RAM.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarLexer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/Device.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11">
@@ -663,23 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22768">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#137#157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarListener.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -714,24 +691,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trash/utilities/Prueba.py">
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3936">
+          <caret line="1048" lean-forward="true" selection-start-line="1048" selection-end-line="1048" />
+          <folding>
+            <element signature="e#137#157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarListener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="419" column="59" selection-start-line="419" selection-start-column="59" selection-end-line="419" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarLexer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4144">
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#119#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownie_grammarVisitor.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/antlr4/CommonTokenStream.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-489">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/programa.br">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
-          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler/programa">
+    <entry file="file://$PROJECT_DIR$/Compiler/tests.br">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="162">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler/brownie_grammar.g4">
+    <entry file="file://$PROJECT_DIR$/Compiler/compiler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1697">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="160">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/brownie.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/brownieVisitor.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/antlr4/InputStream.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/Visitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/Prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
