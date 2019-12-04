@@ -86,10 +86,10 @@ CONNECTION :'@';
 WHITESPACE : [ \t\n] -> skip;
 
 //-------------------------------GRAMATICA------------------------------------->
-start : structure+  EOF;
+start : structure*  EOF;
 //comm : COMMENT;
 
-structure : function | sentence  | call_sentence | process;
+structure : function | sentence | call_sentence | process;
 //Cualquier instruccion
 sentence : definition | conditional | call_sentence | cycle | concurrency | switch_ | break_ ;
 
@@ -100,19 +100,26 @@ call :  VARIABLE OP_PARENTHESIS parameter_call? CL_PARENTHESIS;
 call_sentence : call SEMICOLON;
 //Parametros
 parameter : VARIABLE | parameter ',' parameter;
-parameter_call : VARIABLE | NUMBER | STRING | call | parameter_call ',' parameter_call;
+parameter_call : VARIABLE #parameter_call1 | NUMBER #parameter_call2
+                | STRING #parameter_call3| call #parameter_call4
+                | parameter_call ',' parameter_call #parameter_call5
+                | array_call #parameter_call6;
 
 //Definicion y asignacion de variables
 definition : assign SEMICOLON ;
-assign :  VARIABLE ASSIGN exp | VARIABLE INCREMENT | VARIABLE DECREMENT ;
+assign :  VARIABLE ASSIGN exp #assign1| VARIABLE INCREMENT #assign2
+        | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4;
 
 //Expresion matematica
-exp : exp ar_operator term | term ;
-term : term prior_operator ar_value | ar_value;
-ar_value : NUMBER | VARIABLE | call | OP_PARENTHESIS exp CL_PARENTHESIS;
+exp : exp ar_operator term #exp1| term #exp2 ;
+term : ar_value prior_operator term #term1| ar_value #term2;
+ar_value : NUMBER #ar_value1 | VARIABLE #ar_value2 | call #ar_value3
+            | OP_PARENTHESIS exp CL_PARENTHESIS #ar_value4 | array_call #ar_value5;
+array_call : VARIABLE OP_SQUARE ar_value CL_SQUARE;
 //Operadores aritmeticos
-ar_operator : PLUS | MINUS ;
-prior_operator :  MUL | DIV | POW | MOD;
+ar_operator : PLUS #ar_operator1| MINUS #ar_operator2;
+prior_operator :  MUL #prior_operator1| DIV #prior_operator2|
+                  POW #prior_operator3| MOD #prior_operator4;
 
 //Estructura condicional
 conditional : IF  condition COLON  body otherwise*;
@@ -120,6 +127,7 @@ otherwise : ELIF  condition COLON  body | ELSE body ;
 condition : com_value comparator com_value (logic condition)* | TRUE | FALSE ;
 com_value : NUMBER | VARIABLE | STRING | | TRUE | FALSE | call;
 comparator : EQ | DIF | GREATER | LESS | GEQ | LEQ ;
+logic : AND | OR ;
 
 //Ciclos repetitivos
 cycle : while_ | for_;
@@ -156,14 +164,6 @@ default_: DEFAULT COLON sentence* ;
 case_value: NUMBER | STRING;
 break_ : BREAK SEMICOLON;
 
-////Comentarios
-//comment : comment_line | comment_text;
-//comment_line : COMMENT_LINE .*? JUMPSPACE -> skip;
-//comment_text : COMM_OPEN .*? COMM_CLOSE;
-
 //Array de objetos
 element : NUMBER | STRING | element ',' element;
 list_elements: OP_SQUARE element? CL_SQUARE;
-//Operadores
-logic : AND | OR ;
-//test : NUMBER*;
