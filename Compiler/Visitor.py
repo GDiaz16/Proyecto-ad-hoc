@@ -7,16 +7,23 @@ from Compiler.Instruction import instruction as ins
 class Visitor(brownieVisitor):
     def __init__(self):
         self.count = 0
+        self.label_count = 1
         self.instructions = []
 
     # Visit a parse tree produced by brownieParser#start.
     def visitStart(self, ctx: brownieParser.StartContext):
         self.visitChildren(ctx)
+        # aux = ""
+        # for ins in self.instructions:
+        #     if ins.i1 == "LABEL":
+        #         aux = ins.i2
+        #         self.instructions.remove(ins)
+        #
         for ins in self.instructions:
             print(ins)
 
     def visitDefinition(self, ctx: brownieParser.DefinitionContext):
-        self.visit(ctx.assign())
+        return self.visit(ctx.assign())
 
     # Visit a parse tree produced by brownieParser#assign1.
     def visitAssign1(self, ctx: brownieParser.Assign1Context):
@@ -51,6 +58,21 @@ class Visitor(brownieVisitor):
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
         return inst
+
+    # Visit a parse tree produced by brownieParser#assign4.
+    def visitAssign4(self, ctx:brownieParser.Assign4Context):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by brownieParser#assign5.
+    def visitAssign5(self, ctx:brownieParser.Assign5Context):
+        aux = str(self.visit(ctx.exp()).i1)
+        array = self.visit(ctx.array_call())
+        array.i1 = array.i2
+        array.i2 = array.i3
+        array.i3 = aux
+        array.array1 = True
+        array.array2 = False
+        return array
 
     # Visit a parse tree produced by brownieParser#exp1.
     def visitExp1(self, ctx: brownieParser.Exp1Context):
@@ -95,27 +117,11 @@ class Visitor(brownieVisitor):
         return self.visit(ctx.exp())
 
     # Visit a parse tree produced by brownieParser#ar_operator1.
-    def visitAr_operator1(self, ctx: brownieParser.Ar_operator1Context):
-        return ctx.getText()
-
-    # Visit a parse tree produced by brownieParser#ar_operator2.
-    def visitAr_operator2(self, ctx: brownieParser.Ar_operator2Context):
+    def visitAr_operator(self, ctx: brownieParser.Ar_operatorContext):
         return ctx.getText()
 
     # Visit a parse tree produced by brownieParser#prior_operator1.
-    def visitPrior_operator1(self, ctx: brownieParser.Prior_operator1Context):
-        return ctx.getText()
-
-    # Visit a parse tree produced by brownieParser#prior_operator2.
-    def visitPrior_operator2(self, ctx: brownieParser.Prior_operator2Context):
-        return ctx.getText()
-
-    # Visit a parse tree produced by brownieParser#prior_operator3.
-    def visitPrior_operator3(self, ctx: brownieParser.Prior_operator3Context):
-        return ctx.getText()
-
-    # Visit a parse tree produced by brownieParser#prior_operator4.
-    def visitPrior_operator4(self, ctx: brownieParser.Prior_operator4Context):
+    def visitPrior_operator(self, ctx: brownieParser.Prior_operatorContext):
         return ctx.getText()
 
     # Visit a parse tree produced by brownieParser#call.
@@ -154,7 +160,7 @@ class Visitor(brownieVisitor):
         pop_ = ins()
         self.instructions.append(pop_)
         pop_.pos = len(self.instructions) - 1
-        #self.count = self.count + 1
+        self.count = self.count + 1
         pop_.i1 = f"POP"
         pop_.i2 = f"t{self.count}"
 
@@ -164,13 +170,21 @@ class Visitor(brownieVisitor):
         return aux
 
     # Visit a parse tree produced by brownieParser#parameter_call3.
+    def visitParameter_call4(self, ctx: brownieParser.Parameter_call4Context):
+        inst = ins()
+        inst.i1 = "PUSH"
+        inst.i2 = self.visit(ctx.call()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return inst
+
+    # Visit a parse tree produced by brownieParser#parameter_call3.
     def visitParameter_call3(self, ctx: brownieParser.Parameter_call3Context):
         inst = ins()
         inst.i1 = "PUSH"
         inst.i2 = ctx.STRING()
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
-
         return inst
 
     # Visit a parse tree produced by brownieParser#parameter_call2.
@@ -190,3 +204,179 @@ class Visitor(brownieVisitor):
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
         return inst
+
+    # Visit a parse tree produced by brownieParser#array_call.
+    def visitArray_call(self, ctx:brownieParser.Array_callContext):
+        inst = ins()
+        self.count = self.count + 1
+        inst.i1 = f"t{self.count}"
+        inst.i2 = str(ctx.VARIABLE())
+        inst.i3 = str(self.visit(ctx.ar_value()).i1)
+        inst.array2 = True
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return inst
+
+ # Visit a parse tree produced by brownieParser#conditional.
+    def visitConditional(self, ctx:brownieParser.ConditionalContext):
+        # if (condicion) goto Lv;
+        # goto Lf;
+        # Lv:
+        # < instrucciones >
+        # goto Lsalida;
+        # Lf:
+        # < instrucciones >
+        # Lsalida:
+
+        #Insertar if
+        if_ = ins()
+        if_.i1 = "if"
+        if_.i2 = self.visit(ctx.condition()).i1
+        if_.op = "goto"
+        self.instructions.append(if_)
+        if_.pos = len(self.instructions) - 1
+
+        #Insertar salto al else
+        els = ins()
+        els.i1 = "goto"
+        self.instructions.append(els)
+        els.pos = len(self.instructions) - 1
+
+        #Asignar el body del if al goto
+        L1, L2 = self.visit(ctx.body())
+        if_.i3 = L1.i2
+
+        #Asignar la posicion que sigue si no se cumple la condicion
+        els.i2 = L2.i2
+
+        #Else y demas condicionales
+        try:
+            K1 = self.visit(ctx.otherwise())
+            els.i2 = K1.i2
+        except:
+            pass
+
+
+    # Visit a parse tree produced by brownieParser#otherwise1.
+    def visitOtherwise1(self, ctx:brownieParser.Otherwise1Context):
+        #Salto para evitar este elif si ya fue cumplido previamente
+        goto = self.goto("")
+        K1 = self.label()
+
+        #Insertar elif
+        if_ = ins()
+        if_.i1 = "elif"
+        if_.i2 = self.visit(ctx.condition()).i1
+        if_.op = "goto"
+        self.instructions.append(if_)
+        if_.pos = len(self.instructions) - 1
+
+        #Insertar salto al else
+        els = ins()
+        els.i1 = "goto"
+        self.instructions.append(els)
+        els.pos = len(self.instructions) - 1
+
+        #Asignar el body del if al goto
+        L1, L2 = self.visit(ctx.body())
+        if_.i3 = L1.i2
+        goto.i2 = L2.i2
+        #Asignar la posicion que sigue si no se cumple la condicion
+        els.i2 = L2.i2
+
+        #Else y demas condicionales
+        try:
+            L1 = self.visit(ctx.otherwise())
+            els.i2 = L1.i2
+        except:
+            pass
+
+        return K1
+
+
+    # Visit a parse tree produced by brownieParser#otherwise2.
+    def visitOtherwise2(self, ctx:brownieParser.Otherwise2Context):
+
+        goto = self.goto("")
+        L1,L2 = self.visit(ctx.body())
+        goto.i2 = L2.i2
+        return L1
+
+
+    # Visit a parse tree produced by brownieParser#other_condition1.
+    def visitOther_condition1(self, ctx:brownieParser.Other_condition1Context):
+        inst = ins()
+        self.count = self.count + 1
+        inst.i1 = f"t{self.count}"
+        inst.i2 = self.visit(ctx.com_value()).i1
+        inst.op = str(self.visit(ctx.comparator()))
+        inst.i3 = self.visit(ctx.other_condition()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return inst
+
+    # Visit a parse tree produced by brownieParser#condition1.
+    def visitCondition1(self, ctx:brownieParser.Condition1Context):
+        inst = ins()
+        self.count = self.count + 1
+        inst.i1 = f"t{self.count}"
+        inst.i2 = self.visit(ctx.condition()).i1
+        inst.op = str(self.visit(ctx.logic()))
+        inst.i3 = self.visit(ctx.other_condition()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return inst
+
+    # Visit a parse tree produced by brownieParser#com_value.
+    def visitCom_value(self, ctx:brownieParser.Com_valueContext):
+        try:
+            aux = self.visit(ctx.ar_value())
+            return aux
+        except AttributeError:
+            pass
+        #Auxiliar de retorno
+        aux = ins()
+        aux.i1 = ctx.getText()
+        return aux
+
+    # Visit a parse tree produced by brownieParser#comparator.
+    def visitComparator(self, ctx:brownieParser.ComparatorContext):
+        return  ctx.getText()
+
+    # Visit a parse tree produced by brownieParser#logic.
+    def visitLogic(self, ctx:brownieParser.LogicContext):
+        return ctx.getText()
+
+    # Visit a parse tree produced by brownieParser#body.
+    def visitBody(self, ctx:brownieParser.BodyContext):
+        #Inicio de body
+        l1 = self.label()
+
+        #Contenido
+        self.visitChildren(ctx)
+
+        #Fin de body
+        l2 = self.label()
+
+        return l1,l2
+
+    def label(self):
+        label1 = ins()
+        self.count = self.count + 1
+        label1.i1 = f"LABEL"
+        label1.i2 = f"L{self.label_count}"
+        self.instructions.append(label1)
+        label1.pos = len(self.instructions) - 1
+
+        #self.instructions[len(self.instructions)-1].label = f"L{self.label_count}"
+        self.label_count = self.label_count + 1
+        return label1
+
+    def goto(self, label):
+        label1 = ins()
+        self.count = self.count + 1
+        label1.i1 = f"goto"
+        label1.i2 = label
+        self.instructions.append(label1)
+        label1.pos = len(self.instructions) - 1
+        return label1

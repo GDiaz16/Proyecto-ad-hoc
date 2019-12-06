@@ -1,2 +1,9 @@
-a = (1+6)*8 * f(x);
-b = x;
+if x < x : {
+    a = 2;
+}elif y < y:{
+    b = 4;
+}elif z > z:{
+    c = 5;
+}else{
+    d = 6;
+}

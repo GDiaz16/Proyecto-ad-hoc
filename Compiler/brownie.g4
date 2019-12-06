@@ -108,7 +108,8 @@ parameter_call : VARIABLE #parameter_call1 | NUMBER #parameter_call2
 //Definicion y asignacion de variables
 definition : assign SEMICOLON ;
 assign :  VARIABLE ASSIGN exp #assign1| VARIABLE INCREMENT #assign2
-        | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4;
+        | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4
+        | array_call ASSIGN exp #assign5;
 
 //Expresion matematica
 exp : exp ar_operator term #exp1| term #exp2 ;
@@ -117,15 +118,20 @@ ar_value : NUMBER #ar_value1 | VARIABLE #ar_value2 | call #ar_value3
             | OP_PARENTHESIS exp CL_PARENTHESIS #ar_value4 | array_call #ar_value5;
 array_call : VARIABLE OP_SQUARE ar_value CL_SQUARE;
 //Operadores aritmeticos
-ar_operator : PLUS #ar_operator1| MINUS #ar_operator2;
-prior_operator :  MUL #prior_operator1| DIV #prior_operator2|
-                  POW #prior_operator3| MOD #prior_operator4;
+ar_operator : PLUS | MINUS;
+prior_operator :  MUL | DIV | POW | MOD ;
 
 //Estructura condicional
-conditional : IF  condition COLON  body otherwise*;
-otherwise : ELIF  condition COLON  body | ELSE body ;
-condition : com_value comparator com_value (logic condition)* | TRUE | FALSE ;
-com_value : NUMBER | VARIABLE | STRING | | TRUE | FALSE | call;
+conditional : IF  condition COLON  body otherwise?;
+otherwise : ELIF  condition COLON  body otherwise? #otherwise1| ELSE body #otherwise2;
+
+condition : condition logic other_condition #condition1
+                | other_condition #condition2;
+
+other_condition : com_value comparator other_condition #other_condition1
+                | com_value #other_condition2;
+
+com_value : STRING | TRUE  | FALSE  | ar_value ;
 comparator : EQ | DIF | GREATER | LESS | GEQ | LEQ ;
 logic : AND | OR ;
 
