@@ -188,6 +188,42 @@ class brownieListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by brownieParser#assign6.
+    def enterAssign6(self, ctx:brownieParser.Assign6Context):
+        pass
+
+    # Exit a parse tree produced by brownieParser#assign6.
+    def exitAssign6(self, ctx:brownieParser.Assign6Context):
+        pass
+
+
+    # Enter a parse tree produced by brownieParser#text1.
+    def enterText1(self, ctx:brownieParser.Text1Context):
+        pass
+
+    # Exit a parse tree produced by brownieParser#text1.
+    def exitText1(self, ctx:brownieParser.Text1Context):
+        pass
+
+
+    # Enter a parse tree produced by brownieParser#text2.
+    def enterText2(self, ctx:brownieParser.Text2Context):
+        pass
+
+    # Exit a parse tree produced by brownieParser#text2.
+    def exitText2(self, ctx:brownieParser.Text2Context):
+        pass
+
+
+    # Enter a parse tree produced by brownieParser#text3.
+    def enterText3(self, ctx:brownieParser.Text3Context):
+        pass
+
+    # Exit a parse tree produced by brownieParser#text3.
+    def exitText3(self, ctx:brownieParser.Text3Context):
+        pass
+
+
     # Enter a parse tree produced by brownieParser#element1.
     def enterElement1(self, ctx:brownieParser.Element1Context):
         pass

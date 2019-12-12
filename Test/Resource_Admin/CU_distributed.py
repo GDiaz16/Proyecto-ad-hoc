@@ -41,6 +41,7 @@ class CU_distributed:
         register = [0]
         address = 0
         number = 1.0
+        string = ""
         if type(rx) == type(register):
             # registro <-- registro
             if type(sx) == type(register):
@@ -48,12 +49,19 @@ class CU_distributed:
             # registro <-- entero
             elif type(sx) == type(number):
                 rx[0] = sx
+            # registro <-- string
+            elif type(sx) == type(string):
+                rx[0] = sx
+
         elif type(rx) == type(address):
             # memoria <-- registro
             if type(sx) == type(register):
                 self.SAVE(sx[0], rx)
             # memoria <-- entero
             elif type(sx) == type(number):
+                self.SAVE(sx, rx)
+            #memoria <-- string
+            elif type(sx) == type(string):
                 self.SAVE(sx, rx)
 
     def LESS(self, rx, sx):

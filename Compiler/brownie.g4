@@ -109,7 +109,9 @@ parameter_call : VARIABLE #parameter_call1 | NUMBER #parameter_call2
 definition : assign SEMICOLON ;
 assign :  VARIABLE ASSIGN exp #assign1| VARIABLE INCREMENT #assign2
         | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4
-        | array_call ASSIGN exp #assign5 | VARIABLE ASSIGN STRING #assign6;
+        | array_call ASSIGN exp #assign5 | VARIABLE ASSIGN text #assign6;
+
+text : STRING PLUS text #text1| STRING #text2 | VARIABLE #text3;
 
 //Array de objetos
 element : NUMBER #element1| VARIABLE #element2| STRING #element3| element ',' element #element4;

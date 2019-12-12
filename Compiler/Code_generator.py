@@ -37,6 +37,8 @@ class Code_generator:
             try:
                 n1 = float(inst.i2)
                 self.assembly.append(["MOV", self.symbols[inst.i1], n1])
+
+            # Caso a = <tx> | a = "string" | a++ | a--
             except ValueError:
                 if inst.i2 in self.symbols:
                     # Caso a++  --->  a = a + 1
@@ -59,16 +61,16 @@ class Code_generator:
                     self.assembly.append(["MOV", self.symbols[inst.i1], "dx"])
 
                 else:
-                    # Caso a = <tx>
+                    # Caso a = <tx> o a = "string"
                     self.assembly.append(["MOV", self.symbols[inst.i1], self.register(inst.i2)])
 
         else:  # elif inst.op in s:
+            # Caso <tn> = numero op numero
             try:
-                # Caso <tn> = numero op numero
                 n1 = float(inst.i2)
                 n2 = float(inst.i3)
 
-                #Operaciones aritmeticas
+                # Operaciones aritmeticas
                 if inst.op == s[0]:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 + n2])
                 elif inst.op == s[1]:
@@ -82,7 +84,7 @@ class Code_generator:
                 elif inst.op == s[5]:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 % n2])
 
-                #Operaciones de comparacion
+                # Operaciones de comparacion
                 elif inst.op == "==":
                     self.assembly.append(["MOV", self.register(inst.i1), n1 == n2])
                 elif inst.op == "!=":
@@ -97,8 +99,8 @@ class Code_generator:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 <= n2])
 
             except ValueError:
+                # Caso <tn> = numero op <tx>
                 try:
-                    # Caso <tn> = numero op <tx>
                     # Ya que el resultado se guarda en el primer registro no es necesario colocar un move
                     # al final
                     n1 = float(inst.i2)
@@ -141,8 +143,8 @@ class Code_generator:
                         asse[2] = "dx"
                         self.assembly.append(asse)
                 except:
+                    # Caso <tn> = <tx> op numero
                     try:
-                        # Caso <tn> = <tx> op numero
                         n1 = float(inst.i3)
                         self.assembly.append(["MOV", self.register(inst.i1), n1])
 
@@ -184,10 +186,49 @@ class Code_generator:
 
                         # Mover el resultado al registro correspondiente
                         self.assembly.append(["MOV", self.register(inst.i1), "dx"])
+
+                    # Caso <tn> = <tx> op <ty>
                     except:
-                        # Caso <tn> = <tx> op <ty>
+                        # Caso <tn> = "string" + <tx>
+                        if inst.i2[0] == '"' and inst.i3[0:2] == "<t":
+                            # Quitar las comillas del texto
+                            inst.i2 = inst.i2[1:-1]
+                            #Pasar a un registro y luego concatenar las cadenas
+                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2])
+                            self.assembly.append(["ADD", self.register(inst.i1), self.register(inst.i3)])
+
+                        # Caso <tn> = <tx> + "string"
+                        elif inst.i2[0:2] == "<t" and inst.i3[0] == '"':
+                            # Quitar las comillas del texto
+                            inst.i2 = inst.i2[1:-1]
+                            # Pasar a un registro y luego concatenar las cadenas
+                            self.assembly.append(["MOV", self.register(inst.i1), inst.i3])
+                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i1)])
+
+                        # Caso <tn> = "string" + var
+                        elif inst.i2[0] == '"' and inst.i3 in self.symbols:
+                            # Quitar las comillas del texto
+                            inst.i2 = inst.i2[1:-1]
+                            #Pasar a un registro y luego concatenar las cadenas
+                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2])
+                            self.assembly.append(["ADD", self.register(inst.i1), self.register(inst.i3)])
+
+                        # Caso <tn> = var + "string"
+                        elif inst.i2 in self.symbols and inst.i3[0] == '"':
+                            # Quitar las comillas del texto
+                            inst.i2 = inst.i2[1:-1]
+                            # Pasar a un registro y luego concatenar las cadenas
+                            self.assembly.append(["MOV", self.register(inst.i1), inst.i3])
+                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i1)])
+
+                        # Caso <tn> = "string" + "string"
+                        elif inst.i2[0] == '"' and inst.i3[0] == '"':
+                            inst.i2 = inst.i2[1:-1]
+                            inst.i3 = inst.i3[1:-1]
+                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2 + inst.i3])
+
                         # Operaciones aritmeticas
-                        if inst.op == s[0]:
+                        elif inst.op == s[0]:
                             self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i3)])
                         elif inst.op == s[1]:
                             self.assembly.append(["DEC", self.register(inst.i2), self.register(inst.i3)])
@@ -220,6 +261,7 @@ class Code_generator:
                         elif inst.op == "<=":
                             self.assembly.append(["LEQ", self.register(inst.i2), self.register(inst.i3)])
 
+                        # En caso de que <tx> o <ty> sean variables
                         asse = self.assembly[len(self.assembly) - 1]
                         # Leer la primera variable
                         if asse[1] in self.symbols:
@@ -234,7 +276,7 @@ class Code_generator:
                             self.assembly.append(["LOAD", "dx", self.symbols[asse[2]]])
                             asse[2] = "dx"
                             self.assembly.append(asse)
-                        #En caso de tener un if
+                        # En caso de tener un if
                         if inst.i1 == "if":
                             self.assembly.append(["IF", asse[1], inst.i3])
 
@@ -242,13 +284,17 @@ class Code_generator:
                         elif inst.i1 == "goto":
                             self.assembly.append(["GOTO", inst.i2, ""])
 
-                        #En caso de tener un label
+                        # En caso de tener un label
                         elif inst.i1 == "LABEL":
                             self.assembly.append(["LABEL", inst.i2, ""])
 
                         else:
                             # Mover por defecto el resultado al registro correspondiente
-                            self.assembly.append(["MOV", self.register(inst.i1), asse[1]])
+                            r1 = self.register(inst.i1)
+                            r2 = asse[1]
+                            #Mover si los registros son diferentes
+                            if r1 != r2:
+                                self.assembly.append(["MOV", r1, r2])
 
     def register(self, tx):
         if tx == "<t0>":

@@ -1,1 +1,2 @@
-v = 10;
+v = "Hola"+" mundo" + " =)";
+s = "hello" + v;

@@ -170,6 +170,47 @@ class Visitor(brownieVisitor):
     def visitPrior_operator(self, ctx: brownieParser.Prior_operatorContext):
         return str(ctx.getText())
 
+    # Visit a parse tree produced by brownieParser#assign6.
+    def visitAssign6(self, ctx:brownieParser.Assign6Context):
+        inst = ins()
+        self.add_count()#self.count = self.count + 1
+        inst.i1 = str(ctx.VARIABLE())
+        inst.i2 = self.visit(ctx.text()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+
+        # Asignar la variable a la tabla de simbolos
+        self.symbols_table[inst.i1] = 0
+
+        return inst
+
+    # Visit a parse tree produced by brownieParser#text1.
+    def visitText1(self, ctx:brownieParser.Text1Context):
+        inst = ins()
+        self.add_count()#self.count = self.count + 1
+        inst.i1 = f"<t{self.count}>"
+        inst.i2 = str(ctx.STRING())
+        inst.op = str(ctx.PLUS())
+        inst.i3 = self.visit(ctx.text()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return inst
+
+
+    # Visit a parse tree produced by brownieParser#text2.
+    def visitText2(self, ctx:brownieParser.Text2Context):
+        inst = ins()
+        inst.pos = len(self.instructions) - 1
+        inst.i1 = str(ctx.STRING())
+        return inst
+
+
+    # Visit a parse tree produced by brownieParser#text3.
+    def visitText3(self, ctx:brownieParser.Text3Context):
+        inst = ins()
+        inst.pos = len(self.instructions) - 1
+        inst.i1 = str(ctx.VARIABLE())
+        return inst
     # Visit a parse tree produced by brownieParser#call.
     def visitCall(self, ctx: brownieParser.CallContext):
         ret = ins()

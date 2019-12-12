@@ -25,4 +25,5 @@ class compiler:
         code = generator.assembly
         return code
 
-# compiler = compiler()
+compiler = compiler()
+compiler.compile()
