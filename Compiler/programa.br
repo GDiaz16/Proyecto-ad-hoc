@@ -13,7 +13,6 @@ process P3 : ?r3 : @p2 <> {
     a = 3;
 }
 
-fun f1(a,b,c){
     print(a);
 
     switch a1 : {
@@ -35,4 +34,16 @@ fun run_p(a){
     start A1;
     stop A1;
     message @p1 : <"x": 10, "y" : "Hola"> ;
+}
+
+if x < x : {
+    if p < p : {
+        F = 7;
+    }
+}elif y < y:{
+    b = 4;
+}elif z > z:{
+    c = 5;
+}else{
+    d = 6;
 }

@@ -1,6 +1,7 @@
 import threading
 import time
 
+from Compiler.compiler import compiler
 from Test.ALU import ALU
 from Test.CU import CU
 from Test.RAM import RAM
@@ -35,6 +36,7 @@ class Device:
         self.ALU = ALU()
         self.CU = CU(self.RAM, self.ALU)
         self.Distributed_System = Distributed_System(self)
+        self.compiler = compiler()
 
     def processes(self):
         t1 = threading.Thread(target=self.input)
@@ -99,6 +101,8 @@ class Device:
             print(self.RAM.memory)
 
         elif kwargs["com"] == "execute":
+            #buffer = self.compiler.code
+
             buffer = [
                 ["SLICE",1,13,"L1"],
 

@@ -99,7 +99,7 @@ function : FUNCTION VARIABLE OP_PARENTHESIS parameter? CL_PARENTHESIS fun_body;
 call :  VARIABLE OP_PARENTHESIS parameter_call? CL_PARENTHESIS;
 call_sentence : call SEMICOLON;
 //Parametros
-parameter : VARIABLE | parameter ',' parameter;
+parameter : VARIABLE #parameter1| parameter ',' parameter #parameter2;
 parameter_call : VARIABLE #parameter_call1 | NUMBER #parameter_call2
                 | STRING #parameter_call3| call #parameter_call4
                 | parameter_call ',' parameter_call #parameter_call5
@@ -110,6 +110,10 @@ definition : assign SEMICOLON ;
 assign :  VARIABLE ASSIGN exp #assign1| VARIABLE INCREMENT #assign2
         | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4
         | array_call ASSIGN exp #assign5;
+
+//Array de objetos
+element : NUMBER #element1| VARIABLE #element2| STRING #element3| element ',' element #element4;
+list_elements: OP_SQUARE element? CL_SQUARE;
 
 //Expresion matematica
 exp : exp ar_operator term #exp1| term #exp2 ;
@@ -125,8 +129,10 @@ prior_operator :  MUL | DIV | POW | MOD ;
 conditional : IF  condition COLON  body otherwise?;
 otherwise : ELIF  condition COLON  body otherwise? #otherwise1| ELSE body #otherwise2;
 
-condition : condition logic other_condition #condition1
-                | other_condition #condition2;
+condition :  condition logic other_cond #condition1
+                | other_cond #condition2;
+
+other_cond : NOT? other_condition ;
 
 other_condition : com_value comparator other_condition #other_condition1
                 | com_value #other_condition2;
@@ -136,11 +142,13 @@ comparator : EQ | DIF | GREATER | LESS | GEQ | LEQ ;
 logic : AND | OR ;
 
 //Ciclos repetitivos
-cycle : while_ | for_;
-while_ : (DO body)? WHILE condition COLON body ;
+cycle : do_while| while_ | for_;
+do_while: DO body WHILE condition SEMICOLON;
+while_ : WHILE condition COLON body ;
 for_ : FOR for_condition COLON body;
-for_condition : for_definition SEMICOLON condition SEMICOLON assign | for_iterator;
-for_definition :  VARIABLE ASSIGN exp ;
+for_condition : for_definition SEMICOLON condition SEMICOLON assign #for_condition1
+                | for_iterator #for_condition2;
+for_definition : VARIABLE ASSIGN exp;
 for_iterator : VARIABLE IN VARIABLE;
 
 //Cuerpo de instrucciones
@@ -170,6 +178,3 @@ default_: DEFAULT COLON sentence* ;
 case_value: NUMBER | STRING;
 break_ : BREAK SEMICOLON;
 
-//Array de objetos
-element : NUMBER | STRING | element ',' element;
-list_elements: OP_SQUARE element? CL_SQUARE;

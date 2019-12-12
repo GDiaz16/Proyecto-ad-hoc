@@ -15,7 +15,8 @@ class instruction:
         #PUSH t1
         #CALL t1
         #POP t1
-        if self.i1 == "PUSH" or self.i1 == "CALL" or self.i1 == "POP":
+        #LIST a
+        if self.i1 == "PUSH" or self.i1 == "CALL" or self.i1 == "POP" or self.i1 == "LIST":
             inst = str(self.pos) + "\t: "+str(self.label)+"\t " + str(self.i1) + "  " + str(self.i2) + \
                    " " + str(self.op) + " " + str(self.i3)
             return inst

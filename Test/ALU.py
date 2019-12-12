@@ -13,6 +13,12 @@ class ALU:
     def multiply(self,a,b):
         return a*b
 
+    def pow(self,a,b):
+        return a**b
+
+    def mod(self,a,b):
+        return a%b
+
     def AND(self,a,b):
         return a and b
 

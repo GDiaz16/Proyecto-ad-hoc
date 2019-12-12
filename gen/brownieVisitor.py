@@ -39,8 +39,13 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by brownieParser#parameter.
-    def visitParameter(self, ctx:brownieParser.ParameterContext):
+    # Visit a parse tree produced by brownieParser#parameter2.
+    def visitParameter2(self, ctx:brownieParser.Parameter2Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#parameter1.
+    def visitParameter1(self, ctx:brownieParser.Parameter1Context):
         return self.visitChildren(ctx)
 
 
@@ -101,6 +106,31 @@ class brownieVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by brownieParser#assign5.
     def visitAssign5(self, ctx:brownieParser.Assign5Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#element1.
+    def visitElement1(self, ctx:brownieParser.Element1Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#element2.
+    def visitElement2(self, ctx:brownieParser.Element2Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#element3.
+    def visitElement3(self, ctx:brownieParser.Element3Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#element4.
+    def visitElement4(self, ctx:brownieParser.Element4Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#list_elements.
+    def visitList_elements(self, ctx:brownieParser.List_elementsContext):
         return self.visitChildren(ctx)
 
 
@@ -189,6 +219,11 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by brownieParser#other_cond.
+    def visitOther_cond(self, ctx:brownieParser.Other_condContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by brownieParser#other_condition1.
     def visitOther_condition1(self, ctx:brownieParser.Other_condition1Context):
         return self.visitChildren(ctx)
@@ -219,6 +254,11 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by brownieParser#do_while.
+    def visitDo_while(self, ctx:brownieParser.Do_whileContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by brownieParser#while_.
     def visitWhile_(self, ctx:brownieParser.While_Context):
         return self.visitChildren(ctx)
@@ -229,8 +269,13 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by brownieParser#for_condition.
-    def visitFor_condition(self, ctx:brownieParser.For_conditionContext):
+    # Visit a parse tree produced by brownieParser#for_condition1.
+    def visitFor_condition1(self, ctx:brownieParser.For_condition1Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#for_condition2.
+    def visitFor_condition2(self, ctx:brownieParser.For_condition2Context):
         return self.visitChildren(ctx)
 
 
@@ -336,16 +381,6 @@ class brownieVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by brownieParser#break_.
     def visitBreak_(self, ctx:brownieParser.Break_Context):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by brownieParser#element.
-    def visitElement(self, ctx:brownieParser.ElementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by brownieParser#list_elements.
-    def visitList_elements(self, ctx:brownieParser.List_elementsContext):
         return self.visitChildren(ctx)
 
 

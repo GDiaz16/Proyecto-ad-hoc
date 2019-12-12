@@ -31,6 +31,12 @@ class CU_distributed:
     def DIV(self, rx, sx):
         rx[0] = self.ALU.divide(rx[0], sx[0])
 
+    def MOD(self,rx,sx):
+        rx[0] = self.ALU.mod(rx[0],sx[0])
+
+    def POW(self,rx,sx):
+        rx[0] = self.ALU.pow(rx[0],sx[0])
+
     def MOV(self, rx, sx):
         register = [0]
         address = 0
@@ -67,6 +73,10 @@ class CU_distributed:
 
     def EQ(self, rx, sx, label):
         if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) == 0):
+            self.GOTO(label)
+
+    def NEQ(self, rx, sx, label):
+        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) != 0):
             self.GOTO(label)
 
     def END(self, sp=0, address=0):
@@ -137,6 +147,10 @@ class CU_distributed:
                 instruction[0] = self.INPUT
             elif instruction[0] == "SLICE":
                 instruction[0] = self.SLICE
+            elif instruction[0] == "MOD":
+                instruction[0] = self.MOD
+            elif instruction[0] == "POW":
+                instruction[0] = self.POW
         for instruction in buffer_copy:
             for i in range(1, 3):
                 if instruction[i] == "ax":

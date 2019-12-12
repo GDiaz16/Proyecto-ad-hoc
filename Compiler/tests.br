@@ -1,9 +1,8 @@
-if x < x : {
-    a = 2;
-}elif y < y:{
-    b = 4;
-}elif z > z:{
-    c = 5;
-}else{
-    d = 6;
+x = 1;
+v = 2;
+r = 3;
+d = 4;
+if 0 < 10 && x > v || r<d:{
+
 }
+
