@@ -31,53 +31,66 @@ class CU_distributed:
     def DIV(self, rx, sx):
         rx[0] = self.ALU.divide(rx[0], sx[0])
 
-    def MOD(self,rx,sx):
-        rx[0] = self.ALU.mod(rx[0],sx[0])
+    def MOD(self, rx, sx):
+        rx[0] = self.ALU.mod(rx[0], sx[0])
 
-    def POW(self,rx,sx):
-        rx[0] = self.ALU.pow(rx[0],sx[0])
+    def POW(self, rx, sx):
+        rx[0] = self.ALU.pow(rx[0], sx[0])
 
     def MOV(self, rx, sx):
         register = [0]
         address = 0
+        number = 1.0
         if type(rx) == type(register):
-            #registro <-- registro
+            # registro <-- registro
             if type(sx) == type(register):
                 rx[0] = sx[0]
-            #registro <-- entero
-            elif type(sx) == type(address):
+            # registro <-- entero
+            elif type(sx) == type(number):
                 rx[0] = sx
         elif type(rx) == type(address):
             # memoria <-- registro
             if type(sx) == type(register):
-                self.SAVE(sx[0],rx)
+                self.SAVE(sx[0], rx)
             # memoria <-- entero
-            elif type(sx) == type(address):
-                self.SAVE(sx,rx)
+            elif type(sx) == type(number):
+                self.SAVE(sx, rx)
 
-    def LESS(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) < 0):
-            self.GOTO(label)
+    def LESS(self, rx, sx):
+        if self.ALU.substract(rx[0], sx[0]) < 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
-    def LEQ(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(sx[0], rx[0]) <= 0):
-            self.GOTO(label)
+    def LEQ(self, rx, sx):
+        if self.ALU.substract(sx[0], rx[0]) <= 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
-    def GREATER(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) > 0):
-            self.GOTO(label)
+    def GREATER(self, rx, sx):
+        if self.ALU.substract(rx[0], sx[0]) > 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
-    def GEQ(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) >= 0):
-            self.GOTO(label)
+    def GEQ(self, rx, sx):
+        if self.ALU.substract(rx[0], sx[0]) >= 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
-    def EQ(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) == 0):
-            self.GOTO(label)
+    def EQ(self, rx, sx):
+        if self.ALU.substract(rx[0], sx[0]) == 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
-    def NEQ(self, rx, sx, label):
-        if self.ALU.NOT(self.ALU.substract(rx[0], sx[0]) != 0):
-            self.GOTO(label)
+    def NEQ(self, rx, sx):
+        if self.ALU.substract(rx[0], sx[0]) != 0:
+            rx[0] = True
+        else:
+            rx[0] = False
 
     def END(self, sp=0, address=0):
         return "end"
@@ -88,11 +101,13 @@ class CU_distributed:
                 self.sp[0] = i
 
     def AND(self, rx, sx, label):
-        if self.ALU.AND(rx[0], sx[0]):
-            self.GOTO(label)
+        rx[0] = self.ALU.AND(rx[0], sx[0])
 
     def OR(self, rx, sx, label):
-        if self.ALU.OR(rx[0], sx[0]):
+        rx[0] = self.ALU.OR(rx[0], sx[0])
+
+    def IF(self, val, label):
+        if val[0]:
             self.GOTO(label)
 
     def PRINT(self, rx, sx=0):
@@ -102,7 +117,7 @@ class CU_distributed:
         rx[0] = input("RX-->")
 
     def SLICE(self, rx, sx, label, buffer):
-        thread = buffer[rx : sx + 1]
+        thread = buffer[rx: sx + 1]
         self.DS.thread(thread)
         self.GOTO(label)
 
@@ -133,6 +148,8 @@ class CU_distributed:
                 instruction[0] = self.GEQ
             elif instruction[0] == "EQ":
                 instruction[0] = self.EQ
+            elif instruction[0] == "NEQ":
+                instruction[0] = self.NEQ
             elif instruction[0] == "END":
                 instruction[0] = self.END
             elif instruction[0] == "GOTO":
@@ -151,6 +168,8 @@ class CU_distributed:
                 instruction[0] = self.MOD
             elif instruction[0] == "POW":
                 instruction[0] = self.POW
+            elif instruction[0] == "IF":
+                instruction[0] = self.IF
         for instruction in buffer_copy:
             for i in range(1, 3):
                 if instruction[i] == "ax":
@@ -164,46 +183,47 @@ class CU_distributed:
         return buffer_copy
 
     def execute(self, buffer_org):
-        #Buffer en formato de instrucciones
+        # Buffer en formato de instrucciones
         self.buffer = self.translate(buffer_org)
         buffer = self.buffer
         end = True
         # Ejecucion del programa.br
         try:
             while end != "end":
-                # Si el programa.br tiene sentencias de control, salta a la posicion que indica la etiqueta en la tercera posicion
-                if buffer[self.sp[0]][0] == self.LESS or \
-                        buffer[self.sp[0]][0] == self.LEQ or \
-                        buffer[self.sp[0]][0] == self.GREATER or \
-                        buffer[self.sp[0]][0] == self.GEQ or \
-                        buffer[self.sp[0]][0] == self.EQ or \
-                        buffer[self.sp[0]][0] == self.AND or \
-                        buffer[self.sp[0]][0] == self.OR:
+                # # Si el programa.br tiene sentencias de control, salta a la posicion que indica la etiqueta en la tercera posicion
+                # if buffer[self.sp[0]][0] == self.LESS or \
+                #         buffer[self.sp[0]][0] == self.LEQ or \
+                #         buffer[self.sp[0]][0] == self.GREATER or \
+                #         buffer[self.sp[0]][0] == self.GEQ or \
+                #         buffer[self.sp[0]][0] == self.EQ or \
+                #         buffer[self.sp[0]][0] == self.AND or \
+                #         buffer[self.sp[0]][0] == self.OR:
+                #
+                #     instruction = buffer[self.sp[0]][0]
+                #     rx = buffer[self.sp[0]][1]
+                #     sx = buffer[self.sp[0]][2]
+                #     label = buffer[self.sp[0]][3]
+                #     end = instruction(rx, sx, label)
 
-                    instruction = buffer[self.sp[0]][0]
-                    rx = buffer[self.sp[0]][1]
-                    sx = buffer[self.sp[0]][2]
-                    label = buffer[self.sp[0]][3]
-                    end = instruction(rx, sx, label)
                 # instruccion especial para threading
-                elif buffer[self.sp[0]][0] == self.SLICE:
-                    instruction = buffer[self.sp[0]][0]
+                if buffer[self.sp[0]][0] == self.SLICE:
+                    self.instruction = buffer[self.sp[0]][0]
                     rx = buffer[self.sp[0]][1]
                     sx = buffer[self.sp[0]][2]
                     label = buffer[self.sp[0]][3]
-                    end = instruction(rx, sx, label, buffer_org)
+                    end = self.instruction(rx, sx, label, buffer_org)
                 elif buffer[self.sp[0]][0] == "LABEL":
                     pass
                 else:
                     # Si no es una sentencia de control, solo ejecuta la instruccion
-                    instruction = buffer[self.sp[0]][0]
+                    self.instruction = buffer[self.sp[0]][0]
                     rx = buffer[self.sp[0]][1]
                     sx = buffer[self.sp[0]][2]
-                    end = instruction(rx, sx)
+                    end = self.instruction(rx, sx)
                 # Hacer correr el puntero una posicion hacia adelante
                 self.sp[0] = self.sp[0] + 1
         except:
-            print(f"Error de ejecucion en {self.DS.device.name}")
+            print(f"Error de ejecucion en {self.DS.device.name} "
+                  f"\nInstruccion :  {buffer_org[self.sp[0]]}\n")
 
 # CU().execution()
-

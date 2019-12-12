@@ -101,41 +101,46 @@ class Device:
             print(self.RAM.memory)
 
         elif kwargs["com"] == "execute":
-            #buffer = self.compiler.code
-
-            buffer = [
-                ["SLICE",1,13,"L1"],
-
-                ["MOV", 0, 0],
-                ["GOTO", "L2", ''],
-                ["LABEL", "L3", ''],
-                ["MOV", "bx", 1],
-                ["ADD", "ax", "bx"],
-                ["MOV", 0, "ax"],
-                ["LABEL", "L2", ''],
-                ["MOV", 1, 9],
-                ["LOAD", "ax", 0],
-                ["PRINT", "ax", ''],
-                ["LOAD", "bx", 1],
-                ["LEQ", "ax", "bx","L3"],
-                ["END", '', ''],
-
-                ["LABEL", "L1", ''],
-                ["MOV", 2, 0],
-                ["GOTO", "L4", ''],
-                ["LABEL", "L5", ''],
-                ["MOV", "bx", 1],
-                ["ADD", "ax", "bx"],
-                ["MOV", 2, "ax"],
-                ["LABEL", "L4", ''],
-                ["MOV", 3, 9],
-                ["LOAD", "ax", 2],
-                ["PRINT", "ax", ''],
-                ["LOAD", "bx", 3],
-                ["LEQ", "ax", "bx", "L5"],
-
-                ["END", '', '']
-            ]
+            buffer = self.compiler.compile()
+            #print(buffer)
+            # buffer = [
+            #     ["MOV",0,10.0],
+            #     ["END", '', '']
+            # ]
+            # print(buffer)
+            # buffer = [
+            #     ["SLICE",1,13,"L1"],
+            #
+            #     ["MOV", 0, 0],
+            #     ["GOTO", "L2", ''],
+            #     ["LABEL", "L3", ''],
+            #     ["MOV", "bx", 1],
+            #     ["ADD", "ax", "bx"],
+            #     ["MOV", 0, "ax"],
+            #     ["LABEL", "L2", ''],
+            #     ["MOV", 1, 9],
+            #     ["LOAD", "ax", 0],
+            #     ["PRINT", "ax", ''],
+            #     ["LOAD", "bx", 1],
+            #     ["LEQ", "ax", "bx","L3"],
+            #     ["END", '', ''],
+            #
+            #     ["LABEL", "L1", ''],
+            #     ["MOV", 2, 0],
+            #     ["GOTO", "L4", ''],
+            #     ["LABEL", "L5", ''],
+            #     ["MOV", "bx", 1],
+            #     ["ADD", "ax", "bx"],
+            #     ["MOV", 2, "ax"],
+            #     ["LABEL", "L4", ''],
+            #     ["MOV", 3, 9],
+            #     ["LOAD", "ax", 2],
+            #     ["PRINT", "ax", ''],
+            #     ["LOAD", "bx", 3],
+            #     ["LEQ", "ax", "bx", "L5"],
+            #
+            #     ["END", '', '']
+            # ]
             self.Distributed_System.execute(buffer)
 
     # Replicar un mensaje hasta que llegue a su destinatario

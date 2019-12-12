@@ -6,6 +6,7 @@ from Compiler.Code_generator import Code_generator as Generator
 from gen.brownieLexer import brownieLexer
 from gen.brownieParser import brownieParser
 
+
 class compiler:
     def __init__(self):
         stream = antlr4.InputStream(io.open("tests.br").read())
@@ -16,14 +17,12 @@ class compiler:
         parserTree = parser.start()
         visitor = Visitor()
         visitor.visit(parserTree)
-        instructions = visitor.instructions
-        symbols = visitor.symbols_table
-        generator = Generator(instructions,symbols)
-        self.code = generator.assembly
+        self.instructions = visitor.instructions
+        self.symbols = visitor.symbols_table
 
-compiler = compiler()
+    def compile(self):
+        generator = Generator(self.instructions, self.symbols)
+        code = generator.assembly
+        return code
 
-
-
-
-
+# compiler = compiler()

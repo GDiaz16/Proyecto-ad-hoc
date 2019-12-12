@@ -31,7 +31,6 @@ class Code_generator:
 
     def operations(self, inst):
         s = ["+", "-", "*", "/", "^", "%", ]
-        comp = []
         # En el caso en el que hayan variables
         if inst.i1 in self.symbols:
             # Caso a = 1
@@ -68,6 +67,8 @@ class Code_generator:
                 # Caso <tn> = numero op numero
                 n1 = float(inst.i2)
                 n2 = float(inst.i3)
+
+                #Operaciones aritmeticas
                 if inst.op == s[0]:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 + n2])
                 elif inst.op == s[1]:
@@ -81,6 +82,7 @@ class Code_generator:
                 elif inst.op == s[5]:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 % n2])
 
+                #Operaciones de comparacion
                 elif inst.op == "==":
                     self.assembly.append(["MOV", self.register(inst.i1), n1 == n2])
                 elif inst.op == "!=":
@@ -93,10 +95,6 @@ class Code_generator:
                     self.assembly.append(["MOV", self.register(inst.i1), n1 >= n2])
                 elif inst.op == "<=":
                     self.assembly.append(["MOV", self.register(inst.i1), n1 <= n2])
-
-
-
-
 
             except ValueError:
                 try:
@@ -236,8 +234,21 @@ class Code_generator:
                             self.assembly.append(["LOAD", "dx", self.symbols[asse[2]]])
                             asse[2] = "dx"
                             self.assembly.append(asse)
-                        # Mover el resultado al registro correspondiente
-                        self.assembly.append(["MOV", self.register(inst.i1), asse[1]])
+                        #En caso de tener un if
+                        if inst.i1 == "if":
+                            self.assembly.append(["IF", asse[1], inst.i3])
+
+                        # En caso de tener un goto
+                        elif inst.i1 == "goto":
+                            self.assembly.append(["GOTO", inst.i2, ""])
+
+                        #En caso de tener un label
+                        elif inst.i1 == "LABEL":
+                            self.assembly.append(["LABEL", inst.i2, ""])
+
+                        else:
+                            # Mover por defecto el resultado al registro correspondiente
+                            self.assembly.append(["MOV", self.register(inst.i1), asse[1]])
 
     def register(self, tx):
         if tx == "<t0>":
