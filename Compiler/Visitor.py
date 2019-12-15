@@ -189,9 +189,9 @@ class Visitor(brownieVisitor):
         inst = ins()
         self.add_count()#self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
-        inst.i2 = str(ctx.STRING())
+        inst.i2 = self.visit(ctx.text(0)).i1
         inst.op = str(ctx.PLUS())
-        inst.i3 = self.visit(ctx.text()).i1
+        inst.i3 = self.visit(ctx.text(1)).i1
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
         return inst
@@ -204,13 +204,13 @@ class Visitor(brownieVisitor):
         inst.i1 = str(ctx.STRING())
         return inst
 
-
     # Visit a parse tree produced by brownieParser#text3.
     def visitText3(self, ctx:brownieParser.Text3Context):
         inst = ins()
         inst.pos = len(self.instructions) - 1
         inst.i1 = str(ctx.VARIABLE())
         return inst
+
     # Visit a parse tree produced by brownieParser#call.
     def visitCall(self, ctx: brownieParser.CallContext):
         ret = ins()
@@ -601,6 +601,9 @@ class Visitor(brownieVisitor):
         inst.i2 = self.visit(ctx.exp()).i1
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
+
+        self.symbols_table[inst.i1] = 0
+
         return inst
 
     # Visit a parse tree produced by brownieParser#for_iterator.
@@ -634,6 +637,31 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#fun_sentence.
     def visitFun_sentence(self, ctx: brownieParser.Fun_sentenceContext):
         return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by brownieParser#print_.
+    def visitPrint_(self, ctx:brownieParser.Print_Context):
+        inst = ins()
+        inst.i1 = f"print"
+        inst.i2 = self.visit(ctx.print_value()).i1
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+
+    # Visit a parse tree produced by brownieParser#print_value.
+    def visitPrint_value(self, ctx:brownieParser.Print_valueContext):
+        try:
+            aux = self.visit(ctx.list_elements())
+            return aux
+        except AttributeError:
+            pass
+        # Auxiliar de retorno
+        aux = ins()
+        aux.i1 = str(ctx.getText())
+        return aux
+
+    # Visit a parse tree produced by brownieParser#procedure.
+    def visitProcedure(self, ctx:brownieParser.ProcedureContext):
+        return self.visitChildren(ctx)
+
 
     def label(self):
         label1 = ins()

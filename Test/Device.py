@@ -87,7 +87,6 @@ class Device:
         elif header == self.headers[8]:
             self.Distributed_System.execute(data)
 
-
     def command(self, **kwargs):
         if kwargs["com"] == "send":
             pack = Pack(header=self.headers[0], data=kwargs["message"], target=kwargs["target"])
@@ -102,8 +101,8 @@ class Device:
 
         elif kwargs["com"] == "execute":
             buffer = self.compiler.compile()
-            #print(buffer)
-            # buffer = [
+            # print(buffer)
+
             #     ["MOV",0,10.0],
             #     ["END", '', '']
             # ]

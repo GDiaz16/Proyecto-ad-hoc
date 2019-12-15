@@ -9,21 +9,22 @@ from gen.brownieParser import brownieParser
 
 class compiler:
     def __init__(self):
+        pass
+
+    def compile(self):
         stream = antlr4.InputStream(io.open("tests.br").read())
         lexer = brownieLexer(stream)
         tok_stream = antlr4.CommonTokenStream(lexer)
         parser = brownieParser(tok_stream)
 
         parserTree = parser.start()
-        visitor = Visitor()
-        visitor.visit(parserTree)
-        self.instructions = visitor.instructions
-        self.symbols = visitor.symbols_table
-
-    def compile(self):
+        self.visitor = Visitor()
+        self.visitor.visit(parserTree)
+        self.instructions = self.visitor.instructions
+        self.symbols = self.visitor.symbols_table
         generator = Generator(self.instructions, self.symbols)
         code = generator.assembly
         return code
 
-compiler = compiler()
-compiler.compile()
+#compiler = compiler()
+#compiler.compile()

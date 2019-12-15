@@ -1,3 +1,6 @@
+from copy import copy
+
+
 class instruction:
     def __init__(self):
         self.pos = 0
@@ -5,18 +8,25 @@ class instruction:
         self.i1 = ""
         self.i2 = ""
         self.op = ""
-        self.i3 = ""
-        #self.i4 = ""
-        #self.i5 = ""
+        self.i3 = "  "
+        self.result = ""
+
         self.array1 = False
         self.array2 = False
+        self.assembly = False
 
     def __str__(self):
         #PUSH t1
         #CALL t1
         #POP t1
         #LIST a
-        if self.i1 == "PUSH" or self.i1 == "CALL" or self.i1 == "POP" or self.i1 == "LIST":
+        #print a
+
+        if self.assembly:
+            inst = str(self.i1) + " " + str(self.i2) + " "  + str(self.i3)
+            return inst
+
+        if self.i1 == "PUSH" or self.i1 == "CALL" or self.i1 == "POP" or self.i1 == "LIST" or self.i1 == "print":
             inst = str(self.pos) + "\t: "+str(self.label)+"\t " + str(self.i1) + "  " + str(self.i2) + \
                    " " + str(self.op) + " " + str(self.i3)
             return inst
@@ -38,7 +48,7 @@ class instruction:
             inst = str(self.pos) + "\t: " + str(self.label) + "\t " + str(self.i1) + "  " + str(self.i2)
             return inst
 
-        # if x goto y
+        # if <tx> goto y
         # elif z goto w
         if self.i1 == "if" or self.i1 == "elif":
             inst = str(self.pos) + "\t: " + str(self.label) + "\t " + str(self.i1) + "  " + str(self.i2) \

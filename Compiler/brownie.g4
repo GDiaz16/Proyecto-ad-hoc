@@ -31,6 +31,9 @@ START : 'start';
 STOP : 'stop';
 MESSAGE : 'message';
 
+//Imprimir
+PRINT :'print';
+
 //Salto de linea
 //JUMPSPACE: '\n';
 
@@ -89,9 +92,9 @@ WHITESPACE : [ \t\n] -> skip;
 start : structure*  EOF;
 //comm : COMMENT;
 
-structure : function | sentence | call_sentence | process;
+structure : function | sentence | call_sentence | process | procedure;
 //Cualquier instruccion
-sentence : definition | conditional | call_sentence | cycle | concurrency | switch_ | break_ ;
+sentence : definition | conditional | print_ | call_sentence | cycle | concurrency | switch_ | break_ ;
 
 //Definicion de funciones
 function : FUNCTION VARIABLE OP_PARENTHESIS parameter? CL_PARENTHESIS fun_body;
@@ -111,7 +114,7 @@ assign :  VARIABLE ASSIGN exp #assign1| VARIABLE INCREMENT #assign2
         | VARIABLE DECREMENT #assign3 | VARIABLE ASSIGN list_elements #assign4
         | array_call ASSIGN exp #assign5 | VARIABLE ASSIGN text #assign6;
 
-text : STRING PLUS text #text1| STRING #text2 | VARIABLE #text3;
+text : text PLUS text #text1| STRING #text2 | VARIABLE #text3;
 
 //Array de objetos
 element : NUMBER #element1| VARIABLE #element2| STRING #element3| element ',' element #element4;
@@ -159,6 +162,7 @@ fun_body : OP_BRACE fun_sentence* CL_BRACE ;
 fun_sentence : sentence | RETURN exp SEMICOLON;
 
 //Concurrencia
+procedure : PROCESS body;
 process : PROCESS VARIABLE COLON MONITOR VARIABLE COLON CONNECTION VARIABLE dictionary body ;
 concurrency : loop | exec | start_process | stop | message;
 loop : LOOP call COLON MONITOR VARIABLE SEMICOLON ;
@@ -179,4 +183,8 @@ case_ : CASE case_value COLON sentence* ;
 default_: DEFAULT COLON sentence* ;
 case_value: NUMBER | STRING;
 break_ : BREAK SEMICOLON;
+
+//Print
+print_ : PRINT OP_PARENTHESIS print_value CL_PARENTHESIS SEMICOLON;
+print_value : VARIABLE | NUMBER | STRING | list_elements;
 

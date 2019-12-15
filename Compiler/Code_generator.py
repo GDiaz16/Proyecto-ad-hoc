@@ -1,3 +1,8 @@
+from copy import copy
+
+from Compiler.Instruction import instruction as Ins
+
+
 class Code_generator:
     def __init__(self, instructions, symbols):
         self.instructions = instructions
@@ -5,7 +10,9 @@ class Code_generator:
         self.symbols = symbols
         self.count_variables = 0
         self.global_variables()
+        #self.print_codes()
         self.translate()
+        self.format()
         self.print_codes()
 
     def print_codes(self):
@@ -14,14 +21,23 @@ class Code_generator:
         for ins in self.instructions:
             print(ins)
         print("\n")
-        for asse in self.assembly:
-            print(asse)
 
     def translate(self):
-        for inst in self.instructions:
-            self.operations(inst)
+        self.i = 0
+        while self.i < len(self.instructions):
+            self.transform(self.instructions[self.i], self.i)
+            self.i = self.i + 1
+        inst = Ins()
+        inst.i1 = "END"
+        inst.assembly = True
+        self.instructions.append(inst)
 
-        self.assembly.append(["END", '', ''])
+    def format(self):
+        for inst in self.instructions:
+            self.assembly.append([inst.i1, inst.i2, inst.i3])
+        #
+        # for asse in self.assembly:
+        #    print(asse)
 
     def global_variables(self):
         i = 0
@@ -29,272 +45,322 @@ class Code_generator:
             self.symbols[key] = i
             i = i + 1
 
-    def operations(self, inst):
-        s = ["+", "-", "*", "/", "^", "%", ]
-        # En el caso en el que hayan variables
-        if inst.i1 in self.symbols:
-            # Caso a = 1
+    def transform(self, inst, pos):
+        """
+        -Verificar que i1 no sea instruccion especial
+            i1 = [if, goto, LABEL, print, PUSH, CALL, POP, LIST]
+
+        -Cambiar los <tx> por registros nx
+        -Si la instruccion es numero op numero, enviar el resultado directo
+        -Si es numero op [registro/var], hacer un [mov nx numero] antes, pero no hacer un mov despues de
+            la operacion ya que no es necesario
+        -Si es [registro/var] op numero, hacer un [mov nx numero] antes y otro despues de la operacion
+        -Si es [registro/var] op [registro/var] se debe mover i2 al valor correspondiente i1 siempre que no
+            sea el mismo
+        -Si uno de los valores es una variable se debe anteponer la instruccion load
+        -Hacer asignaciones de registros a variables
+        -Si es un string se pasa a un registro, similar que con los numeros, pero no se procesa,
+            la unidad de control procesa y guarda la cadena sin las comillas
+        """
+        # i1 = [if, goto, LABEL, print, PUSH, CALL, POP, LIST]++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        # print(f"i = {self.i}")
+        # self.print_codes()
+        inst.result = self.register(inst.i1)
+        # En caso de tener un if
+        if inst.i1 == "if":
+            inst.assembly = True
+            inst.i1 = "IF"
+            inst.i2 = self.register(inst.i2)
+
+        # En caso de tener un goto
+        elif inst.i1 == "goto":
+            inst.assembly = True
+            inst.i1 = "GOTO"
+            inst.i2 = inst.i2
+
+        # En caso de tener un label
+        elif inst.i1 == "LABEL":
+            # self.assembly.append(["LABEL", inst.i2, ""])
+            inst.assembly = True
+            inst.i1 = "LABEL"
+            inst.i2 = inst.i2
+
+        # En caso de tener un print
+        elif inst.i1 == "print":
+            # Pasar a un registro y luego imprimir la cadena
+            inst2 = Ins()
+            inst2.i1 = "MOV"
+            inst2.i2 = "cx"
+            inst2.i3 = inst.i2
+            inst2.assembly = True
+            self.instructions.insert(self.i, inst2)
+
+            if inst2.i3 in self.symbols :
+                load = Ins()
+                load.i1 = "LOAD"
+                load.i2 = "dx"
+                load.i3 = self.symbols[inst2.i3]
+                load.assembly = True
+                self.instructions.insert(self.i, load)
+                inst2.i3 = load.i2
+                self.i = self.i + 1
+
+            inst.assembly = True
+            inst.i1 = "PRINT"
+            inst.i2 = inst2.i2
+
+        # i1 = [var, <tx>]
+        inst.i1 = self.register(inst.i1)
+
+        # i2 = [var, number, "string", <tx>, L1]++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        inst.i2 = self.register(inst.i2)
+        # i3 = [var, number, "string", <tx>]++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        inst.i3 = self.register(inst.i3)
+
+        # op = [+, -, *, /, ^, %, <, >, <=, >=, ==, !=, &&, ||]+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        flag = False
+        n1_flag = False
+        n2_flag = False
+        try:
+            n1 = float(inst.i2)
+            n2 = float(inst.i3)
+            inst.i2 = self.register(inst.i1)
+            flag = True
+        except:
             try:
-                n1 = float(inst.i2)
-                self.assembly.append(["MOV", self.symbols[inst.i1], n1])
-
-            # Caso a = <tx> | a = "string" | a++ | a--
-            except ValueError:
-                if inst.i2 in self.symbols:
-                    # Caso a++  --->  a = a + 1
-                    if inst.op == s[0]:
-                        asse = ["ADD", inst.i1, float(inst.i3)]
-                    # Caso a--  --->  a = a - 1
-                    elif inst.op == s[1]:
-                        asse = ["DEC", inst.i1, float(inst.i3)]
-
-                    # Cargar la variable
-                    self.assembly.append(["LOAD", "dx", self.symbols[asse[1]]])
-                    # Poner el 1 en un registro
-                    n1 = float(inst.i3)
-                    self.assembly.append(["MOV", "cx", n1])
-                    # Reemplazar en la instruccion de suma
-                    asse[1] = "dx"
-                    asse[2] = "cx"
-                    self.assembly.append(asse)
-                    # Mover el resultado a memoria de nuevo
-                    self.assembly.append(["MOV", self.symbols[inst.i1], "dx"])
-
-                else:
-                    # Caso a = <tx> o a = "string"
-                    self.assembly.append(["MOV", self.symbols[inst.i1], self.register(inst.i2)])
-
-        else:  # elif inst.op in s:
-            # Caso <tn> = numero op numero
-            try:
-                n1 = float(inst.i2)
-                n2 = float(inst.i3)
-
-                # Operaciones aritmeticas
-                if inst.op == s[0]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 + n2])
-                elif inst.op == s[1]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 - n2])
-                elif inst.op == s[2]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 * n2])
-                elif inst.op == s[3]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 / n2])
-                elif inst.op == s[4]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 ** n2])
-                elif inst.op == s[5]:
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 % n2])
-
-                # Operaciones de comparacion
-                elif inst.op == "==":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 == n2])
-                elif inst.op == "!=":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 != n2])
-                elif inst.op == ">":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 > n2])
-                elif inst.op == "<":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 < n2])
-                elif inst.op == ">=":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 >= n2])
-                elif inst.op == "<=":
-                    self.assembly.append(["MOV", self.register(inst.i1), n1 <= n2])
-
-            except ValueError:
-                # Caso <tn> = numero op <tx>
-                try:
-                    # Ya que el resultado se guarda en el primer registro no es necesario colocar un move
-                    # al final
+                if inst.op != "":
                     n1 = float(inst.i2)
-                    self.assembly.append(["MOV", self.register(inst.i1), n1])
-                    # Se especifica el LOAD para evitar que las direcciones siendo enteros se malinterpreten
-                    if inst.i1 != "LOAD":
-                        # Instrucciones aritmeticas
-                        if inst.op == s[0]:
-                            self.assembly.append(["ADD", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == s[1]:
-                            self.assembly.append(["DEC", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == s[2]:
-                            self.assembly.append(["MUL", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == s[3]:
-                            self.assembly.append(["DIV", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == s[4]:
-                            self.assembly.append(["POW", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == s[5]:
-                            self.assembly.append(["MOD", self.register(inst.i1), self.register(inst.i3)])
+                    inst2 = Ins()
+                    inst2.i1 = "MOV"
+                    inst2.i2 = inst.result
+                    inst2.i3 = n1
+                    inst2.assembly = True
+                    self.instructions.insert(self.i, inst2)
+                    inst.i2 = inst2.i2
+                    self.i = self.i + 1
+                    n1_flag = True
+                elif inst.op == "":
+                    n1 = float(inst.i2)
+                    inst.assembly = True
+                    inst.i2 = inst.i1
+                    inst.i1 = "MOV"
+                    inst.i3 = n1
+                    #print(inst)
 
-                        # Instrucciones de comparacion
-                        elif inst.op == "==":
-                            self.assembly.append(["EQ", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == "!=":
-                            self.assembly.append(["NEQ", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == ">":
-                            self.assembly.append(["GREATER", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == "<":
-                            self.assembly.append(["LESS", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == ">=":
-                            self.assembly.append(["GEQ", self.register(inst.i1), self.register(inst.i3)])
-                        elif inst.op == "<=":
-                            self.assembly.append(["LEQ", self.register(inst.i1), self.register(inst.i3)])
-
-                    # En caso de que <tx> resulte ser una variable
-                    asse = self.assembly[len(self.assembly) - 1]
-                    if asse[2] in self.symbols:
-                        self.assembly.pop()
-                        self.assembly.append(["LOAD", "dx", self.symbols[asse[2]]])
-                        asse[2] = "dx"
-                        self.assembly.append(asse)
+            except:
+                try:
+                    n2 = float(inst.i3)
+                    inst3 = Ins()
+                    inst3.i1 = "MOV"
+                    inst3.i2 = "dx"
+                    inst3.i3 = n2
+                    inst3.assembly = True
+                    self.instructions.insert(self.i, inst3)
+                    inst.i3 = inst3.i2
+                    self.i = self.i + 1
+                    n2_flag = True
                 except:
-                    # Caso <tn> = <tx> op numero
-                    try:
-                        n1 = float(inst.i3)
-                        self.assembly.append(["MOV", self.register(inst.i1), n1])
+                    pass
 
-                        # Instrucciones aritmeticas
-                        if inst.op == s[0]:
-                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == s[1]:
-                            self.assembly.append(["DEC", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == s[2]:
-                            self.assembly.append(["MUL", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == s[3]:
-                            self.assembly.append(["DIV", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == s[4]:
-                            self.assembly.append(["POW", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == s[5]:
-                            self.assembly.append(["MOD", self.register(inst.i2), self.register(inst.i1)])
+        # Si los dos valores son numeros
+        if flag:
+            # Operaciones aritmeticas
+            if inst.op == "+":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 + n2
+            elif inst.op == "-":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 - n2
+            elif inst.op == "*":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 * n2
+            elif inst.op == "/":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 / n2
+            elif inst.op == "^":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 ** n2
+            elif inst.op == "%":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 % n2
 
-                        # Instrucciones de comparacion
-                        elif inst.op == "==":
-                            self.assembly.append(["EQ", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == "!=":
-                            self.assembly.append(["NEQ", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == ">":
-                            self.assembly.append(["GREATER", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == "<":
-                            self.assembly.append(["LESS", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == ">=":
-                            self.assembly.append(["GEQ", self.register(inst.i2), self.register(inst.i1)])
-                        elif inst.op == "<=":
-                            self.assembly.append(["LEQ", self.register(inst.i2), self.register(inst.i1)])
+            # Operaciones de comparacion
+            elif inst.op == "==":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 == n2
+            elif inst.op == "!=":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 != n2
+            elif inst.op == ">":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 > n2
+            elif inst.op == "<":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 < n2
+            elif inst.op == ">=":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 >= n2
+            elif inst.op == "<=":
+                inst.assembly = True
+                inst.i1 = "MOV"
+                inst.i3 = n1 <= n2
 
-                        # En caso de que <tx> resulte ser una variable
-                        asse = self.assembly[len(self.assembly) - 1]
-                        if asse[1] in self.symbols:
-                            self.assembly.pop()
-                            self.assembly.append(["LOAD", "dx", self.symbols[asse[1]]])
-                            asse[1] = "dx"
-                            self.assembly.append(asse)
 
-                        # Mover el resultado al registro correspondiente
-                        self.assembly.append(["MOV", self.register(inst.i1), "dx"])
+        # Si uno o ninguno de los dos valores no es un numero
+        else:
+            # Operaciones aritmeticas
+            if inst.op == "+":
+                inst.assembly = True
+                inst.i1 = "ADD"
 
-                    # Caso <tn> = <tx> op <ty>
-                    except:
-                        # Caso <tn> = "string" + <tx>
-                        if inst.i2[0] == '"' and inst.i3[0:2] == "<t":
-                            # Quitar las comillas del texto
-                            inst.i2 = inst.i2[1:-1]
-                            #Pasar a un registro y luego concatenar las cadenas
-                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2])
-                            self.assembly.append(["ADD", self.register(inst.i1), self.register(inst.i3)])
+            elif inst.op == "-":
+                inst.assembly = True
+                inst.i1 = "DEC"
 
-                        # Caso <tn> = <tx> + "string"
-                        elif inst.i2[0:2] == "<t" and inst.i3[0] == '"':
-                            # Quitar las comillas del texto
-                            inst.i2 = inst.i2[1:-1]
-                            # Pasar a un registro y luego concatenar las cadenas
-                            self.assembly.append(["MOV", self.register(inst.i1), inst.i3])
-                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i1)])
+            elif inst.op == "*":
+                inst.assembly = True
+                inst.i1 = "MUL"
 
-                        # Caso <tn> = "string" + var
-                        elif inst.i2[0] == '"' and inst.i3 in self.symbols:
-                            # Quitar las comillas del texto
-                            inst.i2 = inst.i2[1:-1]
-                            #Pasar a un registro y luego concatenar las cadenas
-                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2])
-                            self.assembly.append(["ADD", self.register(inst.i1), self.register(inst.i3)])
+            elif inst.op == "/":
+                inst.assembly = True
+                inst.i1 = "DIV"
 
-                        # Caso <tn> = var + "string"
-                        elif inst.i2 in self.symbols and inst.i3[0] == '"':
-                            # Quitar las comillas del texto
-                            inst.i2 = inst.i2[1:-1]
-                            # Pasar a un registro y luego concatenar las cadenas
-                            self.assembly.append(["MOV", self.register(inst.i1), inst.i3])
-                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i1)])
+            elif inst.op == "^":
+                inst.assembly = True
+                inst.i1 = "POW"
 
-                        # Caso <tn> = "string" + "string"
-                        elif inst.i2[0] == '"' and inst.i3[0] == '"':
-                            inst.i2 = inst.i2[1:-1]
-                            inst.i3 = inst.i3[1:-1]
-                            self.assembly.append(["MOV", self.register(inst.i1), inst.i2 + inst.i3])
+            elif inst.op == "%":
+                inst.assembly = True
+                inst.i1 = "MOD"
 
-                        # Operaciones aritmeticas
-                        elif inst.op == s[0]:
-                            self.assembly.append(["ADD", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == s[1]:
-                            self.assembly.append(["DEC", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == s[2]:
-                            self.assembly.append(["MUL", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == s[3]:
-                            self.assembly.append(["DIV", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == s[4]:
-                            self.assembly.append(["POW", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == s[5]:
-                            self.assembly.append(["MOD", self.register(inst.i2), self.register(inst.i3)])
 
-                        # Operaciones logicas
-                        elif inst.op == "&&":
-                            self.assembly.append(["AND", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == "||":
-                            self.assembly.append(["OR", self.register(inst.i2), self.register(inst.i3)])
+            # Operaciones logicas
+            elif inst.op == "&&":
+                inst.assembly = True
+                inst.i1 = "AND"
 
-                        # Operaciones de comparacion
-                        elif inst.op == "==":
-                            self.assembly.append(["EQ", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == "!=":
-                            self.assembly.append(["NEQ", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == ">":
-                            self.assembly.append(["GREATER", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == "<":
-                            self.assembly.append(["LESS", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == ">=":
-                            self.assembly.append(["GEQ", self.register(inst.i2), self.register(inst.i3)])
-                        elif inst.op == "<=":
-                            self.assembly.append(["LEQ", self.register(inst.i2), self.register(inst.i3)])
+            elif inst.op == "||":
+                inst.assembly = True
+                inst.i1 = "OR"
 
-                        # En caso de que <tx> o <ty> sean variables
-                        asse = self.assembly[len(self.assembly) - 1]
-                        # Leer la primera variable
-                        if asse[1] in self.symbols:
-                            self.assembly.pop()
-                            self.assembly.append(["LOAD", "cx", self.symbols[asse[1]]])
-                            asse[1] = "cx"
-                            self.assembly.append(asse)
-                        # Leer la segunda variable
-                        asse = self.assembly[len(self.assembly) - 1]
-                        if asse[2] in self.symbols:
-                            self.assembly.pop()
-                            self.assembly.append(["LOAD", "dx", self.symbols[asse[2]]])
-                            asse[2] = "dx"
-                            self.assembly.append(asse)
-                        # En caso de tener un if
-                        if inst.i1 == "if":
-                            self.assembly.append(["IF", asse[1], inst.i3])
 
-                        # En caso de tener un goto
-                        elif inst.i1 == "goto":
-                            self.assembly.append(["GOTO", inst.i2, ""])
+            # Operaciones de comparacion
+            elif inst.op == "==":
+                inst.assembly = True
+                inst.i1 = "EQ"
 
-                        # En caso de tener un label
-                        elif inst.i1 == "LABEL":
-                            self.assembly.append(["LABEL", inst.i2, ""])
+            elif inst.op == "!=":
+                inst.assembly = True
+                inst.i1 = "NEQ"
 
-                        else:
-                            # Mover por defecto el resultado al registro correspondiente
-                            r1 = self.register(inst.i1)
-                            r2 = asse[1]
-                            #Mover si los registros son diferentes
-                            if r1 != r2:
-                                self.assembly.append(["MOV", r1, r2])
+            elif inst.op == ">":
+                inst.assembly = True
+                inst.i1 = "GREATER"
+
+            elif inst.op == "<":
+                inst.assembly = True
+                inst.i1 = "LESS"
+
+            elif inst.op == ">=":
+                inst.assembly = True
+                inst.i1 = "GEQ"
+
+            elif inst.op == "<=":
+                inst.assembly = True
+                inst.i1 = "LEQ"
+
+        special = ["if", "IF", "GOTO", "PRINT", "goto", "LABEL", "print", "PUSH", "CALL", "POP", "LIST"]
+
+        # Si hay una asignacion de registro a variable
+        if inst.op == "" and inst.i1 not in special and type(inst.i3) != type(0.0):
+            inst.i1 = "MOV"
+            inst.i3 = inst.i2
+            inst.i2 = inst.result
+            inst.assembly = True
+            #print(inst)
+
+        if type(inst.i2) == type("") and type(inst.i3) == type(""):
+            # Si el primer operando es un string
+            if inst.i2[0] == '"':
+                inst3 = Ins()
+                inst3.i1 = "MOV"
+                inst3.i2 = "cx"
+                inst3.i3 = inst.i2
+                inst3.assembly = True
+                self.instructions.insert(self.i, inst3)
+                inst.i2 = inst3.i2
+                self.i = self.i + 1
+            # Si el segundo operando es un string
+            if inst.i3[0] == '"':
+                inst3 = Ins()
+                inst3.i1 = "MOV"
+                inst3.i2 = "dx"
+                inst3.i3 = inst.i3
+                inst3.assembly = True
+                self.instructions.insert(self.i, inst3)
+                inst.i3 = inst3.i2
+                self.i = self.i + 1
+        # Si el primer operando es una variable, leerla de memoria
+        if inst.i1 != "MOV" and inst.i2 in self.symbols:
+            load = Ins()
+            load.i1 = "LOAD"
+            load.i2 = "cx"
+            load.i3 = self.symbols[inst.i2]
+            load.assembly = True
+            self.instructions.insert(self.i, load)
+            inst.i2 = load.i2
+            self.i = self.i + 1
+
+        # Si el segundo operando es una variable, leerla de memoria
+        if  inst.i3 in self.symbols:
+            load = Ins()
+            load.i1 = "LOAD"
+            load.i2 = "dx"
+            load.i3 = self.symbols[inst.i3]
+            load.assembly = True
+            self.instructions.insert(self.i, load)
+            inst.i3 = load.i2
+            self.i = self.i + 1
+
+        # Si es asignacion de variable a varible directamente
+        if inst.i1 == "MOV" and inst.i3 in self.symbols:
+            load = Ins()
+            load.i1 = "LOAD"
+            load.i2 = "dx"
+            load.i3 = self.symbols[inst.i3]
+            load.assembly = True
+            self.instructions.insert(self.i, load)
+            inst.i3 = load.i2
+            self.i = self.i + 1
+
+        # Si es un asignacion de memoria
+        if inst.i1 == "MOV" and inst.i2 in self.symbols:
+            inst.i2 = self.symbols[inst.i2]
+
+        mov = Ins()
+        # Mover el resultado al registro correspondiente
+        if n2_flag or inst.op != "" and inst.result != inst.i2 and inst.i1 not in special:
+            mov.i1 = "MOV"
+            mov.i2 = inst.result
+            mov.i3 = inst.i2
+            mov.assembly = True
+            self.instructions.insert(self.i + 1, mov)
+            self.i = self.i + 1
+
+            if mov.i2 in self.symbols :
+                mov.i2 = self.symbols[mov.i2]
+
 
     def register(self, tx):
         if tx == "<t0>":

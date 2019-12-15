@@ -104,9 +104,12 @@ class CU_distributed:
         return "end"
 
     def GOTO(self, label, rx=0):
+        #print(f"sp {self.sp[0]}")
         for i in range(len(self.buffer)):
-            if self.buffer[i][1] == label:
+            if self.buffer[i][0] == "LABEL" and self.buffer[i][1] == label:
                 self.sp[0] = i
+                break
+        #print(f"sp1 {self.sp[0]}")
 
     def AND(self, rx, sx, label):
         rx[0] = self.ALU.AND(rx[0], sx[0])
@@ -192,6 +195,7 @@ class CU_distributed:
 
     def execute(self, buffer_org):
         # Buffer en formato de instrucciones
+        self.sp[0] = 0
         self.buffer = self.translate(buffer_org)
         buffer = self.buffer
         end = True

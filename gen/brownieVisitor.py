@@ -114,6 +114,11 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by brownieParser#text3.
+    def visitText3(self, ctx:brownieParser.Text3Context):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by brownieParser#text1.
     def visitText1(self, ctx:brownieParser.Text1Context):
         return self.visitChildren(ctx)
@@ -121,11 +126,6 @@ class brownieVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by brownieParser#text2.
     def visitText2(self, ctx:brownieParser.Text2Context):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by brownieParser#text3.
-    def visitText3(self, ctx:brownieParser.Text3Context):
         return self.visitChildren(ctx)
 
 
@@ -324,6 +324,11 @@ class brownieVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by brownieParser#procedure.
+    def visitProcedure(self, ctx:brownieParser.ProcedureContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by brownieParser#process.
     def visitProcess(self, ctx:brownieParser.ProcessContext):
         return self.visitChildren(ctx)
@@ -401,6 +406,16 @@ class brownieVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by brownieParser#break_.
     def visitBreak_(self, ctx:brownieParser.Break_Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#print_.
+    def visitPrint_(self, ctx:brownieParser.Print_Context):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by brownieParser#print_value.
+    def visitPrint_value(self, ctx:brownieParser.Print_valueContext):
         return self.visitChildren(ctx)
 
 
