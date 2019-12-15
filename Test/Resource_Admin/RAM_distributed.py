@@ -3,7 +3,7 @@ class RAM_distributed:
         self.memory = {}
         self.count = 0
 
-
     def save(self, data, address):
         n = address % 6 + 1
         device = "N"+ str(n)
+

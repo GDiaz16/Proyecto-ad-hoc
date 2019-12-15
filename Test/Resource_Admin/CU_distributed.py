@@ -127,10 +127,25 @@ class CU_distributed:
     def INPUT(self, rx, sx=0):
         rx[0] = input("RX-->")
 
-    def SLICE(self, rx, sx, label, buffer):
-        thread = buffer[rx: sx + 1]
+    # def SLICE(self, rx, sx, label, buffer):
+    #     thread = buffer[rx: sx + 1]
+    #     self.DS.thread(thread)
+    #     self.GOTO(label)
+
+    def SLICE(self, label1, label2, buffer):
+        start = 0
+        end = 0
+        for i in range(len(buffer)):
+            if buffer[i][0] == "LABEL" and buffer[i][1] == label1:
+                start = i
+            if buffer[i][0] == "LABEL" and buffer[i][1] == label2:
+                end = i
+        #print(f"{start}   {end}")
+        thread = buffer[start: end + 1]
+        thread.append(["END", '', ''])
         self.DS.thread(thread)
-        self.GOTO(label)
+        self.GOTO(label2)
+
 
     def translate(self, buffer):
         buffer_copy = copy.deepcopy(buffer)
@@ -218,12 +233,13 @@ class CU_distributed:
                 #     end = instruction(rx, sx, label)
 
                 # instruccion especial para threading
+                #print(f"sp {self.sp[0]}")
                 if buffer[self.sp[0]][0] == self.SLICE:
                     self.instruction = buffer[self.sp[0]][0]
-                    rx = buffer[self.sp[0]][1]
-                    sx = buffer[self.sp[0]][2]
-                    label = buffer[self.sp[0]][3]
-                    end = self.instruction(rx, sx, label, buffer_org)
+                    label1 = buffer[self.sp[0]][1]
+                    label2 = buffer[self.sp[0]][2]
+                    #label = buffer[self.sp[0]][3]
+                    end = self.instruction(label1, label2, buffer_org)
                 elif buffer[self.sp[0]][0] == "LABEL":
                     pass
                 else:

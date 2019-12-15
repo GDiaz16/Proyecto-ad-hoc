@@ -24,6 +24,7 @@ class Network:
     def start(self):
         self.devs["D1"].command(com="ram")
 
+
     def my_graph(self):
         c1 = Connection(self.device1,self.device2)
         c2 = Connection(self.device1, self.device3)

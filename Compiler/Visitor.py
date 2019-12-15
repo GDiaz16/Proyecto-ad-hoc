@@ -16,14 +16,13 @@ class Visitor(brownieVisitor):
     def visitStart(self, ctx: brownieParser.StartContext):
         self.visitChildren(ctx)
 
-
     def visitDefinition(self, ctx: brownieParser.DefinitionContext):
         return self.visit(ctx.assign())
 
     # Visit a parse tree produced by brownieParser#assign1.
     def visitAssign1(self, ctx: brownieParser.Assign1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = str(ctx.VARIABLE())
         inst.i2 = self.visit(ctx.exp()).i1
         self.instructions.append(inst)
@@ -37,7 +36,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#assign2.
     def visitAssign2(self, ctx: brownieParser.Assign2Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = str(ctx.VARIABLE())
         inst.i2 = str(ctx.VARIABLE())
         inst.op = '+'
@@ -49,7 +48,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#assign3.
     def visitAssign3(self, ctx: brownieParser.Assign3Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = str(ctx.VARIABLE())
         inst.i2 = str(ctx.VARIABLE())
         inst.op = '-'
@@ -61,7 +60,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#assign4.
     def visitAssign4(self, ctx: brownieParser.Assign4Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = "LIST"
         inst.i2 = str(ctx.VARIABLE())
         self.instructions.append(inst)
@@ -85,7 +84,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#element1.
     def visitElement1(self, ctx: brownieParser.Element1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.array1 = True
         inst.i3 = str(ctx.NUMBER())
         self.instructions.append(inst)
@@ -94,7 +93,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#element2.
     def visitElement2(self, ctx: brownieParser.Element2Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.array1 = True
         inst.i3 = str(ctx.VARIABLE())
         self.instructions.append(inst)
@@ -103,7 +102,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#element3.
     def visitElement3(self, ctx: brownieParser.Element3Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.array1 = True
         inst.i3 = str(ctx.STRING())
         self.instructions.append(inst)
@@ -123,7 +122,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#exp1.
     def visitExp1(self, ctx: brownieParser.Exp1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = self.visit(ctx.exp()).i1
         inst.op = str(self.visit(ctx.ar_operator()))
@@ -135,7 +134,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#term1.
     def visitTerm1(self, ctx: brownieParser.Term1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = self.visit(ctx.ar_value()).i1
         inst.op = str(self.visit(ctx.prior_operator()))
@@ -171,9 +170,9 @@ class Visitor(brownieVisitor):
         return str(ctx.getText())
 
     # Visit a parse tree produced by brownieParser#assign6.
-    def visitAssign6(self, ctx:brownieParser.Assign6Context):
+    def visitAssign6(self, ctx: brownieParser.Assign6Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = str(ctx.VARIABLE())
         inst.i2 = self.visit(ctx.text()).i1
         self.instructions.append(inst)
@@ -185,9 +184,9 @@ class Visitor(brownieVisitor):
         return inst
 
     # Visit a parse tree produced by brownieParser#text1.
-    def visitText1(self, ctx:brownieParser.Text1Context):
+    def visitText1(self, ctx: brownieParser.Text1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = self.visit(ctx.text(0)).i1
         inst.op = str(ctx.PLUS())
@@ -196,16 +195,15 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
         return inst
 
-
     # Visit a parse tree produced by brownieParser#text2.
-    def visitText2(self, ctx:brownieParser.Text2Context):
+    def visitText2(self, ctx: brownieParser.Text2Context):
         inst = ins()
         inst.pos = len(self.instructions) - 1
         inst.i1 = str(ctx.STRING())
         return inst
 
     # Visit a parse tree produced by brownieParser#text3.
-    def visitText3(self, ctx:brownieParser.Text3Context):
+    def visitText3(self, ctx: brownieParser.Text3Context):
         inst = ins()
         inst.pos = len(self.instructions) - 1
         inst.i1 = str(ctx.VARIABLE())
@@ -220,13 +218,13 @@ class Visitor(brownieVisitor):
         # Asignar direccion de retorno
         self.instructions.append(ret)
         ret.pos = len(self.instructions) - 1
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         ret.i1 = f"<t{self.count}>"
 
         # Apilar la direccion de retorno
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
-        self.add_count()# #self.count = self.count + 1
+        self.add_count()  # #self.count = self.count + 1
         inst.i1 = f"PUSH"
         inst.i2 = ret.i1
 
@@ -236,7 +234,7 @@ class Visitor(brownieVisitor):
         # Llamada a la funcion
         self.instructions.append(call)
         call.pos = len(self.instructions) - 1
-        self.add_count()# #self.count = self.count + 1
+        self.add_count()  # #self.count = self.count + 1
         call.i1 = f"CALL"
         call.i2 = str(ctx.VARIABLE())
 
@@ -247,7 +245,7 @@ class Visitor(brownieVisitor):
         pop_ = ins()
         self.instructions.append(pop_)
         pop_.pos = len(self.instructions) - 1
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         pop_.i1 = f"POP"
         pop_.i2 = f"<t{self.count}>"
 
@@ -295,7 +293,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#array_call.
     def visitArray_call(self, ctx: brownieParser.Array_callContext):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = str(ctx.VARIABLE())
         inst.i3 = str(self.visit(ctx.ar_value()).i1)
@@ -389,7 +387,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#other_condition1.
     def visitOther_condition1(self, ctx: brownieParser.Other_condition1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = self.visit(ctx.com_value()).i1
         inst.op = str(self.visit(ctx.comparator()))
@@ -401,7 +399,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#condition1.
     def visitCondition1(self, ctx: brownieParser.Condition1Context):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = f"<t{self.count}>"
         inst.i2 = self.visit(ctx.condition()).i1
         inst.op = str(self.visit(ctx.logic()))
@@ -411,11 +409,10 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
         return inst
 
-
     # Visit a parse tree produced by brownieParser#other_cond.
-    def visitOther_cond(self, ctx:brownieParser.Other_condContext):
+    def visitOther_cond(self, ctx: brownieParser.Other_condContext):
         inst = ins()
-        #Si hay un not
+        # Si hay un not
         try:
             self.visit(ctx.NOT())
             self.add_count()  # self.count = self.count + 1
@@ -425,7 +422,7 @@ class Visitor(brownieVisitor):
             self.instructions.append(inst)
             inst.pos = len(self.instructions) - 1
             return inst
-        #Si no hay not
+        # Si no hay not
         except:
             return self.visit(ctx.other_condition())
 
@@ -596,7 +593,7 @@ class Visitor(brownieVisitor):
     # Visit a parse tree produced by brownieParser#for_definition.
     def visitFor_definition(self, ctx: brownieParser.For_definitionContext):
         inst = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         inst.i1 = str(ctx.VARIABLE())
         inst.i2 = self.visit(ctx.exp()).i1
         self.instructions.append(inst)
@@ -620,26 +617,67 @@ class Visitor(brownieVisitor):
 
     # Visit a parse tree produced by brownieParser#function.
     def visitFunction(self, ctx: brownieParser.FunctionContext):
-        return self.visitChildren(ctx)
+        # Ignorar la funcion hasta que se haga el llamado
+        #goto = self.goto("")
 
+        #Asignar la funcion a la tabla de simbolos
+        self.symbols_table[str(ctx.VARIABLE())] = 0
+
+        # Etiqueta para saber que es una funcion
+        start = self.label(label= str(ctx.VARIABLE()))
+        start.i1 = "<fun>"
+        # Parametros
+        self.visit(ctx.parameter())
+
+        # Body
+        L2 = self.visit(ctx.fun_body())
+        L2.i1 = "<EndFun>"
+        L2.i2 =str(ctx.VARIABLE())
+        # Actualizar goto
+        #goto.i2 = L2.i2
+
+    # Visit a parse tree produced by brownieParser#fun_sentence2.
+    def visitFun_sentence2(self, ctx:brownieParser.Fun_sentence2Context):
+        inst = ins()
+        inst.i1 = f"PUSH"
+        inst.i2 = self.visit(ctx.exp()).i1
+
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return  inst
     # Visit a parse tree produced by brownieParser#parameter2.
     def visitParameter2(self, ctx: brownieParser.Parameter2Context):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by brownieParser#parameter1.
     def visitParameter1(self, ctx: brownieParser.Parameter1Context):
-        return self.visitChildren(ctx)
+        inst = ins()
+        inst.i1 = f"POP"
+        inst.i2 = str(ctx.VARIABLE())
+
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
+        return  inst
 
     # Visit a parse tree produced by brownieParser#fun_body.
     def visitFun_body(self, ctx: brownieParser.Fun_bodyContext):
-        return self.visitChildren(ctx)
+        # Inicio de body
+        #l1 = self.label()
+
+        # Contenido
+        self.visitChildren(ctx)
+
+        # Fin de body
+        l2 = self.label()
+
+        return l2
 
     # Visit a parse tree produced by brownieParser#fun_sentence.
     def visitFun_sentence(self, ctx: brownieParser.Fun_sentenceContext):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by brownieParser#print_.
-    def visitPrint_(self, ctx:brownieParser.Print_Context):
+    def visitPrint_(self, ctx: brownieParser.Print_Context):
         inst = ins()
         inst.i1 = f"print"
         inst.i2 = self.visit(ctx.print_value()).i1
@@ -647,7 +685,7 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
 
     # Visit a parse tree produced by brownieParser#print_value.
-    def visitPrint_value(self, ctx:brownieParser.Print_valueContext):
+    def visitPrint_value(self, ctx: brownieParser.Print_valueContext):
         try:
             aux = self.visit(ctx.list_elements())
             return aux
@@ -659,34 +697,41 @@ class Visitor(brownieVisitor):
         return aux
 
     # Visit a parse tree produced by brownieParser#procedure.
-    def visitProcedure(self, ctx:brownieParser.ProcedureContext):
-        return self.visitChildren(ctx)
+    def visitProcedure(self, ctx: brownieParser.ProcedureContext):
+        inst = ins()
+        inst.i1 = "SLICE"
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
 
+        L1, L2 = self.visit(ctx.body())
 
-    def label(self):
+        inst.i2 = L1.i2
+        inst.i3 = L2.i2
+
+    def label(self, label=""):
         label1 = ins()
-        self.add_count()#self.count = self.count + 1
+        self.add_count()  # self.count = self.count + 1
         label1.i1 = f"LABEL"
-        label1.i2 = f"L{self.label_count}"
+        if label != "":
+            label1.i2 = label
+        else:
+            label1.i2 = f"<L{self.label_count}>"
+            self.label_count = self.label_count + 1
         self.instructions.append(label1)
         label1.pos = len(self.instructions) - 1
-
-        # self.instructions[len(self.instructions)-1].label = f"L{self.label_count}"
-        self.label_count = self.label_count + 1
         return label1
 
     def goto(self, label):
-        label1 = ins()
-        self.add_count()#self.count = self.count + 1
-        label1.i1 = f"goto"
-        label1.i2 = label
-        self.instructions.append(label1)
-        label1.pos = len(self.instructions) - 1
-        return label1
+        goto = ins()
+        self.add_count()  # self.count = self.count + 1
+        goto.i1 = f"goto"
+        goto.i2 = label
+        self.instructions.append(goto)
+        goto.pos = len(self.instructions) - 1
+        return goto
 
     def add_count(self):
         if self.count < 1:
             self.count = self.count + 1
         else:
             self.count = 0
-

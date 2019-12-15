@@ -1,24 +1,14 @@
-x = 0;
-/*while x < 10:{
-    print(x);
-    x++;
-}*/
-
-
-#y = "";
-#x = y+y;
-#x = 0;
-#x=10+8+x;
-#c = "hola "+x;
-#d = x + d + h*k;
-#y = x;
-/*
-x = 10;
-if 10 < 20 && x > 20:{
+fun sum (a,b){
+    a = a + b ;
+    b = 1 + 2 +3;
+    return a+b;
 }
-print("Hola mundo");
 
-a = 1 * 2 + 3 * 4 + 5;
-a = b + "string";
-a = "string";
-a = b + c + d;*/
+fun resta (a,b){
+    a = a - b ;
+    b = 1 - 2 +3;
+    return a-b;
+}
+
+sum(a,b);
+resta(a,b);

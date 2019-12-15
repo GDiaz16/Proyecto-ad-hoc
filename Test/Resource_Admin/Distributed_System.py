@@ -6,7 +6,7 @@ import math
 
 from Test.Utilities.Pack import Pack
 from Test.Resource_Admin.CU_distributed import CU_distributed
-from Trash.Machine.Resource_Admin.RAM_distributed import RAM_distributed
+from Test.Resource_Admin.RAM_distributed import RAM_distributed
 
 
 class Distributed_System:
@@ -20,11 +20,18 @@ class Distributed_System:
         self.memory = {}
         self.threads = [False,False,False,False,False,False]
 
+    def stacks(self):
+        for i in range(6):
+            self.save([],i)
+
     #Obtener la memoria del dispositivo
     def get_ram(self):
         self.pos_ini = 10
         self.pos_fin = 500
         ram = {"pos_ini": self.pos_ini, "pos_fin": self.pos_fin, "device": self.device.name}
+
+        #Asignamos el stack de sistema para las funciones
+        self.RAM.memory[self.pos_fin] = []
         return ram
 
     #Establecer la memoria del resto de dispositivos

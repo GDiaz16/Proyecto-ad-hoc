@@ -159,7 +159,7 @@ for_iterator : VARIABLE IN VARIABLE;
 //Cuerpo de instrucciones
 body : OP_BRACE sentence* CL_BRACE;
 fun_body : OP_BRACE fun_sentence* CL_BRACE ;
-fun_sentence : sentence | RETURN exp SEMICOLON;
+fun_sentence : sentence #fun_sentence1| RETURN exp SEMICOLON #fun_sentence2;
 
 //Concurrencia
 procedure : PROCESS body;
@@ -171,10 +171,15 @@ start_process : START VARIABLE SEMICOLON;
 stop : STOP MONITOR? VARIABLE SEMICOLON;
 message : MESSAGE CONNECTION VARIABLE COLON dictionary SEMICOLON;
 
+//Print
+print_ : PRINT OP_PARENTHESIS print_value CL_PARENTHESIS SEMICOLON;
+print_value : VARIABLE | NUMBER | STRING | list_elements;
+
 //Diccionario de valores
 dictionary : LESS dict_element? GREATER;
 dict_element : STRING COLON dict_value | dict_element ',' dict_element;
 dict_value : VARIABLE | NUMBER | STRING | call;
+
 
 //Switch
 switch_ : SWITCH VARIABLE COLON switch_body;
@@ -183,8 +188,3 @@ case_ : CASE case_value COLON sentence* ;
 default_: DEFAULT COLON sentence* ;
 case_value: NUMBER | STRING;
 break_ : BREAK SEMICOLON;
-
-//Print
-print_ : PRINT OP_PARENTHESIS print_value CL_PARENTHESIS SEMICOLON;
-print_value : VARIABLE | NUMBER | STRING | list_elements;
-

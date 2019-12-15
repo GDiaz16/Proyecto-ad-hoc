@@ -10,10 +10,10 @@ class Code_generator:
         self.symbols = symbols
         self.count_variables = 0
         self.global_variables()
-        #self.print_codes()
+        self.print_codes()
         self.translate()
         self.format()
-        self.print_codes()
+        #self.print_codes()
 
     def print_codes(self):
         print(self.symbols)
@@ -80,10 +80,13 @@ class Code_generator:
 
         # En caso de tener un label
         elif inst.i1 == "LABEL":
-            # self.assembly.append(["LABEL", inst.i2, ""])
             inst.assembly = True
             inst.i1 = "LABEL"
             inst.i2 = inst.i2
+
+        # En caso de tener un SLICE
+        elif inst.i1 == "SLICE":
+            inst.assembly = True
 
         # En caso de tener un print
         elif inst.i1 == "print":
@@ -280,7 +283,7 @@ class Code_generator:
                 inst.assembly = True
                 inst.i1 = "LEQ"
 
-        special = ["if", "IF", "GOTO", "PRINT", "goto", "LABEL", "print", "PUSH", "CALL", "POP", "LIST"]
+        special = ["if", "IF", "GOTO", "SLICE","PRINT", "goto", "LABEL", "print", "PUSH", "CALL", "POP", "LIST"]
 
         # Si hay una asignacion de registro a variable
         if inst.op == "" and inst.i1 not in special and type(inst.i3) != type(0.0):
