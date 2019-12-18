@@ -1,14 +1,15 @@
-fun sum (a,b){
-    a = a + b ;
-    b = 1 + 2 +3;
-    return a+b;
+
+process a{
+    c =10;
+    a = a + x ;
+    b = 1 + y;
 }
 
-fun resta (a,b){
-    a = a - b ;
-    b = 1 - 2 +3;
-    return a-b;
+process b{
+    a = a - y ;
+    x = 1 - x +3;
 }
 
-sum(a,b);
-resta(a,b);
+start a;
+
+

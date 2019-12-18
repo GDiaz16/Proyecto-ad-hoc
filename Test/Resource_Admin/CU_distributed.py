@@ -9,8 +9,12 @@ class CU_distributed:
         self.cx = [0]
         self.dx = [0]
         self.sp = [0]
+        self.start = False
+        self.ip = 0
         self.ALU = ALU
         self.DS = DS
+        self.stack = self.DS.RAM.memory[self.DS.pos_fin]
+
 
     # Instrucciones assembler
     def LOAD(self, rx, address):
@@ -127,11 +131,6 @@ class CU_distributed:
     def INPUT(self, rx, sx=0):
         rx[0] = input("RX-->")
 
-    # def SLICE(self, rx, sx, label, buffer):
-    #     thread = buffer[rx: sx + 1]
-    #     self.DS.thread(thread)
-    #     self.GOTO(label)
-
     def SLICE(self, label1, label2, buffer):
         start = 0
         end = 0
@@ -145,6 +144,20 @@ class CU_distributed:
         thread.append(["END", '', ''])
         self.DS.thread(thread)
         self.GOTO(label2)
+        self.sp[0] = self.sp[0] - 1
+
+    def START(self, label, buffer):
+        self.ip = self.sp[0]+1
+        #print(f"ip {self.ip}  in {self.buffer[self.ip]}--------------------------------------------------")
+        for i in range(len(self.buffer)):
+            if self.buffer[i][0] == "LABEL" and self.buffer[i][1] == label:
+                self.sp[0] = i
+                break
+        inst = buffer[self.sp[0] + 1]
+        #print(f"instruccion {inst}--------------------------------------------------")
+
+        self.start = True
+        self.L2 = inst[2]
 
 
     def translate(self, buffer):
@@ -196,6 +209,9 @@ class CU_distributed:
                 instruction[0] = self.POW
             elif instruction[0] == "IF":
                 instruction[0] = self.IF
+            elif instruction[0] == "START":
+                instruction[0] = self.START
+
         for instruction in buffer_copy:
             for i in range(1, 3):
                 if instruction[i] == "ax":
@@ -234,6 +250,7 @@ class CU_distributed:
 
                 # instruccion especial para threading
                 #print(f"sp {self.sp[0]}")
+
                 if buffer[self.sp[0]][0] == self.SLICE:
                     self.instruction = buffer[self.sp[0]][0]
                     label1 = buffer[self.sp[0]][1]
@@ -241,7 +258,15 @@ class CU_distributed:
                     #label = buffer[self.sp[0]][3]
                     end = self.instruction(label1, label2, buffer_org)
                 elif buffer[self.sp[0]][0] == "LABEL":
-                    pass
+                    if self.start:
+                        if self.L2 == buffer[self.sp[0]][1]:
+                            self.sp[0] = self.ip
+                            self.start = False
+                elif buffer[self.sp[0]][0] == self.START:
+                    self.instruction = buffer[self.sp[0]][0]
+                    label = buffer[self.sp[0]][1]
+                    end = self.instruction(label, buffer)
+                    print(f"sp {buffer[self.sp[0]]}--------------")
                 else:
                     # Si no es una sentencia de control, solo ejecuta la instruccion
                     self.instruction = buffer[self.sp[0]][0]
@@ -250,6 +275,7 @@ class CU_distributed:
                     end = self.instruction(rx, sx)
                 # Hacer correr el puntero una posicion hacia adelante
                 self.sp[0] = self.sp[0] + 1
+                #print(f"sp {self.sp[0]}")
         except:
             print(f"Error de ejecucion en {self.DS.device.name} "
                   f"\nInstruccion :  {buffer_org[self.sp[0]]}\n")

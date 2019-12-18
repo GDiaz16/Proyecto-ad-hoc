@@ -11,6 +11,7 @@ class Visitor(brownieVisitor):
         self.instructions = []
         self.loop_label = []
         self.symbols_table = {}  # {"name": address in memory}
+        self.func = False
 
     # Visit a parse tree produced by brownieParser#start.
     def visitStart(self, ctx: brownieParser.StartContext):
@@ -29,7 +30,12 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
 
         # Asignar la variable a la tabla de simbolos
-        self.symbols_table[inst.i1] = 0
+        if  inst.i1[1:] not in self.symbols_table:
+            self.symbols_table[inst.i1] = 0
+
+        else:
+            inst.i1 = "@"+inst.i1
+            self.symbols_table[inst.i1] = inst.i1
 
         return inst
 
@@ -67,7 +73,11 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
 
         # Asignar la variable a la tabla de simbolos
-        self.symbols_table[inst.i2] = 0
+        if not self.func:
+            self.symbols_table[inst.i2] = 0
+
+        else:
+            inst.i2 = "@"+inst.i2
 
         # Llamar los elementos que se van a insertar en la lista
         self.visit(ctx.list_elements())
@@ -179,7 +189,10 @@ class Visitor(brownieVisitor):
         inst.pos = len(self.instructions) - 1
 
         # Asignar la variable a la tabla de simbolos
-        self.symbols_table[inst.i1] = 0
+        if not self.func:
+            self.symbols_table[inst.i1] = 0
+        else:
+            inst.i1 = "@"+inst.i1
 
         return inst
 
@@ -210,58 +223,58 @@ class Visitor(brownieVisitor):
         return inst
 
     # Visit a parse tree produced by brownieParser#call.
-    def visitCall(self, ctx: brownieParser.CallContext):
-        ret = ins()
-        inst = ins()
-        call = ins()
-
-        # Asignar direccion de retorno
-        self.instructions.append(ret)
-        ret.pos = len(self.instructions) - 1
-        self.add_count()  # self.count = self.count + 1
-        ret.i1 = f"<t{self.count}>"
-
-        # Apilar la direccion de retorno
-        self.instructions.append(inst)
-        inst.pos = len(self.instructions) - 1
-        self.add_count()  # #self.count = self.count + 1
-        inst.i1 = f"PUSH"
-        inst.i2 = ret.i1
-
-        # Apilar parametros
-        self.visitChildren(ctx)
-
-        # Llamada a la funcion
-        self.instructions.append(call)
-        call.pos = len(self.instructions) - 1
-        self.add_count()  # #self.count = self.count + 1
-        call.i1 = f"CALL"
-        call.i2 = str(ctx.VARIABLE())
-
-        # Asignar direccion de retorno
-        ret.i2 = call.pos + 1
-
-        # Desapilar el valor que devuelve la funcion y devolverlo
-        pop_ = ins()
-        self.instructions.append(pop_)
-        pop_.pos = len(self.instructions) - 1
-        self.add_count()  # self.count = self.count + 1
-        pop_.i1 = f"POP"
-        pop_.i2 = f"<t{self.count}>"
-
-        # Auxiliar de retorno
-        aux = ins()
-        aux.i1 = f"<t{self.count}>"
-        return aux
+    # def visitCall(self, ctx: brownieParser.CallContext):
+    #     ret = ins()
+    #     inst = ins()
+    #     call = ins()
+    #
+    #     # Asignar direccion de retorno
+    #     self.instructions.append(ret)
+    #     ret.pos = len(self.instructions) - 1
+    #     self.add_count()  # self.count = self.count + 1
+    #     ret.i1 = f"<t{self.count}>"
+    #
+    #     # Apilar la direccion de retorno
+    #     self.instructions.append(inst)
+    #     inst.pos = len(self.instructions) - 1
+    #     self.add_count()  # #self.count = self.count + 1
+    #     inst.i1 = f"PUSH"
+    #     inst.i2 = ret.i1
+    #
+    #     # Apilar parametros
+    #     self.visitChildren(ctx)
+    #
+    #     # Llamada a la funcion
+    #     self.instructions.append(call)
+    #     call.pos = len(self.instructions) - 1
+    #     self.add_count()  # #self.count = self.count + 1
+    #     call.i1 = f"CALL"
+    #     call.i2 = str(ctx.VARIABLE())
+    #
+    #     # Asignar direccion de retorno
+    #     ret.i2 = call.pos + 1
+    #
+    #     # Desapilar el valor que devuelve la funcion y devolverlo
+    #     pop_ = ins()
+    #     self.instructions.append(pop_)
+    #     pop_.pos = len(self.instructions) - 1
+    #     self.add_count()  # self.count = self.count + 1
+    #     pop_.i1 = f"POP"
+    #     pop_.i2 = f"<t{self.count}>"
+    #
+    #     # Auxiliar de retorno
+    #     aux = ins()
+    #     aux.i1 = f"<t{self.count}>"
+    #     return aux
 
     # Visit a parse tree produced by brownieParser#parameter_call3.
-    def visitParameter_call4(self, ctx: brownieParser.Parameter_call4Context):
-        inst = ins()
-        inst.i1 = "PUSH"
-        inst.i2 = self.visit(ctx.call()).i1
-        self.instructions.append(inst)
-        inst.pos = len(self.instructions) - 1
-        return inst
+    # def visitParameter_call4(self, ctx: brownieParser.Parameter_call4Context):
+    #     inst = ins()
+    #     inst.i1 = "PUSH"
+    #     inst.i2 = self.visit(ctx.call()).i1
+    #     self.instructions.append(inst)
+    #     inst.pos = len(self.instructions) - 1
+    #     return inst
 
     # Visit a parse tree produced by brownieParser#parameter_call3.
     def visitParameter_call3(self, ctx: brownieParser.Parameter_call3Context):
@@ -599,7 +612,11 @@ class Visitor(brownieVisitor):
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
 
-        self.symbols_table[inst.i1] = 0
+        if not self.func:
+            self.symbols_table[inst.i1] = 0
+        else:
+            inst.i1 = "@"+inst.i1
+
 
         return inst
 
@@ -608,43 +625,47 @@ class Visitor(brownieVisitor):
         pass
 
     # Visit a parse tree produced by brownieParser#break_.
-    def visitBreak_(self, ctx: brownieParser.Break_Context):
-        try:
-            label = self.loop_label.pop()
-            self.goto(label.i2)
-        except IndexError:
-            raise Exception("Break out of loop")
+    # def visitBreak_(self, ctx: brownieParser.Break_Context):
+    #     try:
+    #         label = self.loop_label.pop()
+    #         self.goto(label.i2)
+    #     except IndexError:
+    #         raise Exception("Break out of loop")
 
     # Visit a parse tree produced by brownieParser#function.
-    def visitFunction(self, ctx: brownieParser.FunctionContext):
-        # Ignorar la funcion hasta que se haga el llamado
-        #goto = self.goto("")
-
-        #Asignar la funcion a la tabla de simbolos
-        self.symbols_table[str(ctx.VARIABLE())] = 0
-
-        # Etiqueta para saber que es una funcion
-        start = self.label(label= str(ctx.VARIABLE()))
-        start.i1 = "<fun>"
-        # Parametros
-        self.visit(ctx.parameter())
-
-        # Body
-        L2 = self.visit(ctx.fun_body())
-        L2.i1 = "<EndFun>"
-        L2.i2 =str(ctx.VARIABLE())
-        # Actualizar goto
-        #goto.i2 = L2.i2
+    # def visitFunction(self, ctx: brownieParser.FunctionContext):
+    #     # Ignorar la funcion hasta que se haga el llamado
+    #     #goto = self.goto("")
+    #     self.func = True
+    #     #Asignar la funcion a la tabla de simbolos
+    #     self.symbols_table[str(ctx.VARIABLE())] = 0
+    #
+    #     # Etiqueta para saber que es una funcion
+    #     start = self.label(label= str(ctx.VARIABLE()))
+    #     start.i1 = "<fun>"
+    #     # Parametros
+    #     self.visit(ctx.parameter())
+    #     self.func = False
+    #
+    #     # Body
+    #     L2 = self.visit(ctx.fun_body())
+    #     L2.i1 = "<EndFun>"
+    #     L2.i2 =str(ctx.VARIABLE())
+    #
+    #     # Actualizar goto
+    #     #goto.i2 = L2.i2
 
     # Visit a parse tree produced by brownieParser#fun_sentence2.
-    def visitFun_sentence2(self, ctx:brownieParser.Fun_sentence2Context):
-        inst = ins()
-        inst.i1 = f"PUSH"
-        inst.i2 = self.visit(ctx.exp()).i1
+    # def visitFun_sentence2(self, ctx:brownieParser.Fun_sentence2Context):
+    #     inst = ins()
+    #     inst.i1 = f"PUSH"
+    #     inst.i2 = self.visit(ctx.exp()).i1
+    #
+    #     self.instructions.append(inst)
+    #     inst.pos = len(self.instructions) - 1
+    #     return  inst
 
-        self.instructions.append(inst)
-        inst.pos = len(self.instructions) - 1
-        return  inst
+
     # Visit a parse tree produced by brownieParser#parameter2.
     def visitParameter2(self, ctx: brownieParser.Parameter2Context):
         return self.visitChildren(ctx)
@@ -653,28 +674,29 @@ class Visitor(brownieVisitor):
     def visitParameter1(self, ctx: brownieParser.Parameter1Context):
         inst = ins()
         inst.i1 = f"POP"
-        inst.i2 = str(ctx.VARIABLE())
+        inst.i2 = "@"+str(ctx.VARIABLE())
+        self.symbols_table[str(ctx.VARIABLE())] = "@"+str(ctx.VARIABLE())
 
         self.instructions.append(inst)
         inst.pos = len(self.instructions) - 1
         return  inst
 
     # Visit a parse tree produced by brownieParser#fun_body.
-    def visitFun_body(self, ctx: brownieParser.Fun_bodyContext):
-        # Inicio de body
-        #l1 = self.label()
-
-        # Contenido
-        self.visitChildren(ctx)
-
-        # Fin de body
-        l2 = self.label()
-
-        return l2
+    # def visitFun_body(self, ctx: brownieParser.Fun_bodyContext):
+    #     # Inicio de body
+    #     #l1 = self.label()
+    #
+    #     # Contenido
+    #     self.visitChildren(ctx)
+    #
+    #     # Fin de body
+    #     l2 = self.label()
+    #
+    #     return l2
 
     # Visit a parse tree produced by brownieParser#fun_sentence.
-    def visitFun_sentence(self, ctx: brownieParser.Fun_sentenceContext):
-        return self.visitChildren(ctx)
+    # def visitFun_sentence(self, ctx: brownieParser.Fun_sentenceContext):
+    #     return self.visitChildren(ctx)
 
     # Visit a parse tree produced by brownieParser#print_.
     def visitPrint_(self, ctx: brownieParser.Print_Context):
@@ -698,6 +720,7 @@ class Visitor(brownieVisitor):
 
     # Visit a parse tree produced by brownieParser#procedure.
     def visitProcedure(self, ctx: brownieParser.ProcedureContext):
+        self.label(str(ctx.VARIABLE()))
         inst = ins()
         inst.i1 = "SLICE"
         self.instructions.append(inst)
@@ -707,6 +730,15 @@ class Visitor(brownieVisitor):
 
         inst.i2 = L1.i2
         inst.i3 = L2.i2
+
+        # Visit a parse tree produced by brownieParser#start_process.
+
+    def visitStart_process(self, ctx: brownieParser.Start_processContext):
+        inst = ins()
+        inst.i1 = "START"
+        inst.i2 = str(ctx.VARIABLE())
+        self.instructions.append(inst)
+        inst.pos = len(self.instructions) - 1
 
     def label(self, label=""):
         label1 = ins()

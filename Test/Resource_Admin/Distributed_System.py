@@ -11,6 +11,8 @@ from Test.Resource_Admin.RAM_distributed import RAM_distributed
 
 class Distributed_System:
     def __init__(self, device):
+        self.pos_ini = 10
+        self.pos_fin = 500
         self.RAM = device.RAM
         self.CU = device.CU
         self.ALU = device.ALU
@@ -26,8 +28,6 @@ class Distributed_System:
 
     #Obtener la memoria del dispositivo
     def get_ram(self):
-        self.pos_ini = 10
-        self.pos_fin = 500
         ram = {"pos_ini": self.pos_ini, "pos_fin": self.pos_fin, "device": self.device.name}
 
         #Asignamos el stack de sistema para las funciones

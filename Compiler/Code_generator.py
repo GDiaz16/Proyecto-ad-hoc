@@ -13,7 +13,7 @@ class Code_generator:
         self.print_codes()
         self.translate()
         self.format()
-        #self.print_codes()
+        self.print_codes()
 
     def print_codes(self):
         print(self.symbols)
@@ -42,8 +42,9 @@ class Code_generator:
     def global_variables(self):
         i = 0
         for key in self.symbols.keys():
-            self.symbols[key] = i
-            i = i + 1
+            if self.symbols[key] == 0:
+                self.symbols[key] = i
+                i = i + 1
 
     def transform(self, inst, pos):
         """
@@ -81,11 +82,37 @@ class Code_generator:
         # En caso de tener un label
         elif inst.i1 == "LABEL":
             inst.assembly = True
-            inst.i1 = "LABEL"
             inst.i2 = inst.i2
+
+        # En caso de tener un PUSH
+        elif inst.i1 == "PUSH":
+            inst.assembly = True
+
+
+        # En caso de tener un PUSH
+        elif inst.i1 == "POP":
+            inst.assembly = True
+            return
+
+        # En caso de tener un PUSH
+        elif inst.i1 == "CALL":
+            inst.assembly = True
+            return
+
+
+        # En caso de tener un fun o endfun
+        elif inst.i1 == "<fun>" or inst.i1 == "<EndFun>" :
+            inst.assembly = True
+            inst.i1 = str.upper(inst.i1)
+            inst.i2 = inst.i2
+            return
 
         # En caso de tener un SLICE
         elif inst.i1 == "SLICE":
+            inst.assembly = True
+
+        # En caso de tener un START
+        elif inst.i1 == "START":
             inst.assembly = True
 
         # En caso de tener un print
@@ -283,7 +310,7 @@ class Code_generator:
                 inst.assembly = True
                 inst.i1 = "LEQ"
 
-        special = ["if", "IF", "GOTO", "SLICE","PRINT", "goto", "LABEL", "print", "PUSH", "CALL", "POP", "LIST"]
+        special = ["if", "IF", "GOTO", "START", "SLICE","PRINT", "goto", "LABEL", "print", "PUSH", "CALL", "POP", "LIST"]
 
         # Si hay una asignacion de registro a variable
         if inst.op == "" and inst.i1 not in special and type(inst.i3) != type(0.0):
@@ -315,7 +342,7 @@ class Code_generator:
                 inst.i3 = inst3.i2
                 self.i = self.i + 1
         # Si el primer operando es una variable, leerla de memoria
-        if inst.i1 != "MOV" and inst.i2 in self.symbols:
+        if inst.i1 != "MOV" and inst.i1 != "START" and inst.i1 != "LABEL" and inst.i2 in self.symbols:
             load = Ins()
             load.i1 = "LOAD"
             load.i2 = "cx"

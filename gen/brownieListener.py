@@ -35,33 +35,6 @@ class brownieListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by brownieParser#function.
-    def enterFunction(self, ctx:brownieParser.FunctionContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#function.
-    def exitFunction(self, ctx:brownieParser.FunctionContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#call.
-    def enterCall(self, ctx:brownieParser.CallContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#call.
-    def exitCall(self, ctx:brownieParser.CallContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#call_sentence.
-    def enterCall_sentence(self, ctx:brownieParser.Call_sentenceContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#call_sentence.
-    def exitCall_sentence(self, ctx:brownieParser.Call_sentenceContext):
-        pass
-
-
     # Enter a parse tree produced by brownieParser#parameter2.
     def enterParameter2(self, ctx:brownieParser.Parameter2Context):
         pass
@@ -86,15 +59,6 @@ class brownieListener(ParseTreeListener):
 
     # Exit a parse tree produced by brownieParser#parameter_call6.
     def exitParameter_call6(self, ctx:brownieParser.Parameter_call6Context):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#parameter_call4.
-    def enterParameter_call4(self, ctx:brownieParser.Parameter_call4Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#parameter_call4.
-    def exitParameter_call4(self, ctx:brownieParser.Parameter_call4Context):
         pass
 
 
@@ -323,15 +287,6 @@ class brownieListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by brownieParser#ar_value3.
-    def enterAr_value3(self, ctx:brownieParser.Ar_value3Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#ar_value3.
-    def exitAr_value3(self, ctx:brownieParser.Ar_value3Context):
-        pass
-
-
     # Enter a parse tree produced by brownieParser#ar_value4.
     def enterAr_value4(self, ctx:brownieParser.Ar_value4Context):
         pass
@@ -557,48 +512,12 @@ class brownieListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by brownieParser#fun_body.
-    def enterFun_body(self, ctx:brownieParser.Fun_bodyContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#fun_body.
-    def exitFun_body(self, ctx:brownieParser.Fun_bodyContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#fun_sentence1.
-    def enterFun_sentence1(self, ctx:brownieParser.Fun_sentence1Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#fun_sentence1.
-    def exitFun_sentence1(self, ctx:brownieParser.Fun_sentence1Context):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#fun_sentence2.
-    def enterFun_sentence2(self, ctx:brownieParser.Fun_sentence2Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#fun_sentence2.
-    def exitFun_sentence2(self, ctx:brownieParser.Fun_sentence2Context):
-        pass
-
-
     # Enter a parse tree produced by brownieParser#procedure.
     def enterProcedure(self, ctx:brownieParser.ProcedureContext):
         pass
 
     # Exit a parse tree produced by brownieParser#procedure.
     def exitProcedure(self, ctx:brownieParser.ProcedureContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#process.
-    def enterProcess(self, ctx:brownieParser.ProcessContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#process.
-    def exitProcess(self, ctx:brownieParser.ProcessContext):
         pass
 
 
@@ -611,48 +530,12 @@ class brownieListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by brownieParser#loop.
-    def enterLoop(self, ctx:brownieParser.LoopContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#loop.
-    def exitLoop(self, ctx:brownieParser.LoopContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#exec.
-    def enterExec(self, ctx:brownieParser.ExecContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#exec.
-    def exitExec(self, ctx:brownieParser.ExecContext):
-        pass
-
-
     # Enter a parse tree produced by brownieParser#start_process.
     def enterStart_process(self, ctx:brownieParser.Start_processContext):
         pass
 
     # Exit a parse tree produced by brownieParser#start_process.
     def exitStart_process(self, ctx:brownieParser.Start_processContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#stop.
-    def enterStop(self, ctx:brownieParser.StopContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#stop.
-    def exitStop(self, ctx:brownieParser.StopContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#message.
-    def enterMessage(self, ctx:brownieParser.MessageContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#message.
-    def exitMessage(self, ctx:brownieParser.MessageContext):
         pass
 
 
@@ -671,87 +554,6 @@ class brownieListener(ParseTreeListener):
 
     # Exit a parse tree produced by brownieParser#print_value.
     def exitPrint_value(self, ctx:brownieParser.Print_valueContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#dictionary.
-    def enterDictionary(self, ctx:brownieParser.DictionaryContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#dictionary.
-    def exitDictionary(self, ctx:brownieParser.DictionaryContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#dict_element.
-    def enterDict_element(self, ctx:brownieParser.Dict_elementContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#dict_element.
-    def exitDict_element(self, ctx:brownieParser.Dict_elementContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#dict_value.
-    def enterDict_value(self, ctx:brownieParser.Dict_valueContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#dict_value.
-    def exitDict_value(self, ctx:brownieParser.Dict_valueContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#switch_.
-    def enterSwitch_(self, ctx:brownieParser.Switch_Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#switch_.
-    def exitSwitch_(self, ctx:brownieParser.Switch_Context):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#switch_body.
-    def enterSwitch_body(self, ctx:brownieParser.Switch_bodyContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#switch_body.
-    def exitSwitch_body(self, ctx:brownieParser.Switch_bodyContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#case_.
-    def enterCase_(self, ctx:brownieParser.Case_Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#case_.
-    def exitCase_(self, ctx:brownieParser.Case_Context):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#default_.
-    def enterDefault_(self, ctx:brownieParser.Default_Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#default_.
-    def exitDefault_(self, ctx:brownieParser.Default_Context):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#case_value.
-    def enterCase_value(self, ctx:brownieParser.Case_valueContext):
-        pass
-
-    # Exit a parse tree produced by brownieParser#case_value.
-    def exitCase_value(self, ctx:brownieParser.Case_valueContext):
-        pass
-
-
-    # Enter a parse tree produced by brownieParser#break_.
-    def enterBreak_(self, ctx:brownieParser.Break_Context):
-        pass
-
-    # Exit a parse tree produced by brownieParser#break_.
-    def exitBreak_(self, ctx:brownieParser.Break_Context):
         pass
 
 

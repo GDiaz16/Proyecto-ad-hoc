@@ -8,244 +8,150 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3?")
-        buf.write("\u0207\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\38")
+        buf.write("\u014f\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
         buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
-        buf.write("&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4,\t,\4-\t-\4.\t.\4")
-        buf.write("/\t/\4\60\t\60\4\61\t\61\4\62\t\62\4\63\t\63\4\64\t\64")
-        buf.write("\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\3\2\7\2t\n")
-        buf.write("\2\f\2\16\2w\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\5\3\u0080")
-        buf.write("\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\u008a\n\4\3\5")
-        buf.write("\3\5\3\5\3\5\5\5\u0090\n\5\3\5\3\5\3\5\3\6\3\6\3\6\5\6")
-        buf.write("\u0098\n\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b")
-        buf.write("\7\b\u00a5\n\b\f\b\16\b\u00a8\13\b\3\t\3\t\3\t\3\t\3\t")
-        buf.write("\3\t\5\t\u00b0\n\t\3\t\3\t\3\t\7\t\u00b5\n\t\f\t\16\t")
-        buf.write("\u00b8\13\t\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\13")
-        buf.write("\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13")
-        buf.write("\5\13\u00ce\n\13\3\f\3\f\3\f\5\f\u00d3\n\f\3\f\3\f\3\f")
-        buf.write("\7\f\u00d8\n\f\f\f\16\f\u00db\13\f\3\r\3\r\3\r\3\r\5\r")
-        buf.write("\u00e1\n\r\3\r\3\r\3\r\7\r\u00e6\n\r\f\r\16\r\u00e9\13")
-        buf.write("\r\3\16\3\16\5\16\u00ed\n\16\3\16\3\16\3\17\3\17\3\17")
-        buf.write("\3\17\3\17\3\17\3\17\7\17\u00f8\n\17\f\17\16\17\u00fb")
-        buf.write("\13\17\3\20\3\20\3\20\3\20\3\20\5\20\u0102\n\20\3\21\3")
-        buf.write("\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u010c\n\21\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\23\3\23\3\24\3\24\3\25\3\25\3\25")
-        buf.write("\3\25\3\25\5\25\u011c\n\25\3\26\3\26\3\26\3\26\3\26\5")
-        buf.write("\26\u0123\n\26\3\26\3\26\5\26\u0127\n\26\3\27\3\27\3\27")
-        buf.write("\3\27\3\27\3\27\3\27\7\27\u0130\n\27\f\27\16\27\u0133")
-        buf.write("\13\27\3\30\5\30\u0136\n\30\3\30\3\30\3\31\3\31\3\31\3")
-        buf.write("\31\3\31\5\31\u013f\n\31\3\32\3\32\3\32\3\32\5\32\u0145")
-        buf.write("\n\32\3\33\3\33\3\34\3\34\3\35\3\35\3\35\5\35\u014e\n")
-        buf.write("\35\3\36\3\36\3\36\3\36\3\36\3\36\3\37\3\37\3\37\3\37")
-        buf.write("\3\37\3 \3 \3 \3 \3 \3!\3!\3!\3!\3!\3!\3!\5!\u0167\n!")
-        buf.write("\3\"\3\"\3\"\3\"\3#\3#\3#\3#\3$\3$\7$\u0173\n$\f$\16$")
-        buf.write("\u0176\13$\3$\3$\3%\3%\7%\u017c\n%\f%\16%\u017f\13%\3")
-        buf.write("%\3%\3&\3&\3&\3&\3&\5&\u0188\n&\3\'\3\'\3\'\3(\3(\3(\3")
-        buf.write("(\3(\3(\3(\3(\3(\3(\3(\3)\3)\3)\3)\3)\5)\u019d\n)\3*\3")
-        buf.write("*\3*\3*\3*\3*\3*\3+\3+\3+\3,\3,\3,\3,\3-\3-\5-\u01af\n")
-        buf.write("-\3-\3-\3-\3.\3.\3.\3.\3.\3.\3.\3/\3/\3/\3/\3/\3/\3\60")
-        buf.write("\3\60\3\60\3\60\5\60\u01c5\n\60\3\61\3\61\5\61\u01c9\n")
-        buf.write("\61\3\61\3\61\3\62\3\62\3\62\3\62\3\62\3\62\3\62\3\62")
-        buf.write("\7\62\u01d5\n\62\f\62\16\62\u01d8\13\62\3\63\3\63\3\63")
-        buf.write("\3\63\5\63\u01de\n\63\3\64\3\64\3\64\3\64\3\64\3\65\3")
-        buf.write("\65\7\65\u01e7\n\65\f\65\16\65\u01ea\13\65\3\65\5\65\u01ed")
-        buf.write("\n\65\3\65\3\65\3\66\3\66\3\66\3\66\7\66\u01f5\n\66\f")
-        buf.write("\66\16\66\u01f8\13\66\3\67\3\67\3\67\7\67\u01fd\n\67\f")
-        buf.write("\67\16\67\u0200\13\67\38\38\39\39\39\39\2\t\16\20\26\30")
-        buf.write("\34,b:\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,")
-        buf.write(".\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnp\2\7\3\2()")
-        buf.write("\3\2*-\3\2\638\3\2\60\61\3\2\33\34\2\u0213\2u\3\2\2\2")
-        buf.write("\4\177\3\2\2\2\6\u0089\3\2\2\2\b\u008b\3\2\2\2\n\u0094")
-        buf.write("\3\2\2\2\f\u009b\3\2\2\2\16\u009e\3\2\2\2\20\u00af\3\2")
-        buf.write("\2\2\22\u00b9\3\2\2\2\24\u00cd\3\2\2\2\26\u00d2\3\2\2")
-        buf.write("\2\30\u00e0\3\2\2\2\32\u00ea\3\2\2\2\34\u00f0\3\2\2\2")
-        buf.write("\36\u0101\3\2\2\2 \u010b\3\2\2\2\"\u010d\3\2\2\2$\u0112")
-        buf.write("\3\2\2\2&\u0114\3\2\2\2(\u0116\3\2\2\2*\u0126\3\2\2\2")
-        buf.write(",\u0128\3\2\2\2.\u0135\3\2\2\2\60\u013e\3\2\2\2\62\u0144")
-        buf.write("\3\2\2\2\64\u0146\3\2\2\2\66\u0148\3\2\2\28\u014d\3\2")
-        buf.write("\2\2:\u014f\3\2\2\2<\u0155\3\2\2\2>\u015a\3\2\2\2@\u0166")
-        buf.write("\3\2\2\2B\u0168\3\2\2\2D\u016c\3\2\2\2F\u0170\3\2\2\2")
-        buf.write("H\u0179\3\2\2\2J\u0187\3\2\2\2L\u0189\3\2\2\2N\u018c\3")
-        buf.write("\2\2\2P\u019c\3\2\2\2R\u019e\3\2\2\2T\u01a5\3\2\2\2V\u01a8")
-        buf.write("\3\2\2\2X\u01ac\3\2\2\2Z\u01b3\3\2\2\2\\\u01ba\3\2\2\2")
-        buf.write("^\u01c4\3\2\2\2`\u01c6\3\2\2\2b\u01cc\3\2\2\2d\u01dd\3")
-        buf.write("\2\2\2f\u01df\3\2\2\2h\u01e4\3\2\2\2j\u01f0\3\2\2\2l\u01f9")
-        buf.write("\3\2\2\2n\u0201\3\2\2\2p\u0203\3\2\2\2rt\5\4\3\2sr\3\2")
-        buf.write("\2\2tw\3\2\2\2us\3\2\2\2uv\3\2\2\2vx\3\2\2\2wu\3\2\2\2")
-        buf.write("xy\7\2\2\3y\3\3\2\2\2z\u0080\5\b\5\2{\u0080\5\6\4\2|\u0080")
-        buf.write("\5\f\7\2}\u0080\5N(\2~\u0080\5L\'\2\177z\3\2\2\2\177{")
-        buf.write("\3\2\2\2\177|\3\2\2\2\177}\3\2\2\2\177~\3\2\2\2\u0080")
-        buf.write("\5\3\2\2\2\u0081\u008a\5\22\n\2\u0082\u008a\5(\25\2\u0083")
-        buf.write("\u008a\5\\/\2\u0084\u008a\5\f\7\2\u0085\u008a\58\35\2")
-        buf.write("\u0086\u008a\5P)\2\u0087\u008a\5f\64\2\u0088\u008a\5p")
-        buf.write("9\2\u0089\u0081\3\2\2\2\u0089\u0082\3\2\2\2\u0089\u0083")
-        buf.write("\3\2\2\2\u0089\u0084\3\2\2\2\u0089\u0085\3\2\2\2\u0089")
-        buf.write("\u0086\3\2\2\2\u0089\u0087\3\2\2\2\u0089\u0088\3\2\2\2")
-        buf.write("\u008a\7\3\2\2\2\u008b\u008c\7\17\2\2\u008c\u008d\7\35")
-        buf.write("\2\2\u008d\u008f\7 \2\2\u008e\u0090\5\16\b\2\u008f\u008e")
-        buf.write("\3\2\2\2\u008f\u0090\3\2\2\2\u0090\u0091\3\2\2\2\u0091")
-        buf.write("\u0092\7#\2\2\u0092\u0093\5H%\2\u0093\t\3\2\2\2\u0094")
-        buf.write("\u0095\7\35\2\2\u0095\u0097\7 \2\2\u0096\u0098\5\20\t")
-        buf.write("\2\u0097\u0096\3\2\2\2\u0097\u0098\3\2\2\2\u0098\u0099")
-        buf.write("\3\2\2\2\u0099\u009a\7#\2\2\u009a\13\3\2\2\2\u009b\u009c")
-        buf.write("\5\n\6\2\u009c\u009d\7\'\2\2\u009d\r\3\2\2\2\u009e\u009f")
-        buf.write("\b\b\1\2\u009f\u00a0\7\35\2\2\u00a0\u00a6\3\2\2\2\u00a1")
-        buf.write("\u00a2\f\3\2\2\u00a2\u00a3\7$\2\2\u00a3\u00a5\5\16\b\4")
-        buf.write("\u00a4\u00a1\3\2\2\2\u00a5\u00a8\3\2\2\2\u00a6\u00a4\3")
-        buf.write("\2\2\2\u00a6\u00a7\3\2\2\2\u00a7\17\3\2\2\2\u00a8\u00a6")
-        buf.write("\3\2\2\2\u00a9\u00aa\b\t\1\2\u00aa\u00b0\7\35\2\2\u00ab")
-        buf.write("\u00b0\7\33\2\2\u00ac\u00b0\7\34\2\2\u00ad\u00b0\5\n\6")
-        buf.write("\2\u00ae\u00b0\5\"\22\2\u00af\u00a9\3\2\2\2\u00af\u00ab")
-        buf.write("\3\2\2\2\u00af\u00ac\3\2\2\2\u00af\u00ad\3\2\2\2\u00af")
-        buf.write("\u00ae\3\2\2\2\u00b0\u00b6\3\2\2\2\u00b1\u00b2\f\4\2\2")
-        buf.write("\u00b2\u00b3\7$\2\2\u00b3\u00b5\5\20\t\5\u00b4\u00b1\3")
-        buf.write("\2\2\2\u00b5\u00b8\3\2\2\2\u00b6\u00b4\3\2\2\2\u00b6\u00b7")
-        buf.write("\3\2\2\2\u00b7\21\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b9\u00ba")
-        buf.write("\5\24\13\2\u00ba\u00bb\7\'\2\2\u00bb\23\3\2\2\2\u00bc")
-        buf.write("\u00bd\7\35\2\2\u00bd\u00be\79\2\2\u00be\u00ce\5\34\17")
-        buf.write("\2\u00bf\u00c0\7\35\2\2\u00c0\u00ce\7.\2\2\u00c1\u00c2")
-        buf.write("\7\35\2\2\u00c2\u00ce\7/\2\2\u00c3\u00c4\7\35\2\2\u00c4")
-        buf.write("\u00c5\79\2\2\u00c5\u00ce\5\32\16\2\u00c6\u00c7\5\"\22")
-        buf.write("\2\u00c7\u00c8\79\2\2\u00c8\u00c9\5\34\17\2\u00c9\u00ce")
-        buf.write("\3\2\2\2\u00ca\u00cb\7\35\2\2\u00cb\u00cc\79\2\2\u00cc")
-        buf.write("\u00ce\5\26\f\2\u00cd\u00bc\3\2\2\2\u00cd\u00bf\3\2\2")
-        buf.write("\2\u00cd\u00c1\3\2\2\2\u00cd\u00c3\3\2\2\2\u00cd\u00c6")
-        buf.write("\3\2\2\2\u00cd\u00ca\3\2\2\2\u00ce\25\3\2\2\2\u00cf\u00d0")
-        buf.write("\b\f\1\2\u00d0\u00d3\7\34\2\2\u00d1\u00d3\7\35\2\2\u00d2")
-        buf.write("\u00cf\3\2\2\2\u00d2\u00d1\3\2\2\2\u00d3\u00d9\3\2\2\2")
-        buf.write("\u00d4\u00d5\f\5\2\2\u00d5\u00d6\7(\2\2\u00d6\u00d8\5")
-        buf.write("\26\f\6\u00d7\u00d4\3\2\2\2\u00d8\u00db\3\2\2\2\u00d9")
-        buf.write("\u00d7\3\2\2\2\u00d9\u00da\3\2\2\2\u00da\27\3\2\2\2\u00db")
-        buf.write("\u00d9\3\2\2\2\u00dc\u00dd\b\r\1\2\u00dd\u00e1\7\33\2")
-        buf.write("\2\u00de\u00e1\7\35\2\2\u00df\u00e1\7\34\2\2\u00e0\u00dc")
-        buf.write("\3\2\2\2\u00e0\u00de\3\2\2\2\u00e0\u00df\3\2\2\2\u00e1")
-        buf.write("\u00e7\3\2\2\2\u00e2\u00e3\f\3\2\2\u00e3\u00e4\7$\2\2")
-        buf.write("\u00e4\u00e6\5\30\r\4\u00e5\u00e2\3\2\2\2\u00e6\u00e9")
-        buf.write("\3\2\2\2\u00e7\u00e5\3\2\2\2\u00e7\u00e8\3\2\2\2\u00e8")
-        buf.write("\31\3\2\2\2\u00e9\u00e7\3\2\2\2\u00ea\u00ec\7\36\2\2\u00eb")
-        buf.write("\u00ed\5\30\r\2\u00ec\u00eb\3\2\2\2\u00ec\u00ed\3\2\2")
-        buf.write("\2\u00ed\u00ee\3\2\2\2\u00ee\u00ef\7!\2\2\u00ef\33\3\2")
-        buf.write("\2\2\u00f0\u00f1\b\17\1\2\u00f1\u00f2\5\36\20\2\u00f2")
-        buf.write("\u00f9\3\2\2\2\u00f3\u00f4\f\4\2\2\u00f4\u00f5\5$\23\2")
-        buf.write("\u00f5\u00f6\5\36\20\2\u00f6\u00f8\3\2\2\2\u00f7\u00f3")
-        buf.write("\3\2\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00f7\3\2\2\2\u00f9")
-        buf.write("\u00fa\3\2\2\2\u00fa\35\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fc")
-        buf.write("\u00fd\5 \21\2\u00fd\u00fe\5&\24\2\u00fe\u00ff\5\36\20")
-        buf.write("\2\u00ff\u0102\3\2\2\2\u0100\u0102\5 \21\2\u0101\u00fc")
-        buf.write("\3\2\2\2\u0101\u0100\3\2\2\2\u0102\37\3\2\2\2\u0103\u010c")
-        buf.write("\7\33\2\2\u0104\u010c\7\35\2\2\u0105\u010c\5\n\6\2\u0106")
-        buf.write("\u0107\7 \2\2\u0107\u0108\5\34\17\2\u0108\u0109\7#\2\2")
-        buf.write("\u0109\u010c\3\2\2\2\u010a\u010c\5\"\22\2\u010b\u0103")
-        buf.write("\3\2\2\2\u010b\u0104\3\2\2\2\u010b\u0105\3\2\2\2\u010b")
-        buf.write("\u0106\3\2\2\2\u010b\u010a\3\2\2\2\u010c!\3\2\2\2\u010d")
-        buf.write("\u010e\7\35\2\2\u010e\u010f\7\36\2\2\u010f\u0110\5 \21")
-        buf.write("\2\u0110\u0111\7!\2\2\u0111#\3\2\2\2\u0112\u0113\t\2\2")
-        buf.write("\2\u0113%\3\2\2\2\u0114\u0115\t\3\2\2\u0115\'\3\2\2\2")
-        buf.write("\u0116\u0117\7\3\2\2\u0117\u0118\5,\27\2\u0118\u0119\7")
-        buf.write("&\2\2\u0119\u011b\5F$\2\u011a\u011c\5*\26\2\u011b\u011a")
-        buf.write("\3\2\2\2\u011b\u011c\3\2\2\2\u011c)\3\2\2\2\u011d\u011e")
-        buf.write("\7\4\2\2\u011e\u011f\5,\27\2\u011f\u0120\7&\2\2\u0120")
-        buf.write("\u0122\5F$\2\u0121\u0123\5*\26\2\u0122\u0121\3\2\2\2\u0122")
-        buf.write("\u0123\3\2\2\2\u0123\u0127\3\2\2\2\u0124\u0125\7\5\2\2")
-        buf.write("\u0125\u0127\5F$\2\u0126\u011d\3\2\2\2\u0126\u0124\3\2")
-        buf.write("\2\2\u0127+\3\2\2\2\u0128\u0129\b\27\1\2\u0129\u012a\5")
-        buf.write(".\30\2\u012a\u0131\3\2\2\2\u012b\u012c\f\4\2\2\u012c\u012d")
-        buf.write("\5\66\34\2\u012d\u012e\5.\30\2\u012e\u0130\3\2\2\2\u012f")
-        buf.write("\u012b\3\2\2\2\u0130\u0133\3\2\2\2\u0131\u012f\3\2\2\2")
-        buf.write("\u0131\u0132\3\2\2\2\u0132-\3\2\2\2\u0133\u0131\3\2\2")
-        buf.write("\2\u0134\u0136\7\62\2\2\u0135\u0134\3\2\2\2\u0135\u0136")
-        buf.write("\3\2\2\2\u0136\u0137\3\2\2\2\u0137\u0138\5\60\31\2\u0138")
-        buf.write("/\3\2\2\2\u0139\u013a\5\62\32\2\u013a\u013b\5\64\33\2")
-        buf.write("\u013b\u013c\5\60\31\2\u013c\u013f\3\2\2\2\u013d\u013f")
-        buf.write("\5\62\32\2\u013e\u0139\3\2\2\2\u013e\u013d\3\2\2\2\u013f")
-        buf.write("\61\3\2\2\2\u0140\u0145\7\34\2\2\u0141\u0145\7\f\2\2\u0142")
-        buf.write("\u0145\7\r\2\2\u0143\u0145\5 \21\2\u0144\u0140\3\2\2\2")
-        buf.write("\u0144\u0141\3\2\2\2\u0144\u0142\3\2\2\2\u0144\u0143\3")
-        buf.write("\2\2\2\u0145\63\3\2\2\2\u0146\u0147\t\4\2\2\u0147\65\3")
-        buf.write("\2\2\2\u0148\u0149\t\5\2\2\u0149\67\3\2\2\2\u014a\u014e")
-        buf.write("\5:\36\2\u014b\u014e\5<\37\2\u014c\u014e\5> \2\u014d\u014a")
-        buf.write("\3\2\2\2\u014d\u014b\3\2\2\2\u014d\u014c\3\2\2\2\u014e")
-        buf.write("9\3\2\2\2\u014f\u0150\7\13\2\2\u0150\u0151\5F$\2\u0151")
-        buf.write("\u0152\7\t\2\2\u0152\u0153\5,\27\2\u0153\u0154\7\'\2\2")
-        buf.write("\u0154;\3\2\2\2\u0155\u0156\7\t\2\2\u0156\u0157\5,\27")
-        buf.write("\2\u0157\u0158\7&\2\2\u0158\u0159\5F$\2\u0159=\3\2\2\2")
-        buf.write("\u015a\u015b\7\n\2\2\u015b\u015c\5@!\2\u015c\u015d\7&")
-        buf.write("\2\2\u015d\u015e\5F$\2\u015e?\3\2\2\2\u015f\u0160\5B\"")
-        buf.write("\2\u0160\u0161\7\'\2\2\u0161\u0162\5,\27\2\u0162\u0163")
-        buf.write("\7\'\2\2\u0163\u0164\5\24\13\2\u0164\u0167\3\2\2\2\u0165")
-        buf.write("\u0167\5D#\2\u0166\u015f\3\2\2\2\u0166\u0165\3\2\2\2\u0167")
-        buf.write("A\3\2\2\2\u0168\u0169\7\35\2\2\u0169\u016a\79\2\2\u016a")
-        buf.write("\u016b\5\34\17\2\u016bC\3\2\2\2\u016c\u016d\7\35\2\2\u016d")
-        buf.write("\u016e\7\21\2\2\u016e\u016f\7\35\2\2\u016fE\3\2\2\2\u0170")
-        buf.write("\u0174\7\37\2\2\u0171\u0173\5\6\4\2\u0172\u0171\3\2\2")
-        buf.write("\2\u0173\u0176\3\2\2\2\u0174\u0172\3\2\2\2\u0174\u0175")
-        buf.write("\3\2\2\2\u0175\u0177\3\2\2\2\u0176\u0174\3\2\2\2\u0177")
-        buf.write("\u0178\7\"\2\2\u0178G\3\2\2\2\u0179\u017d\7\37\2\2\u017a")
-        buf.write("\u017c\5J&\2\u017b\u017a\3\2\2\2\u017c\u017f\3\2\2\2\u017d")
-        buf.write("\u017b\3\2\2\2\u017d\u017e\3\2\2\2\u017e\u0180\3\2\2\2")
-        buf.write("\u017f\u017d\3\2\2\2\u0180\u0181\7\"\2\2\u0181I\3\2\2")
-        buf.write("\2\u0182\u0188\5\6\4\2\u0183\u0184\7\20\2\2\u0184\u0185")
-        buf.write("\5\34\17\2\u0185\u0186\7\'\2\2\u0186\u0188\3\2\2\2\u0187")
-        buf.write("\u0182\3\2\2\2\u0187\u0183\3\2\2\2\u0188K\3\2\2\2\u0189")
-        buf.write("\u018a\7\22\2\2\u018a\u018b\5F$\2\u018bM\3\2\2\2\u018c")
-        buf.write("\u018d\7\22\2\2\u018d\u018e\7\35\2\2\u018e\u018f\7&\2")
-        buf.write("\2\u018f\u0190\7=\2\2\u0190\u0191\7\35\2\2\u0191\u0192")
-        buf.write("\7&\2\2\u0192\u0193\7>\2\2\u0193\u0194\7\35\2\2\u0194")
-        buf.write("\u0195\5`\61\2\u0195\u0196\5F$\2\u0196O\3\2\2\2\u0197")
-        buf.write("\u019d\5R*\2\u0198\u019d\5T+\2\u0199\u019d\5V,\2\u019a")
-        buf.write("\u019d\5X-\2\u019b\u019d\5Z.\2\u019c\u0197\3\2\2\2\u019c")
-        buf.write("\u0198\3\2\2\2\u019c\u0199\3\2\2\2\u019c\u019a\3\2\2\2")
-        buf.write("\u019c\u019b\3\2\2\2\u019dQ\3\2\2\2\u019e\u019f\7\23\2")
-        buf.write("\2\u019f\u01a0\5\n\6\2\u01a0\u01a1\7&\2\2\u01a1\u01a2")
-        buf.write("\7=\2\2\u01a2\u01a3\7\35\2\2\u01a3\u01a4\7\'\2\2\u01a4")
-        buf.write("S\3\2\2\2\u01a5\u01a6\7\24\2\2\u01a6\u01a7\5\f\7\2\u01a7")
-        buf.write("U\3\2\2\2\u01a8\u01a9\7\25\2\2\u01a9\u01aa\7\35\2\2\u01aa")
-        buf.write("\u01ab\7\'\2\2\u01abW\3\2\2\2\u01ac\u01ae\7\26\2\2\u01ad")
-        buf.write("\u01af\7=\2\2\u01ae\u01ad\3\2\2\2\u01ae\u01af\3\2\2\2")
-        buf.write("\u01af\u01b0\3\2\2\2\u01b0\u01b1\7\35\2\2\u01b1\u01b2")
-        buf.write("\7\'\2\2\u01b2Y\3\2\2\2\u01b3\u01b4\7\27\2\2\u01b4\u01b5")
-        buf.write("\7>\2\2\u01b5\u01b6\7\35\2\2\u01b6\u01b7\7&\2\2\u01b7")
-        buf.write("\u01b8\5`\61\2\u01b8\u01b9\7\'\2\2\u01b9[\3\2\2\2\u01ba")
-        buf.write("\u01bb\7\30\2\2\u01bb\u01bc\7 \2\2\u01bc\u01bd\5^\60\2")
-        buf.write("\u01bd\u01be\7#\2\2\u01be\u01bf\7\'\2\2\u01bf]\3\2\2\2")
-        buf.write("\u01c0\u01c5\7\35\2\2\u01c1\u01c5\7\33\2\2\u01c2\u01c5")
-        buf.write("\7\34\2\2\u01c3\u01c5\5\32\16\2\u01c4\u01c0\3\2\2\2\u01c4")
-        buf.write("\u01c1\3\2\2\2\u01c4\u01c2\3\2\2\2\u01c4\u01c3\3\2\2\2")
-        buf.write("\u01c5_\3\2\2\2\u01c6\u01c8\7\66\2\2\u01c7\u01c9\5b\62")
-        buf.write("\2\u01c8\u01c7\3\2\2\2\u01c8\u01c9\3\2\2\2\u01c9\u01ca")
-        buf.write("\3\2\2\2\u01ca\u01cb\7\65\2\2\u01cba\3\2\2\2\u01cc\u01cd")
-        buf.write("\b\62\1\2\u01cd\u01ce\7\34\2\2\u01ce\u01cf\7&\2\2\u01cf")
-        buf.write("\u01d0\5d\63\2\u01d0\u01d6\3\2\2\2\u01d1\u01d2\f\3\2\2")
-        buf.write("\u01d2\u01d3\7$\2\2\u01d3\u01d5\5b\62\4\u01d4\u01d1\3")
-        buf.write("\2\2\2\u01d5\u01d8\3\2\2\2\u01d6\u01d4\3\2\2\2\u01d6\u01d7")
-        buf.write("\3\2\2\2\u01d7c\3\2\2\2\u01d8\u01d6\3\2\2\2\u01d9\u01de")
-        buf.write("\7\35\2\2\u01da\u01de\7\33\2\2\u01db\u01de\7\34\2\2\u01dc")
-        buf.write("\u01de\5\n\6\2\u01dd\u01d9\3\2\2\2\u01dd\u01da\3\2\2\2")
-        buf.write("\u01dd\u01db\3\2\2\2\u01dd\u01dc\3\2\2\2\u01dee\3\2\2")
-        buf.write("\2\u01df\u01e0\7\6\2\2\u01e0\u01e1\7\35\2\2\u01e1\u01e2")
-        buf.write("\7&\2\2\u01e2\u01e3\5h\65\2\u01e3g\3\2\2\2\u01e4\u01e8")
-        buf.write("\7\37\2\2\u01e5\u01e7\5j\66\2\u01e6\u01e5\3\2\2\2\u01e7")
-        buf.write("\u01ea\3\2\2\2\u01e8\u01e6\3\2\2\2\u01e8\u01e9\3\2\2\2")
-        buf.write("\u01e9\u01ec\3\2\2\2\u01ea\u01e8\3\2\2\2\u01eb\u01ed\5")
-        buf.write("l\67\2\u01ec\u01eb\3\2\2\2\u01ec\u01ed\3\2\2\2\u01ed\u01ee")
-        buf.write("\3\2\2\2\u01ee\u01ef\7\"\2\2\u01efi\3\2\2\2\u01f0\u01f1")
-        buf.write("\7\7\2\2\u01f1\u01f2\5n8\2\u01f2\u01f6\7&\2\2\u01f3\u01f5")
-        buf.write("\5\6\4\2\u01f4\u01f3\3\2\2\2\u01f5\u01f8\3\2\2\2\u01f6")
-        buf.write("\u01f4\3\2\2\2\u01f6\u01f7\3\2\2\2\u01f7k\3\2\2\2\u01f8")
-        buf.write("\u01f6\3\2\2\2\u01f9\u01fa\7\b\2\2\u01fa\u01fe\7&\2\2")
-        buf.write("\u01fb\u01fd\5\6\4\2\u01fc\u01fb\3\2\2\2\u01fd\u0200\3")
-        buf.write("\2\2\2\u01fe\u01fc\3\2\2\2\u01fe\u01ff\3\2\2\2\u01ffm")
-        buf.write("\3\2\2\2\u0200\u01fe\3\2\2\2\u0201\u0202\t\6\2\2\u0202")
-        buf.write("o\3\2\2\2\u0203\u0204\7\16\2\2\u0204\u0205\7\'\2\2\u0205")
-        buf.write("q\3\2\2\2)u\177\u0089\u008f\u0097\u00a6\u00af\u00b6\u00cd")
-        buf.write("\u00d2\u00d9\u00e0\u00e7\u00ec\u00f9\u0101\u010b\u011b")
-        buf.write("\u0122\u0126\u0131\u0135\u013e\u0144\u014d\u0166\u0174")
-        buf.write("\u017d\u0187\u019c\u01ae\u01c4\u01c8\u01d6\u01dd\u01e8")
-        buf.write("\u01ec\u01f6\u01fe")
+        buf.write("&\3\2\7\2N\n\2\f\2\16\2Q\13\2\3\2\3\2\3\3\3\3\5\3W\n\3")
+        buf.write("\3\4\3\4\3\4\3\4\3\4\5\4^\n\4\3\5\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\7\5f\n\5\f\5\16\5i\13\5\3\6\3\6\3\6\3\6\3\6\5\6p\n\6")
+        buf.write("\3\6\3\6\3\6\7\6u\n\6\f\6\16\6x\13\6\3\7\3\7\3\7\3\b\3")
+        buf.write("\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b")
+        buf.write("\3\b\3\b\5\b\u008e\n\b\3\t\3\t\3\t\5\t\u0093\n\t\3\t\3")
+        buf.write("\t\3\t\7\t\u0098\n\t\f\t\16\t\u009b\13\t\3\n\3\n\3\n\3")
+        buf.write("\n\5\n\u00a1\n\n\3\n\3\n\3\n\7\n\u00a6\n\n\f\n\16\n\u00a9")
+        buf.write("\13\n\3\13\3\13\5\13\u00ad\n\13\3\13\3\13\3\f\3\f\3\f")
+        buf.write("\3\f\3\f\3\f\3\f\7\f\u00b8\n\f\f\f\16\f\u00bb\13\f\3\r")
+        buf.write("\3\r\3\r\3\r\3\r\5\r\u00c2\n\r\3\16\3\16\3\16\3\16\3\16")
+        buf.write("\3\16\3\16\5\16\u00cb\n\16\3\17\3\17\3\17\3\17\3\17\3")
+        buf.write("\20\3\20\3\21\3\21\3\22\3\22\3\22\3\22\3\22\5\22\u00db")
+        buf.write("\n\22\3\23\3\23\3\23\3\23\3\23\5\23\u00e2\n\23\3\23\3")
+        buf.write("\23\5\23\u00e6\n\23\3\24\3\24\3\24\3\24\3\24\3\24\3\24")
+        buf.write("\7\24\u00ef\n\24\f\24\16\24\u00f2\13\24\3\25\5\25\u00f5")
+        buf.write("\n\25\3\25\3\25\3\26\3\26\3\26\3\26\3\26\5\26\u00fe\n")
+        buf.write("\26\3\27\3\27\3\27\3\27\5\27\u0104\n\27\3\30\3\30\3\31")
+        buf.write("\3\31\3\32\3\32\3\32\5\32\u010d\n\32\3\33\3\33\3\33\3")
+        buf.write("\33\3\33\3\33\3\34\3\34\3\34\3\34\3\34\3\35\3\35\3\35")
+        buf.write("\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\36\3\36\5\36\u0126")
+        buf.write("\n\36\3\37\3\37\3\37\3\37\3 \3 \3 \3 \3!\3!\7!\u0132\n")
+        buf.write("!\f!\16!\u0135\13!\3!\3!\3\"\3\"\3\"\3\"\3#\3#\3$\3$\3")
+        buf.write("$\3$\3%\3%\3%\3%\3%\3%\3&\3&\3&\3&\5&\u014d\n&\3&\2\b")
+        buf.write("\b\n\20\22\26&\'\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36")
+        buf.write(" \"$&(*,.\60\62\64\668:<>@BDFHJ\2\6\3\2!\"\3\2#&\3\2,")
+        buf.write("\61\3\2)*\2\u0154\2O\3\2\2\2\4V\3\2\2\2\6]\3\2\2\2\b_")
+        buf.write("\3\2\2\2\no\3\2\2\2\fy\3\2\2\2\16\u008d\3\2\2\2\20\u0092")
+        buf.write("\3\2\2\2\22\u00a0\3\2\2\2\24\u00aa\3\2\2\2\26\u00b0\3")
+        buf.write("\2\2\2\30\u00c1\3\2\2\2\32\u00ca\3\2\2\2\34\u00cc\3\2")
+        buf.write("\2\2\36\u00d1\3\2\2\2 \u00d3\3\2\2\2\"\u00d5\3\2\2\2$")
+        buf.write("\u00e5\3\2\2\2&\u00e7\3\2\2\2(\u00f4\3\2\2\2*\u00fd\3")
+        buf.write("\2\2\2,\u0103\3\2\2\2.\u0105\3\2\2\2\60\u0107\3\2\2\2")
+        buf.write("\62\u010c\3\2\2\2\64\u010e\3\2\2\2\66\u0114\3\2\2\28\u0119")
+        buf.write("\3\2\2\2:\u0125\3\2\2\2<\u0127\3\2\2\2>\u012b\3\2\2\2")
+        buf.write("@\u012f\3\2\2\2B\u0138\3\2\2\2D\u013c\3\2\2\2F\u013e\3")
+        buf.write("\2\2\2H\u0142\3\2\2\2J\u014c\3\2\2\2LN\5\4\3\2ML\3\2\2")
+        buf.write("\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2PR\3\2\2\2QO\3\2\2\2R")
+        buf.write("S\7\2\2\3S\3\3\2\2\2TW\5\6\4\2UW\5B\"\2VT\3\2\2\2VU\3")
+        buf.write("\2\2\2W\5\3\2\2\2X^\5\f\7\2Y^\5\"\22\2Z^\5H%\2[^\5\62")
+        buf.write("\32\2\\^\5D#\2]X\3\2\2\2]Y\3\2\2\2]Z\3\2\2\2][\3\2\2\2")
+        buf.write("]\\\3\2\2\2^\7\3\2\2\2_`\b\5\1\2`a\7\26\2\2ag\3\2\2\2")
+        buf.write("bc\f\3\2\2cd\7\35\2\2df\5\b\5\4eb\3\2\2\2fi\3\2\2\2ge")
+        buf.write("\3\2\2\2gh\3\2\2\2h\t\3\2\2\2ig\3\2\2\2jk\b\6\1\2kp\7")
+        buf.write("\26\2\2lp\7\24\2\2mp\7\25\2\2np\5\34\17\2oj\3\2\2\2ol")
+        buf.write("\3\2\2\2om\3\2\2\2on\3\2\2\2pv\3\2\2\2qr\f\4\2\2rs\7\35")
+        buf.write("\2\2su\5\n\6\5tq\3\2\2\2ux\3\2\2\2vt\3\2\2\2vw\3\2\2\2")
+        buf.write("w\13\3\2\2\2xv\3\2\2\2yz\5\16\b\2z{\7 \2\2{\r\3\2\2\2")
+        buf.write("|}\7\26\2\2}~\7\62\2\2~\u008e\5\26\f\2\177\u0080\7\26")
+        buf.write("\2\2\u0080\u008e\7\'\2\2\u0081\u0082\7\26\2\2\u0082\u008e")
+        buf.write("\7(\2\2\u0083\u0084\7\26\2\2\u0084\u0085\7\62\2\2\u0085")
+        buf.write("\u008e\5\24\13\2\u0086\u0087\5\34\17\2\u0087\u0088\7\62")
+        buf.write("\2\2\u0088\u0089\5\26\f\2\u0089\u008e\3\2\2\2\u008a\u008b")
+        buf.write("\7\26\2\2\u008b\u008c\7\62\2\2\u008c\u008e\5\20\t\2\u008d")
+        buf.write("|\3\2\2\2\u008d\177\3\2\2\2\u008d\u0081\3\2\2\2\u008d")
+        buf.write("\u0083\3\2\2\2\u008d\u0086\3\2\2\2\u008d\u008a\3\2\2\2")
+        buf.write("\u008e\17\3\2\2\2\u008f\u0090\b\t\1\2\u0090\u0093\7\25")
+        buf.write("\2\2\u0091\u0093\7\26\2\2\u0092\u008f\3\2\2\2\u0092\u0091")
+        buf.write("\3\2\2\2\u0093\u0099\3\2\2\2\u0094\u0095\f\5\2\2\u0095")
+        buf.write("\u0096\7!\2\2\u0096\u0098\5\20\t\6\u0097\u0094\3\2\2\2")
+        buf.write("\u0098\u009b\3\2\2\2\u0099\u0097\3\2\2\2\u0099\u009a\3")
+        buf.write("\2\2\2\u009a\21\3\2\2\2\u009b\u0099\3\2\2\2\u009c\u009d")
+        buf.write("\b\n\1\2\u009d\u00a1\7\24\2\2\u009e\u00a1\7\26\2\2\u009f")
+        buf.write("\u00a1\7\25\2\2\u00a0\u009c\3\2\2\2\u00a0\u009e\3\2\2")
+        buf.write("\2\u00a0\u009f\3\2\2\2\u00a1\u00a7\3\2\2\2\u00a2\u00a3")
+        buf.write("\f\3\2\2\u00a3\u00a4\7\35\2\2\u00a4\u00a6\5\22\n\4\u00a5")
+        buf.write("\u00a2\3\2\2\2\u00a6\u00a9\3\2\2\2\u00a7\u00a5\3\2\2\2")
+        buf.write("\u00a7\u00a8\3\2\2\2\u00a8\23\3\2\2\2\u00a9\u00a7\3\2")
+        buf.write("\2\2\u00aa\u00ac\7\27\2\2\u00ab\u00ad\5\22\n\2\u00ac\u00ab")
+        buf.write("\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae")
+        buf.write("\u00af\7\32\2\2\u00af\25\3\2\2\2\u00b0\u00b1\b\f\1\2\u00b1")
+        buf.write("\u00b2\5\30\r\2\u00b2\u00b9\3\2\2\2\u00b3\u00b4\f\4\2")
+        buf.write("\2\u00b4\u00b5\5\36\20\2\u00b5\u00b6\5\30\r\2\u00b6\u00b8")
+        buf.write("\3\2\2\2\u00b7\u00b3\3\2\2\2\u00b8\u00bb\3\2\2\2\u00b9")
+        buf.write("\u00b7\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\27\3\2\2\2\u00bb")
+        buf.write("\u00b9\3\2\2\2\u00bc\u00bd\5\32\16\2\u00bd\u00be\5 \21")
+        buf.write("\2\u00be\u00bf\5\30\r\2\u00bf\u00c2\3\2\2\2\u00c0\u00c2")
+        buf.write("\5\32\16\2\u00c1\u00bc\3\2\2\2\u00c1\u00c0\3\2\2\2\u00c2")
+        buf.write("\31\3\2\2\2\u00c3\u00cb\7\24\2\2\u00c4\u00cb\7\26\2\2")
+        buf.write("\u00c5\u00c6\7\31\2\2\u00c6\u00c7\5\26\f\2\u00c7\u00c8")
+        buf.write("\7\34\2\2\u00c8\u00cb\3\2\2\2\u00c9\u00cb\5\34\17\2\u00ca")
+        buf.write("\u00c3\3\2\2\2\u00ca\u00c4\3\2\2\2\u00ca\u00c5\3\2\2\2")
+        buf.write("\u00ca\u00c9\3\2\2\2\u00cb\33\3\2\2\2\u00cc\u00cd\7\26")
+        buf.write("\2\2\u00cd\u00ce\7\27\2\2\u00ce\u00cf\5\32\16\2\u00cf")
+        buf.write("\u00d0\7\32\2\2\u00d0\35\3\2\2\2\u00d1\u00d2\t\2\2\2\u00d2")
+        buf.write("\37\3\2\2\2\u00d3\u00d4\t\3\2\2\u00d4!\3\2\2\2\u00d5\u00d6")
+        buf.write("\7\3\2\2\u00d6\u00d7\5&\24\2\u00d7\u00d8\7\37\2\2\u00d8")
+        buf.write("\u00da\5@!\2\u00d9\u00db\5$\23\2\u00da\u00d9\3\2\2\2\u00da")
+        buf.write("\u00db\3\2\2\2\u00db#\3\2\2\2\u00dc\u00dd\7\4\2\2\u00dd")
+        buf.write("\u00de\5&\24\2\u00de\u00df\7\37\2\2\u00df\u00e1\5@!\2")
+        buf.write("\u00e0\u00e2\5$\23\2\u00e1\u00e0\3\2\2\2\u00e1\u00e2\3")
+        buf.write("\2\2\2\u00e2\u00e6\3\2\2\2\u00e3\u00e4\7\5\2\2\u00e4\u00e6")
+        buf.write("\5@!\2\u00e5\u00dc\3\2\2\2\u00e5\u00e3\3\2\2\2\u00e6%")
+        buf.write("\3\2\2\2\u00e7\u00e8\b\24\1\2\u00e8\u00e9\5(\25\2\u00e9")
+        buf.write("\u00f0\3\2\2\2\u00ea\u00eb\f\4\2\2\u00eb\u00ec\5\60\31")
+        buf.write("\2\u00ec\u00ed\5(\25\2\u00ed\u00ef\3\2\2\2\u00ee\u00ea")
+        buf.write("\3\2\2\2\u00ef\u00f2\3\2\2\2\u00f0\u00ee\3\2\2\2\u00f0")
+        buf.write("\u00f1\3\2\2\2\u00f1\'\3\2\2\2\u00f2\u00f0\3\2\2\2\u00f3")
+        buf.write("\u00f5\7+\2\2\u00f4\u00f3\3\2\2\2\u00f4\u00f5\3\2\2\2")
+        buf.write("\u00f5\u00f6\3\2\2\2\u00f6\u00f7\5*\26\2\u00f7)\3\2\2")
+        buf.write("\2\u00f8\u00f9\5,\27\2\u00f9\u00fa\5.\30\2\u00fa\u00fb")
+        buf.write("\5*\26\2\u00fb\u00fe\3\2\2\2\u00fc\u00fe\5,\27\2\u00fd")
+        buf.write("\u00f8\3\2\2\2\u00fd\u00fc\3\2\2\2\u00fe+\3\2\2\2\u00ff")
+        buf.write("\u0104\7\25\2\2\u0100\u0104\7\t\2\2\u0101\u0104\7\n\2")
+        buf.write("\2\u0102\u0104\5\32\16\2\u0103\u00ff\3\2\2\2\u0103\u0100")
+        buf.write("\3\2\2\2\u0103\u0101\3\2\2\2\u0103\u0102\3\2\2\2\u0104")
+        buf.write("-\3\2\2\2\u0105\u0106\t\4\2\2\u0106/\3\2\2\2\u0107\u0108")
+        buf.write("\t\5\2\2\u0108\61\3\2\2\2\u0109\u010d\5\64\33\2\u010a")
+        buf.write("\u010d\5\66\34\2\u010b\u010d\58\35\2\u010c\u0109\3\2\2")
+        buf.write("\2\u010c\u010a\3\2\2\2\u010c\u010b\3\2\2\2\u010d\63\3")
+        buf.write("\2\2\2\u010e\u010f\7\b\2\2\u010f\u0110\5@!\2\u0110\u0111")
+        buf.write("\7\6\2\2\u0111\u0112\5&\24\2\u0112\u0113\7 \2\2\u0113")
+        buf.write("\65\3\2\2\2\u0114\u0115\7\6\2\2\u0115\u0116\5&\24\2\u0116")
+        buf.write("\u0117\7\37\2\2\u0117\u0118\5@!\2\u0118\67\3\2\2\2\u0119")
+        buf.write("\u011a\7\7\2\2\u011a\u011b\5:\36\2\u011b\u011c\7\37\2")
+        buf.write("\2\u011c\u011d\5@!\2\u011d9\3\2\2\2\u011e\u011f\5<\37")
+        buf.write("\2\u011f\u0120\7 \2\2\u0120\u0121\5&\24\2\u0121\u0122")
+        buf.write("\7 \2\2\u0122\u0123\5\16\b\2\u0123\u0126\3\2\2\2\u0124")
+        buf.write("\u0126\5> \2\u0125\u011e\3\2\2\2\u0125\u0124\3\2\2\2\u0126")
+        buf.write(";\3\2\2\2\u0127\u0128\7\26\2\2\u0128\u0129\7\62\2\2\u0129")
+        buf.write("\u012a\5\26\f\2\u012a=\3\2\2\2\u012b\u012c\7\26\2\2\u012c")
+        buf.write("\u012d\7\16\2\2\u012d\u012e\7\26\2\2\u012e?\3\2\2\2\u012f")
+        buf.write("\u0133\7\30\2\2\u0130\u0132\5\6\4\2\u0131\u0130\3\2\2")
+        buf.write("\2\u0132\u0135\3\2\2\2\u0133\u0131\3\2\2\2\u0133\u0134")
+        buf.write("\3\2\2\2\u0134\u0136\3\2\2\2\u0135\u0133\3\2\2\2\u0136")
+        buf.write("\u0137\7\33\2\2\u0137A\3\2\2\2\u0138\u0139\7\17\2\2\u0139")
+        buf.write("\u013a\7\26\2\2\u013a\u013b\5@!\2\u013bC\3\2\2\2\u013c")
+        buf.write("\u013d\5F$\2\u013dE\3\2\2\2\u013e\u013f\7\20\2\2\u013f")
+        buf.write("\u0140\7\26\2\2\u0140\u0141\7 \2\2\u0141G\3\2\2\2\u0142")
+        buf.write("\u0143\7\21\2\2\u0143\u0144\7\31\2\2\u0144\u0145\5J&\2")
+        buf.write("\u0145\u0146\7\34\2\2\u0146\u0147\7 \2\2\u0147I\3\2\2")
+        buf.write("\2\u0148\u014d\7\26\2\2\u0149\u014d\7\24\2\2\u014a\u014d")
+        buf.write("\7\25\2\2\u014b\u014d\5\24\13\2\u014c\u0148\3\2\2\2\u014c")
+        buf.write("\u0149\3\2\2\2\u014c\u014a\3\2\2\2\u014c\u014b\3\2\2\2")
+        buf.write("\u014dK\3\2\2\2\34OV]gov\u008d\u0092\u0099\u00a0\u00a7")
+        buf.write("\u00ac\u00b9\u00c1\u00ca\u00da\u00e1\u00e5\u00f0\u00f4")
+        buf.write("\u00fd\u0103\u010c\u0125\u0133\u014c")
         return buf.getvalue()
 
 
@@ -259,163 +165,129 @@ class brownieParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'if'", "'elif'", "'else'", "'switch'", 
-                     "'case'", "'default'", "'while'", "'for'", "'do'", 
-                     "'True'", "'False'", "'break'", "'fun'", "'return'", 
-                     "'in'", "'process'", "'loop'", "'exec'", "'start'", 
-                     "'stop'", "'message'", "'print'", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "<INVALID>", "'['", "'{'", 
-                     "'('", "']'", "'}'", "')'", "','", "'.'", "':'", "';'", 
-                     "'+'", "'-'", "'*'", "'/'", "'^'", "'%'", "'++'", "'--'", 
-                     "'&&'", "'||'", "'!'", "'=='", "'!='", "'>'", "'<'", 
-                     "'>='", "'<='", "'='", "'#'", "'/*'", "'*/'", "'?'", 
-                     "'@'" ]
+    literalNames = [ "<INVALID>", "'if'", "'elif'", "'else'", "'while'", 
+                     "'for'", "'do'", "'True'", "'False'", "'break'", "'fun'", 
+                     "'return'", "'in'", "'process'", "'start'", "'print'", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "'['", "'{'", "'('", "']'", "'}'", "')'", 
+                     "','", "'.'", "':'", "';'", "'+'", "'-'", "'*'", "'/'", 
+                     "'^'", "'%'", "'++'", "'--'", "'&&'", "'||'", "'!'", 
+                     "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", "'='", 
+                     "'#'", "'/*'", "'*/'", "'?'", "'@'" ]
 
-    symbolicNames = [ "<INVALID>", "IF", "ELIF", "ELSE", "SWITCH", "CASE", 
-                      "DEFAULT", "WHILE", "FOR", "DO", "TRUE", "FALSE", 
-                      "BREAK", "FUNCTION", "RETURN", "IN", "PROCESS", "LOOP", 
-                      "EXEC", "START", "STOP", "MESSAGE", "PRINT", "COMMENT", 
-                      "COMMENT_AREA", "NUMBER", "STRING", "VARIABLE", "OP_SQUARE", 
-                      "OP_BRACE", "OP_PARENTHESIS", "CL_SQUARE", "CL_BRACE", 
-                      "CL_PARENTHESIS", "COMMA", "DOT", "COLON", "SEMICOLON", 
-                      "PLUS", "MINUS", "MUL", "DIV", "POW", "MOD", "INCREMENT", 
-                      "DECREMENT", "AND", "OR", "NOT", "EQ", "DIF", "GREATER", 
-                      "LESS", "GEQ", "LEQ", "ASSIGN", "COMMENT_LINE", "COMM_OPEN", 
+    symbolicNames = [ "<INVALID>", "IF", "ELIF", "ELSE", "WHILE", "FOR", 
+                      "DO", "TRUE", "FALSE", "BREAK", "FUNCTION", "RETURN", 
+                      "IN", "PROCESS", "START", "PRINT", "COMMENT", "COMMENT_AREA", 
+                      "NUMBER", "STRING", "VARIABLE", "OP_SQUARE", "OP_BRACE", 
+                      "OP_PARENTHESIS", "CL_SQUARE", "CL_BRACE", "CL_PARENTHESIS", 
+                      "COMMA", "DOT", "COLON", "SEMICOLON", "PLUS", "MINUS", 
+                      "MUL", "DIV", "POW", "MOD", "INCREMENT", "DECREMENT", 
+                      "AND", "OR", "NOT", "EQ", "DIF", "GREATER", "LESS", 
+                      "GEQ", "LEQ", "ASSIGN", "COMMENT_LINE", "COMM_OPEN", 
                       "COMM_CLOSE", "MONITOR", "CONNECTION", "WHITESPACE" ]
 
     RULE_start = 0
     RULE_structure = 1
     RULE_sentence = 2
-    RULE_function = 3
-    RULE_call = 4
-    RULE_call_sentence = 5
-    RULE_parameter = 6
-    RULE_parameter_call = 7
-    RULE_definition = 8
-    RULE_assign = 9
-    RULE_text = 10
-    RULE_element = 11
-    RULE_list_elements = 12
-    RULE_exp = 13
-    RULE_term = 14
-    RULE_ar_value = 15
-    RULE_array_call = 16
-    RULE_ar_operator = 17
-    RULE_prior_operator = 18
-    RULE_conditional = 19
-    RULE_otherwise = 20
-    RULE_condition = 21
-    RULE_other_cond = 22
-    RULE_other_condition = 23
-    RULE_com_value = 24
-    RULE_comparator = 25
-    RULE_logic = 26
-    RULE_cycle = 27
-    RULE_do_while = 28
-    RULE_while_ = 29
-    RULE_for_ = 30
-    RULE_for_condition = 31
-    RULE_for_definition = 32
-    RULE_for_iterator = 33
-    RULE_body = 34
-    RULE_fun_body = 35
-    RULE_fun_sentence = 36
-    RULE_procedure = 37
-    RULE_process = 38
-    RULE_concurrency = 39
-    RULE_loop = 40
-    RULE_exec = 41
-    RULE_start_process = 42
-    RULE_stop = 43
-    RULE_message = 44
-    RULE_print_ = 45
-    RULE_print_value = 46
-    RULE_dictionary = 47
-    RULE_dict_element = 48
-    RULE_dict_value = 49
-    RULE_switch_ = 50
-    RULE_switch_body = 51
-    RULE_case_ = 52
-    RULE_default_ = 53
-    RULE_case_value = 54
-    RULE_break_ = 55
+    RULE_parameter = 3
+    RULE_parameter_call = 4
+    RULE_definition = 5
+    RULE_assign = 6
+    RULE_text = 7
+    RULE_element = 8
+    RULE_list_elements = 9
+    RULE_exp = 10
+    RULE_term = 11
+    RULE_ar_value = 12
+    RULE_array_call = 13
+    RULE_ar_operator = 14
+    RULE_prior_operator = 15
+    RULE_conditional = 16
+    RULE_otherwise = 17
+    RULE_condition = 18
+    RULE_other_cond = 19
+    RULE_other_condition = 20
+    RULE_com_value = 21
+    RULE_comparator = 22
+    RULE_logic = 23
+    RULE_cycle = 24
+    RULE_do_while = 25
+    RULE_while_ = 26
+    RULE_for_ = 27
+    RULE_for_condition = 28
+    RULE_for_definition = 29
+    RULE_for_iterator = 30
+    RULE_body = 31
+    RULE_procedure = 32
+    RULE_concurrency = 33
+    RULE_start_process = 34
+    RULE_print_ = 35
+    RULE_print_value = 36
 
-    ruleNames =  [ "start", "structure", "sentence", "function", "call", 
-                   "call_sentence", "parameter", "parameter_call", "definition", 
-                   "assign", "text", "element", "list_elements", "exp", 
-                   "term", "ar_value", "array_call", "ar_operator", "prior_operator", 
-                   "conditional", "otherwise", "condition", "other_cond", 
-                   "other_condition", "com_value", "comparator", "logic", 
-                   "cycle", "do_while", "while_", "for_", "for_condition", 
-                   "for_definition", "for_iterator", "body", "fun_body", 
-                   "fun_sentence", "procedure", "process", "concurrency", 
-                   "loop", "exec", "start_process", "stop", "message", "print_", 
-                   "print_value", "dictionary", "dict_element", "dict_value", 
-                   "switch_", "switch_body", "case_", "default_", "case_value", 
-                   "break_" ]
+    ruleNames =  [ "start", "structure", "sentence", "parameter", "parameter_call", 
+                   "definition", "assign", "text", "element", "list_elements", 
+                   "exp", "term", "ar_value", "array_call", "ar_operator", 
+                   "prior_operator", "conditional", "otherwise", "condition", 
+                   "other_cond", "other_condition", "com_value", "comparator", 
+                   "logic", "cycle", "do_while", "while_", "for_", "for_condition", 
+                   "for_definition", "for_iterator", "body", "procedure", 
+                   "concurrency", "start_process", "print_", "print_value" ]
 
     EOF = Token.EOF
     IF=1
     ELIF=2
     ELSE=3
-    SWITCH=4
-    CASE=5
-    DEFAULT=6
-    WHILE=7
-    FOR=8
-    DO=9
-    TRUE=10
-    FALSE=11
-    BREAK=12
-    FUNCTION=13
-    RETURN=14
-    IN=15
-    PROCESS=16
-    LOOP=17
-    EXEC=18
-    START=19
-    STOP=20
-    MESSAGE=21
-    PRINT=22
-    COMMENT=23
-    COMMENT_AREA=24
-    NUMBER=25
-    STRING=26
-    VARIABLE=27
-    OP_SQUARE=28
-    OP_BRACE=29
-    OP_PARENTHESIS=30
-    CL_SQUARE=31
-    CL_BRACE=32
-    CL_PARENTHESIS=33
-    COMMA=34
-    DOT=35
-    COLON=36
-    SEMICOLON=37
-    PLUS=38
-    MINUS=39
-    MUL=40
-    DIV=41
-    POW=42
-    MOD=43
-    INCREMENT=44
-    DECREMENT=45
-    AND=46
-    OR=47
-    NOT=48
-    EQ=49
-    DIF=50
-    GREATER=51
-    LESS=52
-    GEQ=53
-    LEQ=54
-    ASSIGN=55
-    COMMENT_LINE=56
-    COMM_OPEN=57
-    COMM_CLOSE=58
-    MONITOR=59
-    CONNECTION=60
-    WHITESPACE=61
+    WHILE=4
+    FOR=5
+    DO=6
+    TRUE=7
+    FALSE=8
+    BREAK=9
+    FUNCTION=10
+    RETURN=11
+    IN=12
+    PROCESS=13
+    START=14
+    PRINT=15
+    COMMENT=16
+    COMMENT_AREA=17
+    NUMBER=18
+    STRING=19
+    VARIABLE=20
+    OP_SQUARE=21
+    OP_BRACE=22
+    OP_PARENTHESIS=23
+    CL_SQUARE=24
+    CL_BRACE=25
+    CL_PARENTHESIS=26
+    COMMA=27
+    DOT=28
+    COLON=29
+    SEMICOLON=30
+    PLUS=31
+    MINUS=32
+    MUL=33
+    DIV=34
+    POW=35
+    MOD=36
+    INCREMENT=37
+    DECREMENT=38
+    AND=39
+    OR=40
+    NOT=41
+    EQ=42
+    DIF=43
+    GREATER=44
+    LESS=45
+    GEQ=46
+    LEQ=47
+    ASSIGN=48
+    COMMENT_LINE=49
+    COMM_OPEN=50
+    COMM_CLOSE=51
+    MONITOR=52
+    CONNECTION=53
+    WHITESPACE=54
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -469,17 +341,17 @@ class brownieParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115
+            self.state = 77
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.SWITCH) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.BREAK) | (1 << brownieParser.FUNCTION) | (1 << brownieParser.PROCESS) | (1 << brownieParser.LOOP) | (1 << brownieParser.EXEC) | (1 << brownieParser.START) | (1 << brownieParser.STOP) | (1 << brownieParser.MESSAGE) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 112
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.PROCESS) | (1 << brownieParser.START) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
+                self.state = 74
                 self.structure()
-                self.state = 117
+                self.state = 79
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 118
+            self.state = 80
             self.match(brownieParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -496,20 +368,8 @@ class brownieParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def function(self):
-            return self.getTypedRuleContext(brownieParser.FunctionContext,0)
-
-
         def sentence(self):
             return self.getTypedRuleContext(brownieParser.SentenceContext,0)
-
-
-        def call_sentence(self):
-            return self.getTypedRuleContext(brownieParser.Call_sentenceContext,0)
-
-
-        def process(self):
-            return self.getTypedRuleContext(brownieParser.ProcessContext,0)
 
 
         def procedure(self):
@@ -541,39 +401,21 @@ class brownieParser ( Parser ):
         localctx = brownieParser.StructureContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_structure)
         try:
-            self.state = 125
+            self.state = 84
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
-            if la_ == 1:
+            token = self._input.LA(1)
+            if token in [brownieParser.IF, brownieParser.WHILE, brownieParser.FOR, brownieParser.DO, brownieParser.START, brownieParser.PRINT, brownieParser.VARIABLE]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 120
-                self.function()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 121
+                self.state = 82
                 self.sentence()
                 pass
-
-            elif la_ == 3:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 122
-                self.call_sentence()
-                pass
-
-            elif la_ == 4:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 123
-                self.process()
-                pass
-
-            elif la_ == 5:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 124
+            elif token in [brownieParser.PROCESS]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 83
                 self.procedure()
                 pass
-
+            else:
+                raise NoViableAltException(self)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -602,24 +444,12 @@ class brownieParser ( Parser ):
             return self.getTypedRuleContext(brownieParser.Print_Context,0)
 
 
-        def call_sentence(self):
-            return self.getTypedRuleContext(brownieParser.Call_sentenceContext,0)
-
-
         def cycle(self):
             return self.getTypedRuleContext(brownieParser.CycleContext,0)
 
 
         def concurrency(self):
             return self.getTypedRuleContext(brownieParser.ConcurrencyContext,0)
-
-
-        def switch_(self):
-            return self.getTypedRuleContext(brownieParser.Switch_Context,0)
-
-
-        def break_(self):
-            return self.getTypedRuleContext(brownieParser.Break_Context,0)
 
 
         def getRuleIndex(self):
@@ -647,259 +477,37 @@ class brownieParser ( Parser ):
         localctx = brownieParser.SentenceContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_sentence)
         try:
-            self.state = 135
+            self.state = 91
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
-            if la_ == 1:
+            token = self._input.LA(1)
+            if token in [brownieParser.VARIABLE]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 127
+                self.state = 86
                 self.definition()
                 pass
-
-            elif la_ == 2:
+            elif token in [brownieParser.IF]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 128
+                self.state = 87
                 self.conditional()
                 pass
-
-            elif la_ == 3:
+            elif token in [brownieParser.PRINT]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 129
+                self.state = 88
                 self.print_()
                 pass
-
-            elif la_ == 4:
+            elif token in [brownieParser.WHILE, brownieParser.FOR, brownieParser.DO]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 130
-                self.call_sentence()
-                pass
-
-            elif la_ == 5:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 131
+                self.state = 89
                 self.cycle()
                 pass
-
-            elif la_ == 6:
-                self.enterOuterAlt(localctx, 6)
-                self.state = 132
+            elif token in [brownieParser.START]:
+                self.enterOuterAlt(localctx, 5)
+                self.state = 90
                 self.concurrency()
                 pass
-
-            elif la_ == 7:
-                self.enterOuterAlt(localctx, 7)
-                self.state = 133
-                self.switch_()
-                pass
-
-            elif la_ == 8:
-                self.enterOuterAlt(localctx, 8)
-                self.state = 134
-                self.break_()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class FunctionContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def FUNCTION(self):
-            return self.getToken(brownieParser.FUNCTION, 0)
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def OP_PARENTHESIS(self):
-            return self.getToken(brownieParser.OP_PARENTHESIS, 0)
-
-        def CL_PARENTHESIS(self):
-            return self.getToken(brownieParser.CL_PARENTHESIS, 0)
-
-        def fun_body(self):
-            return self.getTypedRuleContext(brownieParser.Fun_bodyContext,0)
-
-
-        def parameter(self):
-            return self.getTypedRuleContext(brownieParser.ParameterContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_function
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFunction" ):
-                listener.enterFunction(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFunction" ):
-                listener.exitFunction(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFunction" ):
-                return visitor.visitFunction(self)
             else:
-                return visitor.visitChildren(self)
+                raise NoViableAltException(self)
 
-
-
-
-    def function(self):
-
-        localctx = brownieParser.FunctionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_function)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 137
-            self.match(brownieParser.FUNCTION)
-            self.state = 138
-            self.match(brownieParser.VARIABLE)
-            self.state = 139
-            self.match(brownieParser.OP_PARENTHESIS)
-            self.state = 141
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==brownieParser.VARIABLE:
-                self.state = 140
-                self.parameter(0)
-
-
-            self.state = 143
-            self.match(brownieParser.CL_PARENTHESIS)
-            self.state = 144
-            self.fun_body()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class CallContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def OP_PARENTHESIS(self):
-            return self.getToken(brownieParser.OP_PARENTHESIS, 0)
-
-        def CL_PARENTHESIS(self):
-            return self.getToken(brownieParser.CL_PARENTHESIS, 0)
-
-        def parameter_call(self):
-            return self.getTypedRuleContext(brownieParser.Parameter_callContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_call
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCall" ):
-                listener.enterCall(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCall" ):
-                listener.exitCall(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCall" ):
-                return visitor.visitCall(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def call(self):
-
-        localctx = brownieParser.CallContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_call)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 146
-            self.match(brownieParser.VARIABLE)
-            self.state = 147
-            self.match(brownieParser.OP_PARENTHESIS)
-            self.state = 149
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.NUMBER) | (1 << brownieParser.STRING) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 148
-                self.parameter_call(0)
-
-
-            self.state = 151
-            self.match(brownieParser.CL_PARENTHESIS)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Call_sentenceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def call(self):
-            return self.getTypedRuleContext(brownieParser.CallContext,0)
-
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_call_sentence
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCall_sentence" ):
-                listener.enterCall_sentence(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCall_sentence" ):
-                listener.exitCall_sentence(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCall_sentence" ):
-                return visitor.visitCall_sentence(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def call_sentence(self):
-
-        localctx = brownieParser.Call_sentenceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_call_sentence)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 153
-            self.call()
-            self.state = 154
-            self.match(brownieParser.SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -984,20 +592,20 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.ParameterContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 12
-        self.enterRecursionRule(localctx, 12, self.RULE_parameter, _p)
+        _startState = 6
+        self.enterRecursionRule(localctx, 6, self.RULE_parameter, _p)
         try:
             self.enterOuterAlt(localctx, 1)
             localctx = brownieParser.Parameter1Context(self, localctx)
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 157
+            self.state = 94
             self.match(brownieParser.VARIABLE)
             self._ctx.stop = self._input.LT(-1)
-            self.state = 164
+            self.state = 101
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -1005,17 +613,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Parameter2Context(self, brownieParser.ParameterContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_parameter)
-                    self.state = 159
+                    self.state = 96
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 160
+                    self.state = 97
                     self.match(brownieParser.COMMA)
-                    self.state = 161
+                    self.state = 98
                     self.parameter(2) 
-                self.state = 166
+                self.state = 103
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1062,31 +670,6 @@ class brownieParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParameter_call6" ):
                 return visitor.visitParameter_call6(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class Parameter_call4Context(Parameter_callContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a brownieParser.Parameter_callContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def call(self):
-            return self.getTypedRuleContext(brownieParser.CallContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParameter_call4" ):
-                listener.enterParameter_call4(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParameter_call4" ):
-                listener.exitParameter_call4(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParameter_call4" ):
-                return visitor.visitParameter_call4(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1199,19 +782,19 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.Parameter_callContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 14
-        self.enterRecursionRule(localctx, 14, self.RULE_parameter_call, _p)
+        _startState = 8
+        self.enterRecursionRule(localctx, 8, self.RULE_parameter_call, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 173
+            self.state = 109
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.Parameter_call1Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 168
+                self.state = 105
                 self.match(brownieParser.VARIABLE)
                 pass
 
@@ -1219,7 +802,7 @@ class brownieParser ( Parser ):
                 localctx = brownieParser.Parameter_call2Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 169
+                self.state = 106
                 self.match(brownieParser.NUMBER)
                 pass
 
@@ -1227,31 +810,23 @@ class brownieParser ( Parser ):
                 localctx = brownieParser.Parameter_call3Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 170
+                self.state = 107
                 self.match(brownieParser.STRING)
                 pass
 
             elif la_ == 4:
-                localctx = brownieParser.Parameter_call4Context(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 171
-                self.call()
-                pass
-
-            elif la_ == 5:
                 localctx = brownieParser.Parameter_call6Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 172
+                self.state = 108
                 self.array_call()
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 180
+            self.state = 116
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -1259,17 +834,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Parameter_call5Context(self, brownieParser.Parameter_callContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_parameter_call)
-                    self.state = 175
+                    self.state = 111
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 176
+                    self.state = 112
                     self.match(brownieParser.COMMA)
-                    self.state = 177
+                    self.state = 113
                     self.parameter_call(3) 
-                self.state = 182
+                self.state = 118
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1316,12 +891,12 @@ class brownieParser ( Parser ):
     def definition(self):
 
         localctx = brownieParser.DefinitionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_definition)
+        self.enterRule(localctx, 10, self.RULE_definition)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 183
+            self.state = 119
             self.assign()
-            self.state = 184
+            self.state = 120
             self.match(brownieParser.SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -1521,70 +1096,70 @@ class brownieParser ( Parser ):
     def assign(self):
 
         localctx = brownieParser.AssignContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_assign)
+        self.enterRule(localctx, 12, self.RULE_assign)
         try:
-            self.state = 203
+            self.state = 139
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.Assign1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 186
+                self.state = 122
                 self.match(brownieParser.VARIABLE)
-                self.state = 187
+                self.state = 123
                 self.match(brownieParser.ASSIGN)
-                self.state = 188
+                self.state = 124
                 self.exp(0)
                 pass
 
             elif la_ == 2:
                 localctx = brownieParser.Assign2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 189
+                self.state = 125
                 self.match(brownieParser.VARIABLE)
-                self.state = 190
+                self.state = 126
                 self.match(brownieParser.INCREMENT)
                 pass
 
             elif la_ == 3:
                 localctx = brownieParser.Assign3Context(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 191
+                self.state = 127
                 self.match(brownieParser.VARIABLE)
-                self.state = 192
+                self.state = 128
                 self.match(brownieParser.DECREMENT)
                 pass
 
             elif la_ == 4:
                 localctx = brownieParser.Assign4Context(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 193
+                self.state = 129
                 self.match(brownieParser.VARIABLE)
-                self.state = 194
+                self.state = 130
                 self.match(brownieParser.ASSIGN)
-                self.state = 195
+                self.state = 131
                 self.list_elements()
                 pass
 
             elif la_ == 5:
                 localctx = brownieParser.Assign5Context(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 196
+                self.state = 132
                 self.array_call()
-                self.state = 197
+                self.state = 133
                 self.match(brownieParser.ASSIGN)
-                self.state = 198
+                self.state = 134
                 self.exp(0)
                 pass
 
             elif la_ == 6:
                 localctx = brownieParser.Assign6Context(self, localctx)
                 self.enterOuterAlt(localctx, 6)
-                self.state = 200
+                self.state = 136
                 self.match(brownieParser.VARIABLE)
-                self.state = 201
+                self.state = 137
                 self.match(brownieParser.ASSIGN)
-                self.state = 202
+                self.state = 138
                 self.text(0)
                 pass
 
@@ -1697,11 +1272,11 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.TextContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 20
-        self.enterRecursionRule(localctx, 20, self.RULE_text, _p)
+        _startState = 14
+        self.enterRecursionRule(localctx, 14, self.RULE_text, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 208
+            self.state = 144
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.STRING]:
@@ -1709,23 +1284,23 @@ class brownieParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 206
+                self.state = 142
                 self.match(brownieParser.STRING)
                 pass
             elif token in [brownieParser.VARIABLE]:
                 localctx = brownieParser.Text3Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 207
+                self.state = 143
                 self.match(brownieParser.VARIABLE)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 215
+            self.state = 151
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -1733,17 +1308,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Text1Context(self, brownieParser.TextContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_text)
-                    self.state = 210
+                    self.state = 146
                     if not self.precpred(self._ctx, 3):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                    self.state = 211
+                    self.state = 147
                     self.match(brownieParser.PLUS)
-                    self.state = 212
+                    self.state = 148
                     self.text(4) 
-                self.state = 217
+                self.state = 153
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1877,11 +1452,11 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.ElementContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 22
-        self.enterRecursionRule(localctx, 22, self.RULE_element, _p)
+        _startState = 16
+        self.enterRecursionRule(localctx, 16, self.RULE_element, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 222
+            self.state = 158
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.NUMBER]:
@@ -1889,30 +1464,30 @@ class brownieParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 219
+                self.state = 155
                 self.match(brownieParser.NUMBER)
                 pass
             elif token in [brownieParser.VARIABLE]:
                 localctx = brownieParser.Element2Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 220
+                self.state = 156
                 self.match(brownieParser.VARIABLE)
                 pass
             elif token in [brownieParser.STRING]:
                 localctx = brownieParser.Element3Context(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 221
+                self.state = 157
                 self.match(brownieParser.STRING)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 229
+            self.state = 165
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -1920,17 +1495,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Element4Context(self, brownieParser.ElementContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_element)
-                    self.state = 224
+                    self.state = 160
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 225
+                    self.state = 161
                     self.match(brownieParser.COMMA)
-                    self.state = 226
+                    self.state = 162
                     self.element(2) 
-                self.state = 231
+                self.state = 167
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1980,21 +1555,21 @@ class brownieParser ( Parser ):
     def list_elements(self):
 
         localctx = brownieParser.List_elementsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_list_elements)
+        self.enterRule(localctx, 18, self.RULE_list_elements)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 232
+            self.state = 168
             self.match(brownieParser.OP_SQUARE)
-            self.state = 234
+            self.state = 170
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.NUMBER) | (1 << brownieParser.STRING) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 233
+                self.state = 169
                 self.element(0)
 
 
-            self.state = 236
+            self.state = 172
             self.match(brownieParser.CL_SQUARE)
         except RecognitionException as re:
             localctx.exception = re
@@ -2082,20 +1657,20 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.ExpContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 26
-        self.enterRecursionRule(localctx, 26, self.RULE_exp, _p)
+        _startState = 20
+        self.enterRecursionRule(localctx, 20, self.RULE_exp, _p)
         try:
             self.enterOuterAlt(localctx, 1)
             localctx = brownieParser.Exp2Context(self, localctx)
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 239
+            self.state = 175
             self.term()
             self._ctx.stop = self._input.LT(-1)
-            self.state = 247
+            self.state = 183
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -2103,17 +1678,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Exp1Context(self, brownieParser.ExpContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_exp)
-                    self.state = 241
+                    self.state = 177
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 242
+                    self.state = 178
                     self.ar_operator()
-                    self.state = 243
+                    self.state = 179
                     self.term() 
-                self.state = 249
+                self.state = 185
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,14,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2200,26 +1775,26 @@ class brownieParser ( Parser ):
     def term(self):
 
         localctx = brownieParser.TermContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_term)
+        self.enterRule(localctx, 22, self.RULE_term)
         try:
-            self.state = 255
+            self.state = 191
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.Term1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 250
+                self.state = 186
                 self.ar_value()
-                self.state = 251
+                self.state = 187
                 self.prior_operator()
-                self.state = 252
+                self.state = 188
                 self.term()
                 pass
 
             elif la_ == 2:
                 localctx = brownieParser.Term2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 254
+                self.state = 190
                 self.ar_value()
                 pass
 
@@ -2326,31 +1901,6 @@ class brownieParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class Ar_value3Context(Ar_valueContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a brownieParser.Ar_valueContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def call(self):
-            return self.getTypedRuleContext(brownieParser.CallContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAr_value3" ):
-                listener.enterAr_value3(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAr_value3" ):
-                listener.exitAr_value3(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAr_value3" ):
-                return visitor.visitAr_value3(self)
-            else:
-                return visitor.visitChildren(self)
-
-
     class Ar_value5Context(Ar_valueContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a brownieParser.Ar_valueContext
@@ -2380,47 +1930,40 @@ class brownieParser ( Parser ):
     def ar_value(self):
 
         localctx = brownieParser.Ar_valueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_ar_value)
+        self.enterRule(localctx, 24, self.RULE_ar_value)
         try:
-            self.state = 265
+            self.state = 200
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.Ar_value1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 257
+                self.state = 193
                 self.match(brownieParser.NUMBER)
                 pass
 
             elif la_ == 2:
                 localctx = brownieParser.Ar_value2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 258
+                self.state = 194
                 self.match(brownieParser.VARIABLE)
                 pass
 
             elif la_ == 3:
-                localctx = brownieParser.Ar_value3Context(self, localctx)
-                self.enterOuterAlt(localctx, 3)
-                self.state = 259
-                self.call()
-                pass
-
-            elif la_ == 4:
                 localctx = brownieParser.Ar_value4Context(self, localctx)
-                self.enterOuterAlt(localctx, 4)
-                self.state = 260
+                self.enterOuterAlt(localctx, 3)
+                self.state = 195
                 self.match(brownieParser.OP_PARENTHESIS)
-                self.state = 261
+                self.state = 196
                 self.exp(0)
-                self.state = 262
+                self.state = 197
                 self.match(brownieParser.CL_PARENTHESIS)
                 pass
 
-            elif la_ == 5:
+            elif la_ == 4:
                 localctx = brownieParser.Ar_value5Context(self, localctx)
-                self.enterOuterAlt(localctx, 5)
-                self.state = 264
+                self.enterOuterAlt(localctx, 4)
+                self.state = 199
                 self.array_call()
                 pass
 
@@ -2476,16 +2019,16 @@ class brownieParser ( Parser ):
     def array_call(self):
 
         localctx = brownieParser.Array_callContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_array_call)
+        self.enterRule(localctx, 26, self.RULE_array_call)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 202
             self.match(brownieParser.VARIABLE)
-            self.state = 268
+            self.state = 203
             self.match(brownieParser.OP_SQUARE)
-            self.state = 269
+            self.state = 204
             self.ar_value()
-            self.state = 270
+            self.state = 205
             self.match(brownieParser.CL_SQUARE)
         except RecognitionException as re:
             localctx.exception = re
@@ -2531,11 +2074,11 @@ class brownieParser ( Parser ):
     def ar_operator(self):
 
         localctx = brownieParser.Ar_operatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_ar_operator)
+        self.enterRule(localctx, 28, self.RULE_ar_operator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 272
+            self.state = 207
             _la = self._input.LA(1)
             if not(_la==brownieParser.PLUS or _la==brownieParser.MINUS):
                 self._errHandler.recoverInline(self)
@@ -2592,11 +2135,11 @@ class brownieParser ( Parser ):
     def prior_operator(self):
 
         localctx = brownieParser.Prior_operatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_prior_operator)
+        self.enterRule(localctx, 30, self.RULE_prior_operator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 274
+            self.state = 209
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.MUL) | (1 << brownieParser.DIV) | (1 << brownieParser.POW) | (1 << brownieParser.MOD))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2659,23 +2202,23 @@ class brownieParser ( Parser ):
     def conditional(self):
 
         localctx = brownieParser.ConditionalContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_conditional)
+        self.enterRule(localctx, 32, self.RULE_conditional)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 276
+            self.state = 211
             self.match(brownieParser.IF)
-            self.state = 277
+            self.state = 212
             self.condition(0)
-            self.state = 278
+            self.state = 213
             self.match(brownieParser.COLON)
-            self.state = 279
+            self.state = 214
             self.body()
-            self.state = 281
+            self.state = 216
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==brownieParser.ELIF or _la==brownieParser.ELSE:
-                self.state = 280
+                self.state = 215
                 self.otherwise()
 
 
@@ -2770,28 +2313,28 @@ class brownieParser ( Parser ):
     def otherwise(self):
 
         localctx = brownieParser.OtherwiseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_otherwise)
+        self.enterRule(localctx, 34, self.RULE_otherwise)
         self._la = 0 # Token type
         try:
-            self.state = 292
+            self.state = 227
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.ELIF]:
                 localctx = brownieParser.Otherwise1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 283
+                self.state = 218
                 self.match(brownieParser.ELIF)
-                self.state = 284
+                self.state = 219
                 self.condition(0)
-                self.state = 285
+                self.state = 220
                 self.match(brownieParser.COLON)
-                self.state = 286
+                self.state = 221
                 self.body()
-                self.state = 288
+                self.state = 223
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==brownieParser.ELIF or _la==brownieParser.ELSE:
-                    self.state = 287
+                    self.state = 222
                     self.otherwise()
 
 
@@ -2799,9 +2342,9 @@ class brownieParser ( Parser ):
             elif token in [brownieParser.ELSE]:
                 localctx = brownieParser.Otherwise2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 290
+                self.state = 225
                 self.match(brownieParser.ELSE)
-                self.state = 291
+                self.state = 226
                 self.body()
                 pass
             else:
@@ -2893,20 +2436,20 @@ class brownieParser ( Parser ):
         _parentState = self.state
         localctx = brownieParser.ConditionContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 42
-        self.enterRecursionRule(localctx, 42, self.RULE_condition, _p)
+        _startState = 36
+        self.enterRecursionRule(localctx, 36, self.RULE_condition, _p)
         try:
             self.enterOuterAlt(localctx, 1)
             localctx = brownieParser.Condition2Context(self, localctx)
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 295
+            self.state = 230
             self.other_cond()
             self._ctx.stop = self._input.LT(-1)
-            self.state = 303
+            self.state = 238
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -2914,17 +2457,17 @@ class brownieParser ( Parser ):
                     _prevctx = localctx
                     localctx = brownieParser.Condition1Context(self, brownieParser.ConditionContext(self, _parentctx, _parentState))
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_condition)
-                    self.state = 297
+                    self.state = 232
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 298
+                    self.state = 233
                     self.logic()
-                    self.state = 299
+                    self.state = 234
                     self.other_cond() 
-                self.state = 305
+                self.state = 240
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2971,19 +2514,19 @@ class brownieParser ( Parser ):
     def other_cond(self):
 
         localctx = brownieParser.Other_condContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_other_cond)
+        self.enterRule(localctx, 38, self.RULE_other_cond)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 307
+            self.state = 242
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==brownieParser.NOT:
-                self.state = 306
+                self.state = 241
                 self.match(brownieParser.NOT)
 
 
-            self.state = 309
+            self.state = 244
             self.other_condition()
         except RecognitionException as re:
             localctx.exception = re
@@ -3070,26 +2613,26 @@ class brownieParser ( Parser ):
     def other_condition(self):
 
         localctx = brownieParser.Other_conditionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 46, self.RULE_other_condition)
+        self.enterRule(localctx, 40, self.RULE_other_condition)
         try:
-            self.state = 316
+            self.state = 251
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.Other_condition1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 311
+                self.state = 246
                 self.com_value()
-                self.state = 312
+                self.state = 247
                 self.comparator()
-                self.state = 313
+                self.state = 248
                 self.other_condition()
                 pass
 
             elif la_ == 2:
                 localctx = brownieParser.Other_condition2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 315
+                self.state = 250
                 self.com_value()
                 pass
 
@@ -3145,29 +2688,29 @@ class brownieParser ( Parser ):
     def com_value(self):
 
         localctx = brownieParser.Com_valueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 48, self.RULE_com_value)
+        self.enterRule(localctx, 42, self.RULE_com_value)
         try:
-            self.state = 322
+            self.state = 257
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.STRING]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 318
+                self.state = 253
                 self.match(brownieParser.STRING)
                 pass
             elif token in [brownieParser.TRUE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 319
+                self.state = 254
                 self.match(brownieParser.TRUE)
                 pass
             elif token in [brownieParser.FALSE]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 320
+                self.state = 255
                 self.match(brownieParser.FALSE)
                 pass
             elif token in [brownieParser.NUMBER, brownieParser.VARIABLE, brownieParser.OP_PARENTHESIS]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 321
+                self.state = 256
                 self.ar_value()
                 pass
             else:
@@ -3229,11 +2772,11 @@ class brownieParser ( Parser ):
     def comparator(self):
 
         localctx = brownieParser.ComparatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 50, self.RULE_comparator)
+        self.enterRule(localctx, 44, self.RULE_comparator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 324
+            self.state = 259
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.EQ) | (1 << brownieParser.DIF) | (1 << brownieParser.GREATER) | (1 << brownieParser.LESS) | (1 << brownieParser.GEQ) | (1 << brownieParser.LEQ))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -3284,11 +2827,11 @@ class brownieParser ( Parser ):
     def logic(self):
 
         localctx = brownieParser.LogicContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_logic)
+        self.enterRule(localctx, 46, self.RULE_logic)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 326
+            self.state = 261
             _la = self._input.LA(1)
             if not(_la==brownieParser.AND or _la==brownieParser.OR):
                 self._errHandler.recoverInline(self)
@@ -3345,24 +2888,24 @@ class brownieParser ( Parser ):
     def cycle(self):
 
         localctx = brownieParser.CycleContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 54, self.RULE_cycle)
+        self.enterRule(localctx, 48, self.RULE_cycle)
         try:
-            self.state = 331
+            self.state = 266
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.DO]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 328
+                self.state = 263
                 self.do_while()
                 pass
             elif token in [brownieParser.WHILE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 329
+                self.state = 264
                 self.while_()
                 pass
             elif token in [brownieParser.FOR]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 330
+                self.state = 265
                 self.for_()
                 pass
             else:
@@ -3423,18 +2966,18 @@ class brownieParser ( Parser ):
     def do_while(self):
 
         localctx = brownieParser.Do_whileContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 56, self.RULE_do_while)
+        self.enterRule(localctx, 50, self.RULE_do_while)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 333
+            self.state = 268
             self.match(brownieParser.DO)
-            self.state = 334
+            self.state = 269
             self.body()
-            self.state = 335
+            self.state = 270
             self.match(brownieParser.WHILE)
-            self.state = 336
+            self.state = 271
             self.condition(0)
-            self.state = 337
+            self.state = 272
             self.match(brownieParser.SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -3488,16 +3031,16 @@ class brownieParser ( Parser ):
     def while_(self):
 
         localctx = brownieParser.While_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 58, self.RULE_while_)
+        self.enterRule(localctx, 52, self.RULE_while_)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 339
+            self.state = 274
             self.match(brownieParser.WHILE)
-            self.state = 340
+            self.state = 275
             self.condition(0)
-            self.state = 341
+            self.state = 276
             self.match(brownieParser.COLON)
-            self.state = 342
+            self.state = 277
             self.body()
         except RecognitionException as re:
             localctx.exception = re
@@ -3551,16 +3094,16 @@ class brownieParser ( Parser ):
     def for_(self):
 
         localctx = brownieParser.For_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 60, self.RULE_for_)
+        self.enterRule(localctx, 54, self.RULE_for_)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 344
+            self.state = 279
             self.match(brownieParser.FOR)
-            self.state = 345
+            self.state = 280
             self.for_condition()
-            self.state = 346
+            self.state = 281
             self.match(brownieParser.COLON)
-            self.state = 347
+            self.state = 282
             self.body()
         except RecognitionException as re:
             localctx.exception = re
@@ -3652,30 +3195,30 @@ class brownieParser ( Parser ):
     def for_condition(self):
 
         localctx = brownieParser.For_conditionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 62, self.RULE_for_condition)
+        self.enterRule(localctx, 56, self.RULE_for_condition)
         try:
-            self.state = 356
+            self.state = 291
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,25,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
             if la_ == 1:
                 localctx = brownieParser.For_condition1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 349
+                self.state = 284
                 self.for_definition()
-                self.state = 350
+                self.state = 285
                 self.match(brownieParser.SEMICOLON)
-                self.state = 351
+                self.state = 286
                 self.condition(0)
-                self.state = 352
+                self.state = 287
                 self.match(brownieParser.SEMICOLON)
-                self.state = 353
+                self.state = 288
                 self.assign()
                 pass
 
             elif la_ == 2:
                 localctx = brownieParser.For_condition2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 355
+                self.state = 290
                 self.for_iterator()
                 pass
 
@@ -3728,14 +3271,14 @@ class brownieParser ( Parser ):
     def for_definition(self):
 
         localctx = brownieParser.For_definitionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 64, self.RULE_for_definition)
+        self.enterRule(localctx, 58, self.RULE_for_definition)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 358
+            self.state = 293
             self.match(brownieParser.VARIABLE)
-            self.state = 359
+            self.state = 294
             self.match(brownieParser.ASSIGN)
-            self.state = 360
+            self.state = 295
             self.exp(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -3784,14 +3327,14 @@ class brownieParser ( Parser ):
     def for_iterator(self):
 
         localctx = brownieParser.For_iteratorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 66, self.RULE_for_iterator)
+        self.enterRule(localctx, 60, self.RULE_for_iterator)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 362
+            self.state = 297
             self.match(brownieParser.VARIABLE)
-            self.state = 363
+            self.state = 298
             self.match(brownieParser.IN)
-            self.state = 364
+            self.state = 299
             self.match(brownieParser.VARIABLE)
         except RecognitionException as re:
             localctx.exception = re
@@ -3844,200 +3387,24 @@ class brownieParser ( Parser ):
     def body(self):
 
         localctx = brownieParser.BodyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 68, self.RULE_body)
+        self.enterRule(localctx, 62, self.RULE_body)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 366
+            self.state = 301
             self.match(brownieParser.OP_BRACE)
-            self.state = 370
+            self.state = 305
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.SWITCH) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.BREAK) | (1 << brownieParser.LOOP) | (1 << brownieParser.EXEC) | (1 << brownieParser.START) | (1 << brownieParser.STOP) | (1 << brownieParser.MESSAGE) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 367
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.START) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
+                self.state = 302
                 self.sentence()
-                self.state = 372
+                self.state = 307
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 373
+            self.state = 308
             self.match(brownieParser.CL_BRACE)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Fun_bodyContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def OP_BRACE(self):
-            return self.getToken(brownieParser.OP_BRACE, 0)
-
-        def CL_BRACE(self):
-            return self.getToken(brownieParser.CL_BRACE, 0)
-
-        def fun_sentence(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(brownieParser.Fun_sentenceContext)
-            else:
-                return self.getTypedRuleContext(brownieParser.Fun_sentenceContext,i)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_fun_body
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFun_body" ):
-                listener.enterFun_body(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFun_body" ):
-                listener.exitFun_body(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFun_body" ):
-                return visitor.visitFun_body(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def fun_body(self):
-
-        localctx = brownieParser.Fun_bodyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 70, self.RULE_fun_body)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 375
-            self.match(brownieParser.OP_BRACE)
-            self.state = 379
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.SWITCH) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.BREAK) | (1 << brownieParser.RETURN) | (1 << brownieParser.LOOP) | (1 << brownieParser.EXEC) | (1 << brownieParser.START) | (1 << brownieParser.STOP) | (1 << brownieParser.MESSAGE) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 376
-                self.fun_sentence()
-                self.state = 381
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 382
-            self.match(brownieParser.CL_BRACE)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Fun_sentenceContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_fun_sentence
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class Fun_sentence2Context(Fun_sentenceContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a brownieParser.Fun_sentenceContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def RETURN(self):
-            return self.getToken(brownieParser.RETURN, 0)
-        def exp(self):
-            return self.getTypedRuleContext(brownieParser.ExpContext,0)
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFun_sentence2" ):
-                listener.enterFun_sentence2(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFun_sentence2" ):
-                listener.exitFun_sentence2(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFun_sentence2" ):
-                return visitor.visitFun_sentence2(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class Fun_sentence1Context(Fun_sentenceContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a brownieParser.Fun_sentenceContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def sentence(self):
-            return self.getTypedRuleContext(brownieParser.SentenceContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFun_sentence1" ):
-                listener.enterFun_sentence1(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFun_sentence1" ):
-                listener.exitFun_sentence1(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFun_sentence1" ):
-                return visitor.visitFun_sentence1(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-    def fun_sentence(self):
-
-        localctx = brownieParser.Fun_sentenceContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 72, self.RULE_fun_sentence)
-        try:
-            self.state = 389
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [brownieParser.IF, brownieParser.SWITCH, brownieParser.WHILE, brownieParser.FOR, brownieParser.DO, brownieParser.BREAK, brownieParser.LOOP, brownieParser.EXEC, brownieParser.START, brownieParser.STOP, brownieParser.MESSAGE, brownieParser.PRINT, brownieParser.VARIABLE]:
-                localctx = brownieParser.Fun_sentence1Context(self, localctx)
-                self.enterOuterAlt(localctx, 1)
-                self.state = 384
-                self.sentence()
-                pass
-            elif token in [brownieParser.RETURN]:
-                localctx = brownieParser.Fun_sentence2Context(self, localctx)
-                self.enterOuterAlt(localctx, 2)
-                self.state = 385
-                self.match(brownieParser.RETURN)
-                self.state = 386
-                self.exp(0)
-                self.state = 387
-                self.match(brownieParser.SEMICOLON)
-                pass
-            else:
-                raise NoViableAltException(self)
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4055,6 +3422,9 @@ class brownieParser ( Parser ):
 
         def PROCESS(self):
             return self.getToken(brownieParser.PROCESS, 0)
+
+        def VARIABLE(self):
+            return self.getToken(brownieParser.VARIABLE, 0)
 
         def body(self):
             return self.getTypedRuleContext(brownieParser.BodyContext,0)
@@ -4083,102 +3453,14 @@ class brownieParser ( Parser ):
     def procedure(self):
 
         localctx = brownieParser.ProcedureContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 74, self.RULE_procedure)
+        self.enterRule(localctx, 64, self.RULE_procedure)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 391
+            self.state = 310
             self.match(brownieParser.PROCESS)
-            self.state = 392
-            self.body()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class ProcessContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def PROCESS(self):
-            return self.getToken(brownieParser.PROCESS, 0)
-
-        def VARIABLE(self, i:int=None):
-            if i is None:
-                return self.getTokens(brownieParser.VARIABLE)
-            else:
-                return self.getToken(brownieParser.VARIABLE, i)
-
-        def COLON(self, i:int=None):
-            if i is None:
-                return self.getTokens(brownieParser.COLON)
-            else:
-                return self.getToken(brownieParser.COLON, i)
-
-        def MONITOR(self):
-            return self.getToken(brownieParser.MONITOR, 0)
-
-        def CONNECTION(self):
-            return self.getToken(brownieParser.CONNECTION, 0)
-
-        def dictionary(self):
-            return self.getTypedRuleContext(brownieParser.DictionaryContext,0)
-
-
-        def body(self):
-            return self.getTypedRuleContext(brownieParser.BodyContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_process
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterProcess" ):
-                listener.enterProcess(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitProcess" ):
-                listener.exitProcess(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitProcess" ):
-                return visitor.visitProcess(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def process(self):
-
-        localctx = brownieParser.ProcessContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 76, self.RULE_process)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 394
-            self.match(brownieParser.PROCESS)
-            self.state = 395
+            self.state = 311
             self.match(brownieParser.VARIABLE)
-            self.state = 396
-            self.match(brownieParser.COLON)
-            self.state = 397
-            self.match(brownieParser.MONITOR)
-            self.state = 398
-            self.match(brownieParser.VARIABLE)
-            self.state = 399
-            self.match(brownieParser.COLON)
-            self.state = 400
-            self.match(brownieParser.CONNECTION)
-            self.state = 401
-            self.match(brownieParser.VARIABLE)
-            self.state = 402
-            self.dictionary()
-            self.state = 403
+            self.state = 312
             self.body()
         except RecognitionException as re:
             localctx.exception = re
@@ -4195,24 +3477,8 @@ class brownieParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def loop(self):
-            return self.getTypedRuleContext(brownieParser.LoopContext,0)
-
-
-        def exec(self):
-            return self.getTypedRuleContext(brownieParser.ExecContext,0)
-
-
         def start_process(self):
             return self.getTypedRuleContext(brownieParser.Start_processContext,0)
-
-
-        def stop(self):
-            return self.getTypedRuleContext(brownieParser.StopContext,0)
-
-
-        def message(self):
-            return self.getTypedRuleContext(brownieParser.MessageContext,0)
 
 
         def getRuleIndex(self):
@@ -4238,163 +3504,11 @@ class brownieParser ( Parser ):
     def concurrency(self):
 
         localctx = brownieParser.ConcurrencyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 78, self.RULE_concurrency)
-        try:
-            self.state = 410
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [brownieParser.LOOP]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 405
-                self.loop()
-                pass
-            elif token in [brownieParser.EXEC]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 406
-                self.exec()
-                pass
-            elif token in [brownieParser.START]:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 407
-                self.start_process()
-                pass
-            elif token in [brownieParser.STOP]:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 408
-                self.stop()
-                pass
-            elif token in [brownieParser.MESSAGE]:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 409
-                self.message()
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class LoopContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def LOOP(self):
-            return self.getToken(brownieParser.LOOP, 0)
-
-        def call(self):
-            return self.getTypedRuleContext(brownieParser.CallContext,0)
-
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def MONITOR(self):
-            return self.getToken(brownieParser.MONITOR, 0)
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_loop
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLoop" ):
-                listener.enterLoop(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLoop" ):
-                listener.exitLoop(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLoop" ):
-                return visitor.visitLoop(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def loop(self):
-
-        localctx = brownieParser.LoopContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 80, self.RULE_loop)
+        self.enterRule(localctx, 66, self.RULE_concurrency)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 412
-            self.match(brownieParser.LOOP)
-            self.state = 413
-            self.call()
-            self.state = 414
-            self.match(brownieParser.COLON)
-            self.state = 415
-            self.match(brownieParser.MONITOR)
-            self.state = 416
-            self.match(brownieParser.VARIABLE)
-            self.state = 417
-            self.match(brownieParser.SEMICOLON)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class ExecContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def EXEC(self):
-            return self.getToken(brownieParser.EXEC, 0)
-
-        def call_sentence(self):
-            return self.getTypedRuleContext(brownieParser.Call_sentenceContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_exec
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExec" ):
-                listener.enterExec(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExec" ):
-                listener.exitExec(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExec" ):
-                return visitor.visitExec(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def exec(self):
-
-        localctx = brownieParser.ExecContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 82, self.RULE_exec)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 419
-            self.match(brownieParser.EXEC)
-            self.state = 420
-            self.call_sentence()
+            self.state = 314
+            self.start_process()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -4442,154 +3556,14 @@ class brownieParser ( Parser ):
     def start_process(self):
 
         localctx = brownieParser.Start_processContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 84, self.RULE_start_process)
+        self.enterRule(localctx, 68, self.RULE_start_process)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 422
+            self.state = 316
             self.match(brownieParser.START)
-            self.state = 423
+            self.state = 317
             self.match(brownieParser.VARIABLE)
-            self.state = 424
-            self.match(brownieParser.SEMICOLON)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class StopContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def STOP(self):
-            return self.getToken(brownieParser.STOP, 0)
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def MONITOR(self):
-            return self.getToken(brownieParser.MONITOR, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_stop
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStop" ):
-                listener.enterStop(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStop" ):
-                listener.exitStop(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStop" ):
-                return visitor.visitStop(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def stop(self):
-
-        localctx = brownieParser.StopContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 86, self.RULE_stop)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 426
-            self.match(brownieParser.STOP)
-            self.state = 428
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==brownieParser.MONITOR:
-                self.state = 427
-                self.match(brownieParser.MONITOR)
-
-
-            self.state = 430
-            self.match(brownieParser.VARIABLE)
-            self.state = 431
-            self.match(brownieParser.SEMICOLON)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class MessageContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def MESSAGE(self):
-            return self.getToken(brownieParser.MESSAGE, 0)
-
-        def CONNECTION(self):
-            return self.getToken(brownieParser.CONNECTION, 0)
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def dictionary(self):
-            return self.getTypedRuleContext(brownieParser.DictionaryContext,0)
-
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_message
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMessage" ):
-                listener.enterMessage(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMessage" ):
-                listener.exitMessage(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMessage" ):
-                return visitor.visitMessage(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def message(self):
-
-        localctx = brownieParser.MessageContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 88, self.RULE_message)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 433
-            self.match(brownieParser.MESSAGE)
-            self.state = 434
-            self.match(brownieParser.CONNECTION)
-            self.state = 435
-            self.match(brownieParser.VARIABLE)
-            self.state = 436
-            self.match(brownieParser.COLON)
-            self.state = 437
-            self.dictionary()
-            self.state = 438
+            self.state = 318
             self.match(brownieParser.SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -4645,18 +3619,18 @@ class brownieParser ( Parser ):
     def print_(self):
 
         localctx = brownieParser.Print_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 90, self.RULE_print_)
+        self.enterRule(localctx, 70, self.RULE_print_)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 440
+            self.state = 320
             self.match(brownieParser.PRINT)
-            self.state = 441
+            self.state = 321
             self.match(brownieParser.OP_PARENTHESIS)
-            self.state = 442
+            self.state = 322
             self.print_value()
-            self.state = 443
+            self.state = 323
             self.match(brownieParser.CL_PARENTHESIS)
-            self.state = 444
+            self.state = 324
             self.match(brownieParser.SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -4709,29 +3683,29 @@ class brownieParser ( Parser ):
     def print_value(self):
 
         localctx = brownieParser.Print_valueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 92, self.RULE_print_value)
+        self.enterRule(localctx, 72, self.RULE_print_value)
         try:
-            self.state = 450
+            self.state = 330
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [brownieParser.VARIABLE]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 446
+                self.state = 326
                 self.match(brownieParser.VARIABLE)
                 pass
             elif token in [brownieParser.NUMBER]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 447
+                self.state = 327
                 self.match(brownieParser.NUMBER)
                 pass
             elif token in [brownieParser.STRING]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 448
+                self.state = 328
                 self.match(brownieParser.STRING)
                 pass
             elif token in [brownieParser.OP_SQUARE]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 449
+                self.state = 329
                 self.list_elements()
                 pass
             else:
@@ -4746,647 +3720,16 @@ class brownieParser ( Parser ):
         return localctx
 
 
-    class DictionaryContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def LESS(self):
-            return self.getToken(brownieParser.LESS, 0)
-
-        def GREATER(self):
-            return self.getToken(brownieParser.GREATER, 0)
-
-        def dict_element(self):
-            return self.getTypedRuleContext(brownieParser.Dict_elementContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_dictionary
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDictionary" ):
-                listener.enterDictionary(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDictionary" ):
-                listener.exitDictionary(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDictionary" ):
-                return visitor.visitDictionary(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def dictionary(self):
-
-        localctx = brownieParser.DictionaryContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 94, self.RULE_dictionary)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 452
-            self.match(brownieParser.LESS)
-            self.state = 454
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==brownieParser.STRING:
-                self.state = 453
-                self.dict_element(0)
-
-
-            self.state = 456
-            self.match(brownieParser.GREATER)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Dict_elementContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def STRING(self):
-            return self.getToken(brownieParser.STRING, 0)
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def dict_value(self):
-            return self.getTypedRuleContext(brownieParser.Dict_valueContext,0)
-
-
-        def dict_element(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(brownieParser.Dict_elementContext)
-            else:
-                return self.getTypedRuleContext(brownieParser.Dict_elementContext,i)
-
-
-        def COMMA(self):
-            return self.getToken(brownieParser.COMMA, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_dict_element
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDict_element" ):
-                listener.enterDict_element(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDict_element" ):
-                listener.exitDict_element(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDict_element" ):
-                return visitor.visitDict_element(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-    def dict_element(self, _p:int=0):
-        _parentctx = self._ctx
-        _parentState = self.state
-        localctx = brownieParser.Dict_elementContext(self, self._ctx, _parentState)
-        _prevctx = localctx
-        _startState = 96
-        self.enterRecursionRule(localctx, 96, self.RULE_dict_element, _p)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 459
-            self.match(brownieParser.STRING)
-            self.state = 460
-            self.match(brownieParser.COLON)
-            self.state = 461
-            self.dict_value()
-            self._ctx.stop = self._input.LT(-1)
-            self.state = 468
-            self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,33,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    if self._parseListeners is not None:
-                        self.triggerExitRuleEvent()
-                    _prevctx = localctx
-                    localctx = brownieParser.Dict_elementContext(self, _parentctx, _parentState)
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_dict_element)
-                    self.state = 463
-                    if not self.precpred(self._ctx, 1):
-                        from antlr4.error.Errors import FailedPredicateException
-                        raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 464
-                    self.match(brownieParser.COMMA)
-                    self.state = 465
-                    self.dict_element(2) 
-                self.state = 470
-                self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,33,self._ctx)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.unrollRecursionContexts(_parentctx)
-        return localctx
-
-
-    class Dict_valueContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def NUMBER(self):
-            return self.getToken(brownieParser.NUMBER, 0)
-
-        def STRING(self):
-            return self.getToken(brownieParser.STRING, 0)
-
-        def call(self):
-            return self.getTypedRuleContext(brownieParser.CallContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_dict_value
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDict_value" ):
-                listener.enterDict_value(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDict_value" ):
-                listener.exitDict_value(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDict_value" ):
-                return visitor.visitDict_value(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def dict_value(self):
-
-        localctx = brownieParser.Dict_valueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 98, self.RULE_dict_value)
-        try:
-            self.state = 475
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,34,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 471
-                self.match(brownieParser.VARIABLE)
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 472
-                self.match(brownieParser.NUMBER)
-                pass
-
-            elif la_ == 3:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 473
-                self.match(brownieParser.STRING)
-                pass
-
-            elif la_ == 4:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 474
-                self.call()
-                pass
-
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Switch_Context(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def SWITCH(self):
-            return self.getToken(brownieParser.SWITCH, 0)
-
-        def VARIABLE(self):
-            return self.getToken(brownieParser.VARIABLE, 0)
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def switch_body(self):
-            return self.getTypedRuleContext(brownieParser.Switch_bodyContext,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_switch_
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSwitch_" ):
-                listener.enterSwitch_(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSwitch_" ):
-                listener.exitSwitch_(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSwitch_" ):
-                return visitor.visitSwitch_(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def switch_(self):
-
-        localctx = brownieParser.Switch_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 100, self.RULE_switch_)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 477
-            self.match(brownieParser.SWITCH)
-            self.state = 478
-            self.match(brownieParser.VARIABLE)
-            self.state = 479
-            self.match(brownieParser.COLON)
-            self.state = 480
-            self.switch_body()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Switch_bodyContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def OP_BRACE(self):
-            return self.getToken(brownieParser.OP_BRACE, 0)
-
-        def CL_BRACE(self):
-            return self.getToken(brownieParser.CL_BRACE, 0)
-
-        def case_(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(brownieParser.Case_Context)
-            else:
-                return self.getTypedRuleContext(brownieParser.Case_Context,i)
-
-
-        def default_(self):
-            return self.getTypedRuleContext(brownieParser.Default_Context,0)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_switch_body
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSwitch_body" ):
-                listener.enterSwitch_body(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSwitch_body" ):
-                listener.exitSwitch_body(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSwitch_body" ):
-                return visitor.visitSwitch_body(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def switch_body(self):
-
-        localctx = brownieParser.Switch_bodyContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 102, self.RULE_switch_body)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 482
-            self.match(brownieParser.OP_BRACE)
-            self.state = 486
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==brownieParser.CASE:
-                self.state = 483
-                self.case_()
-                self.state = 488
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 490
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if _la==brownieParser.DEFAULT:
-                self.state = 489
-                self.default_()
-
-
-            self.state = 492
-            self.match(brownieParser.CL_BRACE)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Case_Context(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def CASE(self):
-            return self.getToken(brownieParser.CASE, 0)
-
-        def case_value(self):
-            return self.getTypedRuleContext(brownieParser.Case_valueContext,0)
-
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def sentence(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(brownieParser.SentenceContext)
-            else:
-                return self.getTypedRuleContext(brownieParser.SentenceContext,i)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_case_
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCase_" ):
-                listener.enterCase_(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCase_" ):
-                listener.exitCase_(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCase_" ):
-                return visitor.visitCase_(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def case_(self):
-
-        localctx = brownieParser.Case_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 104, self.RULE_case_)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 494
-            self.match(brownieParser.CASE)
-            self.state = 495
-            self.case_value()
-            self.state = 496
-            self.match(brownieParser.COLON)
-            self.state = 500
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.SWITCH) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.BREAK) | (1 << brownieParser.LOOP) | (1 << brownieParser.EXEC) | (1 << brownieParser.START) | (1 << brownieParser.STOP) | (1 << brownieParser.MESSAGE) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 497
-                self.sentence()
-                self.state = 502
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Default_Context(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def DEFAULT(self):
-            return self.getToken(brownieParser.DEFAULT, 0)
-
-        def COLON(self):
-            return self.getToken(brownieParser.COLON, 0)
-
-        def sentence(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(brownieParser.SentenceContext)
-            else:
-                return self.getTypedRuleContext(brownieParser.SentenceContext,i)
-
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_default_
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDefault_" ):
-                listener.enterDefault_(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDefault_" ):
-                listener.exitDefault_(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDefault_" ):
-                return visitor.visitDefault_(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def default_(self):
-
-        localctx = brownieParser.Default_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 106, self.RULE_default_)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 503
-            self.match(brownieParser.DEFAULT)
-            self.state = 504
-            self.match(brownieParser.COLON)
-            self.state = 508
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << brownieParser.IF) | (1 << brownieParser.SWITCH) | (1 << brownieParser.WHILE) | (1 << brownieParser.FOR) | (1 << brownieParser.DO) | (1 << brownieParser.BREAK) | (1 << brownieParser.LOOP) | (1 << brownieParser.EXEC) | (1 << brownieParser.START) | (1 << brownieParser.STOP) | (1 << brownieParser.MESSAGE) | (1 << brownieParser.PRINT) | (1 << brownieParser.VARIABLE))) != 0):
-                self.state = 505
-                self.sentence()
-                self.state = 510
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Case_valueContext(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def NUMBER(self):
-            return self.getToken(brownieParser.NUMBER, 0)
-
-        def STRING(self):
-            return self.getToken(brownieParser.STRING, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_case_value
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCase_value" ):
-                listener.enterCase_value(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCase_value" ):
-                listener.exitCase_value(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCase_value" ):
-                return visitor.visitCase_value(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def case_value(self):
-
-        localctx = brownieParser.Case_valueContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 108, self.RULE_case_value)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 511
-            _la = self._input.LA(1)
-            if not(_la==brownieParser.NUMBER or _la==brownieParser.STRING):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class Break_Context(ParserRuleContext):
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def BREAK(self):
-            return self.getToken(brownieParser.BREAK, 0)
-
-        def SEMICOLON(self):
-            return self.getToken(brownieParser.SEMICOLON, 0)
-
-        def getRuleIndex(self):
-            return brownieParser.RULE_break_
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBreak_" ):
-                listener.enterBreak_(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBreak_" ):
-                listener.exitBreak_(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBreak_" ):
-                return visitor.visitBreak_(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def break_(self):
-
-        localctx = brownieParser.Break_Context(self, self._ctx, self.state)
-        self.enterRule(localctx, 110, self.RULE_break_)
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 513
-            self.match(brownieParser.BREAK)
-            self.state = 514
-            self.match(brownieParser.SEMICOLON)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
 
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[6] = self.parameter_sempred
-        self._predicates[7] = self.parameter_call_sempred
-        self._predicates[10] = self.text_sempred
-        self._predicates[11] = self.element_sempred
-        self._predicates[13] = self.exp_sempred
-        self._predicates[21] = self.condition_sempred
-        self._predicates[48] = self.dict_element_sempred
+        self._predicates[3] = self.parameter_sempred
+        self._predicates[4] = self.parameter_call_sempred
+        self._predicates[7] = self.text_sempred
+        self._predicates[8] = self.element_sempred
+        self._predicates[10] = self.exp_sempred
+        self._predicates[18] = self.condition_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
             raise Exception("No predicate with index:" + str(ruleIndex))
@@ -5421,11 +3764,6 @@ class brownieParser ( Parser ):
     def condition_sempred(self, localctx:ConditionContext, predIndex:int):
             if predIndex == 5:
                 return self.precpred(self._ctx, 2)
-         
-
-    def dict_element_sempred(self, localctx:Dict_elementContext, predIndex:int):
-            if predIndex == 6:
-                return self.precpred(self._ctx, 1)
          
 
 

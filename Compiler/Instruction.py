@@ -26,7 +26,7 @@ class instruction:
             inst = str(self.i1) + " " + str(self.i2) + " "  + str(self.i3)
             return inst
 
-        special =["PUSH", "CALL", "POP", "LIST", "print", "SLICE", "<fun>", "<EndFun>"]
+        special =["PUSH", "START", "CALL", "POP", "LIST", "print", "SLICE", "<fun>", "<EndFun>"]
         if self.i1 in special:
             inst = str(self.pos) + "\t: "+str(self.label)+"\t " + str(self.i1) + "  " + str(self.i2) + \
                    " " + str(self.op) + " " + str(self.i3)
