@@ -274,10 +274,13 @@ class CU_distributed:
                     sx = buffer[self.sp[0]][2]
                     end = self.instruction(rx, sx)
                 # Hacer correr el puntero una posicion hacia adelante
-                self.sp[0] = self.sp[0] + 1
+                if self.sp[0] < len(buffer):
+                    self.sp[0] = self.sp[0] + 1
                 #print(f"sp {self.sp[0]}")
         except:
-            print(f"Error de ejecucion en {self.DS.device.name} "
-                  f"\nInstruccion :  {buffer_org[self.sp[0]]}\n")
+            pass
+            print(f"Error de ejecucion en {self.DS.device.name} ")
+            print(f"sp {self.sp[0]}")
+            #print(f"\nInstruccion :  {buffer[self.sp[0]]}\n")
 
 # CU().execution()

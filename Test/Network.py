@@ -58,13 +58,15 @@ class Network:
         while True:
             dev = input("Device>")
             com = input("Command>")
+            if dev in self.devs:
+                if com == "send":
+                    target = input("Target>>")
+                    message = input("Message>>")
+                    self.devs[dev].command(com = com, target = target, message = message)
 
-            if com == "send":
-                target = input("Target>>")
-                message = input("Message>>")
-                self.devs[dev].command(com = com, target = target, message = message)
-
-            elif comms.__contains__(com):
-                self.devs[dev].command(com = com)
+                elif comms.__contains__(com):
+                    self.devs[dev].command(com = com)
+            else:
+                print("No existe el dispositivo")
 
 
