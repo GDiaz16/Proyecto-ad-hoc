@@ -7,9 +7,6 @@ IF   : 'if';
 ELIF : 'elif';
 ELSE : 'else';
 
-//SWITCH : 'switch';
-//CASE : 'case';
-//DEFAULT :'default';
 
 WHILE : 'while';
 FOR : 'for';
@@ -17,25 +14,13 @@ DO : 'do';
 
 TRUE : 'True';
 FALSE : 'False';
-BREAK : 'break';
-
-FUNCTION : 'fun';
-RETURN : 'return';
-IN : 'in';
 
 //Concurrencia
 PROCESS : 'process';
-//LOOP : 'loop';
-//EXEC : 'exec';
 START : 'start';
-//STOP : 'stop';
-//MESSAGE : 'message';
 
 //Imprimir
 PRINT :'print';
-
-//Salto de linea
-//JUMPSPACE: '\n';
 
 COMMENT : '#'.*?'\n'  -> skip;
 COMMENT_AREA : '/*'.*?'*/' -> skip;
@@ -82,32 +67,21 @@ ASSIGN : '=';
 COMMENT_LINE : '#';
 COMM_OPEN : '/*';
 COMM_CLOSE : '*/';
-//Control
-MONITOR :'?';
-CONNECTION :'@';
 
 WHITESPACE : [ \t\n] -> skip;
 
 //-------------------------------GRAMATICA------------------------------------->
 start : structure*  EOF;
-//comm : COMMENT;
 
-structure :  sentence | procedure;// | function | call_sentence | process;
+structure :  sentence | procedure;
 //Cualquier instruccion
-sentence : definition | conditional | print_ | cycle | concurrency ;//| switch_ | break_ ;//| call_sentence;
-
-//Definicion de funciones
-//function : FUNCTION VARIABLE OP_PARENTHESIS parameter? CL_PARENTHESIS fun_body;
-//Llamado de una funcion
-//call :  VARIABLE OP_PARENTHESIS parameter_call? CL_PARENTHESIS;
-//call_sentence : call SEMICOLON;
+sentence : definition | conditional | print_ | cycle | concurrency ;
 
 //Parametros
 parameter : VARIABLE #parameter1| parameter ',' parameter #parameter2;
 parameter_call : VARIABLE #parameter_call1 | NUMBER #parameter_call2
                 | STRING #parameter_call3
                 | parameter_call ',' parameter_call #parameter_call5;
-                //| array_call #parameter_call6 ;// | call #parameter_call4;
 
 //Definicion y asignacion de variables
 definition : assign SEMICOLON ;
@@ -124,10 +98,9 @@ list_elements: OP_SQUARE element? CL_SQUARE;
 //Expresion matematica
 exp : exp ar_operator term #exp1| term #exp2 ;
 term : ar_value prior_operator term #term1| ar_value #term2;
-ar_value : NUMBER #ar_value1 | VARIABLE #ar_value2  //call #ar_value3
-            | OP_PARENTHESIS exp CL_PARENTHESIS #ar_value4;// | array_call #ar_value5;
+ar_value : NUMBER #ar_value1 | VARIABLE #ar_value2
+            | OP_PARENTHESIS exp CL_PARENTHESIS #ar_value4;
 
-//array_call : VARIABLE OP_SQUARE ar_value CL_SQUARE;
 //Operadores aritmeticos
 ar_operator : PLUS | MINUS;
 prior_operator :  MUL | DIV | POW | MOD ;
@@ -160,33 +133,12 @@ for_iterator : VARIABLE IN VARIABLE;
 
 //Cuerpo de instrucciones
 body : OP_BRACE sentence* CL_BRACE;
-//fun_body : OP_BRACE fun_sentence* CL_BRACE ;
-//fun_sentence : sentence #fun_sentence1| RETURN exp SEMICOLON #fun_sentence2;
 
 //Concurrencia
 procedure : PROCESS  VARIABLE body;
-//process : PROCESS VARIABLE COLON MONITOR VARIABLE COLON CONNECTION VARIABLE dictionary body ;
-concurrency : start_process ;//| stop | message ; //loop | exec |;
-//loop : LOOP call COLON MONITOR VARIABLE SEMICOLON ;
-//exec : EXEC call_sentence;
+concurrency : start_process ;
 start_process : START VARIABLE SEMICOLON;
-//stop : STOP MONITOR? VARIABLE SEMICOLON;
-//message : MESSAGE CONNECTION VARIABLE COLON dictionary SEMICOLON;
 
 //Print
 print_ : PRINT OP_PARENTHESIS print_value CL_PARENTHESIS SEMICOLON;
 print_value : VARIABLE | NUMBER | STRING ;//| list_elements;
-
-//Diccionario de valores
-//dictionary : LESS dict_element? GREATER;
-//dict_element : STRING COLON dict_value | dict_element ',' dict_element;
-//dict_value : VARIABLE | NUMBER | STRING | call;
-
-
-//Switch
-//switch_ : SWITCH VARIABLE COLON switch_body;
-//switch_body : OP_BRACE case_* default_? CL_BRACE;
-//case_ : CASE case_value COLON sentence* ;
-//default_: DEFAULT COLON sentence* ;
-//case_value: NUMBER | STRING;
-//break_ : BREAK SEMICOLON;
