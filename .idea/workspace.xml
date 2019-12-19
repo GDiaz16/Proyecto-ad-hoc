@@ -27,8 +27,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Test/tests.br">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="5" selection-start-line="5" selection-end-line="5" />
+                <state>
+                  <caret column="20" selection-start-column="20" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -141,7 +141,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Test/Resource_Admin/Distributed_System.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="96">
@@ -195,11 +195,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Compiler/brownie.g4">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
+                <state relative-caret-position="928">
+                  <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -306,16 +306,16 @@
         <option value="$PROJECT_DIR$/Test/Resource_Admin/RAM_distributed.py" />
         <option value="$PROJECT_DIR$/Test/Device.py" />
         <option value="$PROJECT_DIR$/Compiler/Prueba.py" />
-        <option value="$PROJECT_DIR$/Compiler/brownie.g4" />
         <option value="$PROJECT_DIR$/Test/Resource_Admin/Distributed_System.py" />
         <option value="$PROJECT_DIR$/Compiler/tests.br" />
         <option value="$PROJECT_DIR$/Compiler/Visitor.py" />
         <option value="$PROJECT_DIR$/Compiler/Instruction.py" />
         <option value="$PROJECT_DIR$/Compiler/Code_generator.py" />
         <option value="$PROJECT_DIR$/Compiler/compiler.py" />
-        <option value="$PROJECT_DIR$/Test/tests.br" />
         <option value="$PROJECT_DIR$/Test/Resource_Admin/CU_distributed.py" />
         <option value="$PROJECT_DIR$/Test/Network.py" />
+        <option value="$PROJECT_DIR$/Test/tests.br" />
+        <option value="$PROJECT_DIR$/Compiler/brownie.g4" />
       </list>
     </option>
   </component>
@@ -877,13 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler/brownie.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Compiler/compiler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -891,13 +884,6 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test/tests.br">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -946,6 +932,20 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/tests.br">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler/brownie.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
         </state>
       </provider>
     </entry>

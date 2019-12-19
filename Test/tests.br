@@ -1,13 +1,1 @@
-process a{
-    for i = 0; i < 20; i++:{
-        print(i);
-    }
-}
-
-process b{
-    for j = 0; j < 20; j++:{
-        print(j);
-    }
-}
-
-start a;
+print("Hola mundo");
